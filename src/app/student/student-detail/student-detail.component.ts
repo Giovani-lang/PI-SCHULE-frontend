@@ -6,7 +6,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student/student.service';
 import { MatCardModule } from '@angular/material/card';
-// import { NgxPrintModule } from 'ngx-print';
+import { NgxPrintModule } from 'ngx-print';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
@@ -19,7 +19,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatButtonModule,
     RouterModule,
     MatCardModule,
-    // NgxPrintModule,
+    NgxPrintModule,
     MatProgressBarModule
   ]
 
