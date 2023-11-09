@@ -1,0 +1,135 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "student": [
+    {
+      "nom": "Tchicaya",
+      "prenom": "Giovani",
+      "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2Fcdeb0df9-a331-4329-8074-06c50091c696?alt=media&token=7bb1c001-76ed-4924-8612-071be2018cbb",
+      "email": "tdjovany5@gmail.com",
+      "dateNaissance": "2002-04-15T23:00:00.000Z",
+      "telephone": "652219189",
+      "motDePasse": "toto237",
+      "niveau": "L3",
+      "filiere": "Gestion",
+      "genre": "M",
+      "option": "Economie",
+      "id": 1
+    },
+    {
+      "nom": "Noah",
+      "prenom": "Ulrich",
+      "image_url": "",
+      "email": "Dna2994@gmail.com",
+      "dateNaissance": null,
+      "telephone": "655583396",
+      "motDePasse": "123456",
+      "niveau": "M1",
+      "filiere": "Droit",
+      "genre": "M",
+      "option": "Arbitrage des affaires",
+      "id": 2
+    },
+    {
+      "nom": "Ngue",
+      "prenom": "Emmanuel",
+      "image_url": null,
+      "email": "emmanuel.ngue@gmail.com",
+      "dateNaissance": "2023-11-01T23:00:00.000Z",
+      "telephone": "652109885",
+      "motDePasse": "1301",
+      "niveau": "M2",
+      "filiere": "Technologie",
+      "genre": "M",
+      "option": "DevOps",
+      "id": 4
+    },
+    {
+      "nom": "Tambat",
+      "prenom": "Corine",
+      "matricule": null,
+      "image_url": null,
+      "dateNaissance": null,
+      "email": "cocosop0@yahoo.fr",
+      "telephone": "691766938",
+      "motDePasse": "123456",
+      "niveau": "M2",
+      "filiere": "Ingenierie",
+      "genre": "F",
+      "option": "Electromecanique",
+      "id": 5
+    },
+    {
+      "nom": "Nakimo",
+      "prenom": "Abdoulaya",
+      "image_url": "",
+      "email": "nakimo.only@gmail.com",
+      "dateNaissance": "1999-02-15T23:00:00.000Z",
+      "telephone": "698294042",
+      "motDePasse": "123456",
+      "niveau": "M1",
+      "filiere": "Technologie",
+      "genre": "M",
+      "option": "DevOps",
+      "id": 6
+    },
+    {
+      "nom": "Nzoutani",
+      "prenom": "Mac Lambert",
+      "matricule": null,
+      "image_url": null,
+      "dateNaissance": null,
+      "email": "mac.lambert@gmail.com",
+      "telephone": "671472105",
+      "motDePasse": "123456",
+      "niveau": "L2",
+      "filiere": "Technologie",
+      "genre": "M",
+      "option": "Arbitrage des affaires",
+      "id": 7
+    },
+    {
+      "nom": "Tchissoumbou",
+      "prenom": "Brice Fred Elode",
+      "image_url": null,
+      "email": "fred.tchiss@gmail.com",
+      "dateNaissance": "1997-04-26T23:00:00.000Z",
+      "telephone": "+242 06 691 41 32",
+      "motDePasse": "123456",
+      "niveau": "L3",
+      "filiere": "Ingenierie",
+      "genre": "M",
+      "option": "Electromecanique",
+      "id": 13
+    },
+    {
+      "nom": "Kinzondzi",
+      "prenom": "Angela Theresa",
+      "image_url": null,
+      "email": "angiedekinzo2001@gmail.com",
+      "dateNaissance": "2000-12-31T23:00:00.000Z",
+      "telephone": "670188753",
+      "motDePasse": "123456",
+      "niveau": "L3",
+      "filiere": "Gestion",
+      "genre": "F",
+      "option": "Economie",
+      "id": 14
+    }
+  ]
+}

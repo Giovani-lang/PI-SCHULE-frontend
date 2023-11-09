@@ -42,6 +42,17 @@ import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClientModule } from './clients/client.module';
 import { ProduitsModule } from './produits/produits.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentModule } from './student/student.module';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat'
+
+
 
 @NgModule({
   declarations: [
@@ -88,7 +99,25 @@ import { ProduitsModule } from './produits/produits.module';
     AppRoutingModule,
     FontAwesomeModule,
     ClientModule,
-    ProduitsModule
+    ProduitsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatTableModule,
+    MatFormFieldModule,
+    StudentModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyAHjUh2_4zARaow8MqdjxKHqlXIkrknZ8s",
+      authDomain: "pi-schule.firebaseapp.com",
+      projectId: "pi-schule",
+      storageBucket: "pi-schule.appspot.com",
+      messagingSenderId: "1018655698680",
+      appId: "1:1018655698680:web:38d845248a59992826d50d"
+    })
+    ,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

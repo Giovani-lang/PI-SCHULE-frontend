@@ -34,6 +34,7 @@ import { PagesRegisterComponent } from './pages/pages-register/pages-register.co
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
 import { ClientModule } from './clients/client.module';
 import { ProduitsModule } from './produits/produits.module';
+import { StudentModule } from './student/student.module';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -69,8 +70,9 @@ const routes: Routes = [
   { path: 'pages-login', component: PagesLoginComponent },
   { path: 'pages-register', component: PagesRegisterComponent },
   { path: 'user-profile', component: UsersProfileComponent },
-  {path:'clients', loadChildren: () => ClientModule},
-  {path:'produits', loadChildren:()=>ProduitsModule}
+  { path: 'clients', loadChildren: () => ClientModule },
+  { path: 'produits', loadChildren: () => ProduitsModule },
+  { path: 'student', loadChildren: () => StudentModule }
 ];
 
 @NgModule({

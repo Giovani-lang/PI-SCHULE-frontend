@@ -1,0 +1,160 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    /* background-color: blanchedalmond; */
+}
+
+.example-card {
+    width: 600px;
+    border-radius: 15px;
+}
+
+.trait {
+    width: 1px;
+    height: 50px;
+    background-color: black;
+}
+
+.example-header-image {
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.card-content {
+    margin: 15px;
+}
+
+.print {
+    width: 100%;
+}
+
+.position {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.disposition {
+    display: grid;
+    grid-template-columns: 50% 2% 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.exit {
+    float: right;
+}
+
+/**************************  CSS carte d'étudiant ******************************/
+#print-section {
+    display: none;
+}
+
+.container-card {
+    background: url('src/assets/img/background card.jpg') no-repeat;
+    background-size: cover;
+    width: 400px;
+    height: 284px;
+    border-radius: 10px;
+    display: grid;
+    grid-column: 25% 10% 40% 25%;
+}
+
+.header-card {
+    background-color: rgba(0, 0, 0, 0.343);
+    width: 400px;
+    height: 60px;
+    backdrop-filter: blur(7px);
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around
+}
+
+#img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.title-card {
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.content-card {
+    width: 400px;
+    height: 164px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-card {
+    background-color: rgba(0, 0, 0, 0.343);
+    width: 400px;
+    height: 20px;
+    backdrop-filter: blur(8px);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.color {
+    color: white;
+    margin: 0;
+}
+
+.photo-card {
+    box-sizing: border-box;
+    border: 1px solid white;
+    width: 148px;
+    height: 148px;
+    margin: 8px;
+}
+
+.infos-card {
+    margin-left: 30px;
+}
+
+.label {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 10px;
+}
+
+.infos {
+    font-size: 10px;
+    width: 150px;
+    margin: 0;
+}
+
+.year {
+    padding: 0px 0px 10px 20px;
+}
+
+.school-name-card {
+    height: 40px;
+    text-align: center;
+}
+
+span {
+    font-size: 10px;
+}
+
+.separator {
+    width: 3px;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.343);
+}

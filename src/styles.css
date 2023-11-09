@@ -1,5 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-.btn-add{
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.btn-add {
     position: relative;
     left: 610px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #f8f9fa;
 }
