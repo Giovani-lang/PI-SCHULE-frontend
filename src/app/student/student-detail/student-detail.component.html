@@ -100,7 +100,7 @@
                             </mat-card-content>
                             <mat-card-actions>
                                 <button class="print" mat-raised-button color="primary" printSectionId="print-section"
-                                    style="background-color: #162E58;color: white;">
+                                    style="background-color: #162E58;color: white;" [useExistingCss]="true" ngxPrint>
                                     <mat-icon>local_printshop</mat-icon>
                                     Imprimer la carte d'étudiant
                                 </button>
@@ -150,8 +150,6 @@
                 <label class="label">Née le : </label>
                 <p class="infos">{{ getFormattedDate()}}</p>
                 <label class="label">Sexe : </label>
-                <p class="infos">{{student.genre}}</p>
-                <label class="label">Filière : </label>
                 <p class="infos">{{student.filiere}}</p>
                 <label class="label">Option : </label>
                 <p class="infos">{{student.option}}</p>
