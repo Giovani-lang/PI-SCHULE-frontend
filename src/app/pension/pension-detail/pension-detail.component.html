@@ -1,0 +1,56 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+        <nav class="d-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+                <li class="breadcrumb-item"><a routerLink="/pension/list">Pensions</a></li>
+                <li class="breadcrumb-item">Details</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-12 ">
+                <table mat-table [dataSource]="pensions" class="mat-elevation-z8">
+                    <!-- Date Column -->
+                    <ng-container matColumnDef="date">
+                        <th mat-header-cell *matHeaderCellDef> Date </th>
+                        <td mat-cell *matCellDef="let pensions"> {{pensions.date}} </td>
+                        <td mat-footer-cell *matFooterCellDef> Total </td>
+                    </ng-container>
+                    <!-- Banque Column -->
+                    <ng-container matColumnDef="banque">
+                        <th mat-header-cell *matHeaderCellDef> Banque </th>
+                        <td mat-cell *matCellDef="let pensions"> {{pensions.banque}} </td>
+                        <td mat-footer-cell *matFooterCellDef> Total </td>
+                    </ng-container>
+                    <!-- NumeroCompte Column -->
+                    <ng-container matColumnDef="numeroCompte">
+                        <th mat-header-cell *matHeaderCellDef> No de Compte </th>
+                        <td mat-cell *matCellDef="let pensions"> {{pensions.numeroCompte}} </td>
+                        <td mat-footer-cell *matFooterCellDef> Total </td>
+                    </ng-container>
+
+                    <!-- MontantVerse Column -->
+                    <ng-container matColumnDef="montantVerse">
+                        <th mat-header-cell *matHeaderCellDef> Montant Versé </th>
+                        <td mat-cell *matCellDef="let pensions"> {{pensions.montantVerse | currency}} </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+                    </ng-container>
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action</th>
+                        <td mat-cell *matCellDef="let transaction">
+                            <mat-icon>print</mat-icon>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef> </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>

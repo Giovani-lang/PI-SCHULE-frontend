@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { NgIf } from '@angular/common';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
@@ -29,7 +28,6 @@ import { Student } from 'src/app/models/student.model';
     MatSelectModule,
     MatIconModule,
     MatRadioModule,
-    // NgIf,
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
@@ -87,6 +85,7 @@ export class EditStudentComponent implements OnInit {
     if (this.formulaireModif.status === 'VALID') {
       const student = this.formulaireModif.value as unknown as Student;
       this.service.editStudent(this.editData.id, student).subscribe((student) => {
+        this.onSelectField;
         this.dialogRef.close(student);
       });
 
@@ -111,7 +110,7 @@ export class EditStudentComponent implements OnInit {
         const ref = this.afs.ref(`pi-schule/images/${v4()}`);
         // Obtenez l'URL de l'image
         const url = await ref.put(this.img);
-        const downloadURL = await ref.getDownloadURL();
+        const downloadURL = ref.getDownloadURL();
         downloadURL.subscribe((url) => {
           this.formulaireModif.patchValue({ image_url: url });
         });

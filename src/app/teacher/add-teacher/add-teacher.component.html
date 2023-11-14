@@ -1,0 +1,98 @@
+<div mat-dialog-title class="title">
+    <h2 style="color: #162E58; font-weight: bolder;">Créer un nouvel enseignant</h2>
+</div>
+<hr>
+<div mat-dialog-content class="container">
+    <form [formGroup]="formulaireAjout" (ngSubmit)="save()">
+        <div class="form-fields" style="margin-top: 10px;">
+            <mat-form-field appearance="outline">
+                <mat-label>Nom</mat-label>
+                <input matInput formControlName="nom">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error *ngIf="formulaireAjout.controls.nom.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Prenom</mat-label>
+                <input matInput formControlName="prenom">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error *ngIf="formulaireAjout.controls.prenom.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-fields">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error
+                    *ngIf="formulaireAjout.controls.email.hasError('email') && !formulaireAjout.controls.email.hasError('required')">
+                    Email incorrect
+                </mat-error>
+                <mat-error *ngIf="formulaireAjout.controls.email.hasError('required')">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Telephone</mat-label>
+                <input matInput formControlName="telephone">
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="formulaireAjout.controls.telephone.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-fields">
+            <mat-form-field appearance="outline">
+                <mat-label>Mot de Passe</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formulaireAjout.controls.password.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Discipline</mat-label>
+                <input matInput formControlName="discipline">
+                <mat-icon matSuffix>school</mat-icon>
+                <mat-error *ngIf="formulaireAjout.controls.discipline.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <label>Genre : </label>&nbsp;
+            <mat-radio-group formControlName="genre">
+                <mat-radio-button value="M">Masculin</mat-radio-button>&nbsp;
+                <mat-radio-button value="F">Feminin</mat-radio-button>
+            </mat-radio-group>
+
+        </div>
+        <br>
+        <div class="form-fields">
+            <div>
+                <img [src]="url" height="200" width="200"><br><br>
+                <mat-label>Image : </mat-label>
+                <input type="file" (change)="onSelectField($event)">
+            </div>
+        </div>
+
+    </form>
+</div>
+<div mat-dialog-actions class="form-buttons">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button style="color: #162E58;" (click)="save()">
+        <mat-icon>save</mat-icon>
+        Enregistrer
+    </button>
+</div>

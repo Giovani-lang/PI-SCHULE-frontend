@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="image">
+        <div>
+            <h2 style="color: white;">{{teacher.nom}} &nbsp; {{teacher.prenom}}</h2>
+        </div>
+        <div>
+            <img [src]="teacher.image_url || img" alt="photo de profil">
+        </div>
+        <div>
+            <div style="text-align: center;">
+                <label style="color: white">Discipline : </label><br>
+                <p style="color: white;">{{teacher.discipline}}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+
+        <div class="position">
+            <div class="icon">
+                <mat-icon>email</mat-icon>
+            </div>
+            <div>
+                <label>Email </label><br>
+                <p>{{teacher.email}}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="position">
+            <div class="icon">
+                <mat-icon>⚤</mat-icon>
+            </div>
+            <div>
+                <label>Genre </label><br>
+                <p>{{teacher.genre}}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="position">
+            <div class="icon">
+                <mat-icon>phone</mat-icon>
+            </div>
+            <div>
+                <label>Téléphone </label><br>
+                <p>{{teacher.telephone}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions class="form-buttons">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+</div>

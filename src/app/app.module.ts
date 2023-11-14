@@ -51,6 +51,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat'
+import { AdminsModule } from './admins/admins.module';
+import { TeacherModule } from './teacher/teacher.module';
+import { PensionModule } from './pension/pension.module';
 
 
 
@@ -104,7 +107,10 @@ import { AngularFireModule } from '@angular/fire/compat'
     MatInputModule,
     MatTableModule,
     MatFormFieldModule,
+    TeacherModule,
     StudentModule,
+    AdminsModule,
+    PensionModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
@@ -117,7 +123,7 @@ import { AngularFireModule } from '@angular/fire/compat'
       appId: "1:1018655698680:web:38d845248a59992826d50d"
     })
     ,
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

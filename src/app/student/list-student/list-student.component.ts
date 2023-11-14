@@ -4,7 +4,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { StudentService } from 'src/app/services/student/student.service';
 import { Student } from 'src/app/models/student.model';
 import { MatIconModule } from '@angular/material/icon';
@@ -40,7 +40,7 @@ export class ListStudentComponent implements OnInit {
 
   students: Student[] = [];
 
-  constructor(public dialog: MatDialog, public service: StudentService, private route: ActivatedRoute) {
+  constructor(public dialog: MatDialog, public service: StudentService) {
     this.dataSource = new MatTableDataSource<Student>([]);
 
   }

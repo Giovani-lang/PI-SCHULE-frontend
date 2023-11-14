@@ -23,6 +23,7 @@
     height: 100px;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
 }
 
 label {
@@ -138,6 +139,7 @@ label {
     font-size: 10px;
     width: 150px;
     margin: 0;
+    color: black;
 }
 
 .year {

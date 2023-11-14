@@ -32,20 +32,6 @@
       "id": 1
     },
     {
-      "nom": "Noah",
-      "prenom": "Ulrich",
-      "image_url": "",
-      "email": "Dna2994@gmail.com",
-      "dateNaissance": null,
-      "telephone": "655583396",
-      "motDePasse": "123456",
-      "niveau": "M1",
-      "filiere": "Droit",
-      "genre": "M",
-      "option": "Arbitrage des affaires",
-      "id": 2
-    },
-    {
       "nom": "Ngue",
       "prenom": "Emmanuel",
       "image_url": null,
@@ -75,26 +61,11 @@
       "id": 5
     },
     {
-      "nom": "Nakimo",
-      "prenom": "Abdoulaya",
-      "image_url": "",
-      "email": "nakimo.only@gmail.com",
-      "dateNaissance": "1999-02-15T23:00:00.000Z",
-      "telephone": "698294042",
-      "motDePasse": "123456",
-      "niveau": "M1",
-      "filiere": "Technologie",
-      "genre": "M",
-      "option": "DevOps",
-      "id": 6
-    },
-    {
       "nom": "Nzoutani",
       "prenom": "Mac Lambert",
-      "matricule": null,
-      "image_url": null,
-      "dateNaissance": null,
+      "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2F3aa730c2-2791-4091-955c-ad927936ff7a?alt=media&token=bcc26d57-83ff-4bef-88e1-b4078ef3ecfe",
       "email": "mac.lambert@gmail.com",
+      "dateNaissance": null,
       "telephone": "671472105",
       "motDePasse": "123456",
       "niveau": "L2",
@@ -120,7 +91,7 @@
     {
       "nom": "Kinzondzi",
       "prenom": "Angela Theresa",
-      "image_url": null,
+      "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2F523f643b-540f-40d6-8924-3e025e182f91?alt=media&token=556a3f4a-9e84-42de-892d-d74e2a0a429a",
       "email": "angiedekinzo2001@gmail.com",
       "dateNaissance": "2000-12-31T23:00:00.000Z",
       "telephone": "670188753",
@@ -130,6 +101,109 @@
       "genre": "F",
       "option": "Economie",
       "id": 14
+    },
+    {
+      "nom": "Nzoussi",
+      "prenom": "Rolande",
+      "image_url": null,
+      "dateNaissance": "1997-03-21T23:00:00.000Z",
+      "email": "rolande.nzoussi@gmail.com",
+      "telephone": "670234566",
+      "motDePasse": "123456",
+      "niveau": "M1",
+      "filiere": "Gestion",
+      "genre": "F",
+      "option": "Economie",
+      "id": 15
+    },
+    {
+      "nom": "Tchicaya",
+      "prenom": "Yvan",
+      "image_url": null,
+      "dateNaissance": "1996-06-26T23:00:00.000Z",
+      "email": "yvan.tchicaya@gmail.com",
+      "telephone": "066147123",
+      "motDePasse": "123456",
+      "niveau": "L3",
+      "filiere": "Technologie",
+      "genre": "M",
+      "option": "Electromecanique",
+      "id": 16
+    },
+    {
+      "nom": "Bouzanga",
+      "prenom": "Yvon",
+      "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2F4649c3f1-7622-4677-80ce-7cd7b3e4a2c4?alt=media&token=118c0eba-748f-4e76-bcb2-5bff72a52553",
+      "email": "yvon.bouzanga@gmail.com",
+      "dateNaissance": "1983-10-10T23:00:00.000Z",
+      "telephone": "699703093",
+      "motDePasse": "123456",
+      "niveau": "L3",
+      "filiere": "Technologie",
+      "genre": "M",
+      "option": "Electromecanique",
+      "id": 17
+    }
+  ],
+  "admin": [
+    {
+      "nom": "Ngue",
+      "prenom": "Emmanuel",
+      "image_url": "",
+      "email": "emmanuel.ngue@gmail.com",
+      "telephone": "652109885",
+      "password": "123456",
+      "genre": "M",
+      "id": 1
+    },
+    {
+      "nom": "Toupkandi",
+      "prenom": "Mintoua",
+      "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2F91a7f8ef-5c8b-43e9-a736-63372aee0857?alt=media&token=c0367c27-1ce3-4601-b748-adef9b4ff1ce",
+      "email": "mta@gmail.com",
+      "telephone": "673238642",
+      "password": "1234566",
+      "genre": "M",
+      "id": 2
+    }
+  ],
+  "teacher": [
+    {
+      "nom": "Toupkandi",
+      "prenom": "Mintoua",
+      "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2F91a7f8ef-5c8b-43e9-a736-63372aee0857?alt=media&token=c0367c27-1ce3-4601-b748-adef9b4ff1ce",
+      "email": "mta@gmail.com",
+      "telephone": "673238642",
+      "password": "1234566",
+      "genre": "M",
+      "discipline": "Management des projets",
+      "id": 2
+    },
+    {
+      "nom": "Ngue",
+      "prenom": "Emmanuel",
+      "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2Fbc291fd3-fec7-47d9-8f45-5e34135ce50f?alt=media&token=f92a42aa-d892-43b8-aaf7-9859512470ab",
+      "email": "ngue@gmail.com",
+      "telephone": "670104432",
+      "password": "123456",
+      "genre": "M",
+      "discipline": "Algorithmique",
+      "id": 3
+    }
+  ],
+  "pension": [
+    {
+      "id": 1,
+      "date": "2023-11-10T23:00:00.000Z",
+      "pensionAnnuelle": 1050000,
+      "montantVerse": 500000,
+      "montantRestant": 55000,
+      "banque": "UBA",
+      "numeroCompte": "12313449913-90",
+      "statut": "En cours",
+      "nom": "Tchicaya",
+      "matricule": "LOGDIG001",
+      "prenom": "Giovani"
     }
   ]
 }

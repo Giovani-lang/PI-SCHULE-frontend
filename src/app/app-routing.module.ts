@@ -35,6 +35,9 @@ import { UsersProfileComponent } from './pages/users-profile/users-profile.compo
 import { ClientModule } from './clients/client.module';
 import { ProduitsModule } from './produits/produits.module';
 import { StudentModule } from './student/student.module';
+import { AdminsModule } from './admins/admins.module';
+import { TeacherModule } from './teacher/teacher.module';
+import { PensionModule } from './pension/pension.module';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -72,7 +75,10 @@ const routes: Routes = [
   { path: 'user-profile', component: UsersProfileComponent },
   { path: 'clients', loadChildren: () => ClientModule },
   { path: 'produits', loadChildren: () => ProduitsModule },
-  { path: 'student', loadChildren: () => StudentModule }
+  { path: 'student', loadChildren: () => StudentModule },
+  { path: 'admins', loadChildren: () => AdminsModule },
+  { path: 'teacher', loadChildren: () => TeacherModule },
+  { path: 'pension', loadChildren: () => PensionModule },
 ];
 
 @NgModule({

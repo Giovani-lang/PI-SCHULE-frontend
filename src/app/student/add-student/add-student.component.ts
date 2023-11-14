@@ -7,13 +7,14 @@ import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
-import { CommonModule, NgIf } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCalendarCellClassFunction, MatDatepickerModule } from '@angular/material/datepicker';
 import { ListStudentComponent } from '../list-student/list-student.component';
 import { StudentService } from 'src/app/services/student/student.service';
 import { Student } from 'src/app/models/student.model';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { v4 } from 'uuid';
 
 
 @Component({
@@ -30,7 +31,6 @@ import { Student } from 'src/app/models/student.model';
     MatSelectModule,
     MatIconModule,
     MatRadioModule,
-    // NgIf,
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
@@ -57,7 +57,7 @@ export class AddStudentComponent {
   constructor(
     public dialogRef: MatDialogRef<ListStudentComponent>,
     private service: StudentService,
-    private http: HttpClient
+    private afs: AngularFireStorage
   ) { }
   hide = true;
   onNoClick(): void {
@@ -67,32 +67,36 @@ export class AddStudentComponent {
     if (this.formulaireAjout.status === 'VALID') {
       const student = this.formulaireAjout.value as unknown as Student;
       this.service.addStudent(student).subscribe((student) => {
+        this.onSelectField;
         this.dialogRef.close(student);
       });
     }
   }
 
-  onUpload() {
-    const filedata = new FormData();
-    filedata.append('file', this.fileName, this.fileName.name);
-    this.http.post('http://localhost:8089/api/v1/user/upload', filedata)
-      .subscribe((res) => {
-        console.log(res)
-      })
-  }
 
   // Prévisualisation de l'image et image par defaut
 
   url = "../assets/img/DefaultImageProfil.png";
-
-  onSelectField(e: any) {
+  img!: String;
+  async onSelectField(e: any) {
     if (e.target.files) {
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
+      this.img = (e.target.files[0]);
       reader.onload = (event: any) => {
         this.url = event.target.result;
       }
-    }
+      if (this.img) {
+        const ref = this.afs.ref(`pi-schule/images/${v4()}`);
+        // Obtenez l'URL de l'image
+        const url = await ref.put(this.img);
+        const downloadURL = ref.getDownloadURL();
+        downloadURL.subscribe((url) => {
+          this.formulaireAjout.patchValue({ image_url: url })
+        });
+
+      }
+    } else if (!e.target.files) { this.url }
   }
 
 
