@@ -35,10 +35,7 @@ import { FichesRoutingModule } from './fiches-routing.module';
     MatRadioModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    FichesRoutingModule
-    
-    
-    
+    FichesRoutingModule    
 
   ]
 })
