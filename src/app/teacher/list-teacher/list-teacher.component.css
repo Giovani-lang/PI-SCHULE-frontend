@@ -18,3 +18,8 @@ demo-button+.demo-button {
 mat-icon {
     cursor: pointer;
 }
+
+th {
+    background-color: #162E58;
+    color: white;
+}

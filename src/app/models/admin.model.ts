@@ -4,6 +4,7 @@ export class Admin {
     prenom!: String;
     email!: String;
     image_url!: String;
+    role!: String;
     password!: String;
     telephone!: String;
     genre!: String;

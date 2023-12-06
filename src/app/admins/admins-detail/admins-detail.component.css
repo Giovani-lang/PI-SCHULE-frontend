@@ -35,11 +35,11 @@ img {
     height: 50px;
     justify-content: center;
     display: flex;
-    border-radius: 50%
+    border-radius: 50%;
+    align-items: center;
 }
 
 mat-icon {
-    margin-top: 10px;
     color: white;
 }
 
@@ -49,5 +49,6 @@ label {
 }
 
 .form-buttons {
-    float: right;
+    justify-content: flex-end;
+    display: flex;
 }

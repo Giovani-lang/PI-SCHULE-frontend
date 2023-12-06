@@ -1,118 +1,89 @@
-<main id="main" class="main">
-    <div class="pagetitle">
-        <!-- <h1>Etudiants</h1> -->
-        <nav class="d-flex">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
-                <li class="breadcrumb-item"><a routerLink="/student/list">Etudiants</a></li>
-                <li class="breadcrumb-item">Details</li>
-            </ol>
-        </nav>
+<div class="mb-3 form-buttons">
+    <div>
+        <button title="Imprimer la carte d'étudiant" mat-icon-button printSectionId="print-section"
+            [useExistingCss]="true" ngxPrint>
+            <mat-icon style="color: #0e1c34;">print</mat-icon>
+        </button>
     </div>
-    <section class="section">
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-12 ">
-                <div mat-dialog-content class="container">
-                    <div class="content">
-                        <mat-card class="mat-elevation-z8 example-card">
-                            <mat-card-header>
-                                <div mat-card-avatar class="example-header-image">
-                                    <img style="border-radius: 15px;" [src]="image_url || img0"
-                                        class="example-header-image">
-                                </div>
-                                <mat-card-title
-                                    style="font-weight: bolder;">{{student.nom}}&nbsp;{{student.prenom}}</mat-card-title>
-                                <mat-card-subtitle>{{student.niveau}}&nbsp;&nbsp;{{student.option}}</mat-card-subtitle>
-                                <div style="width: 50%;">
-                                    <button mat-mini-fab color="warn" routerLink="/student/list" class="exit">
-                                        <mat-icon>close</mat-icon>
-                                    </button>
-                                </div>
-                            </mat-card-header>
-                            <hr>
-                            <mat-card-content class="card-content">
-                                <div class="disposition">
-                                    <div class="position">
-                                        <div>
-                                            <mat-icon>account_box</mat-icon>
-                                        </div>
-                                        <div>
-                                            <label>Matricule </label><br>
-                                            <p>{{student.matricule}}</p>
-                                        </div>
-                                    </div>
-                                    <span class="trait"></span>
-                                    <div class="position">
-                                        <div>
-                                            <mat-icon>email</mat-icon>
-                                        </div>
-                                        <div>
-                                            <label>Email </label><br>
-                                            <p>{{student.email}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="disposition">
-                                    <div class="position">
-                                        <div>
-                                            <mat-icon>cake</mat-icon>
-                                        </div>
-                                        <div>
-                                            <label>Date de Naissance </label><br>
-                                            <p>{{ getFormattedDate()}}</p>
-                                        </div>
-                                    </div>
-                                    <span class="trait"></span>
-                                    <div class="position">
-                                        <div>
-                                            <mat-icon>phone</mat-icon>
-
-                                        </div>
-                                        <div>
-                                            <label>Telephone </label><br>
-                                            <p>{{student.telephone}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="disposition">
-                                    <div class="position">
-                                        <div>
-                                            <mat-icon>⚤</mat-icon>
-                                        </div>
-                                        <div>
-                                            <label>Genre </label><br>
-                                            <p>{{student.genre}}</p>
-                                        </div>
-                                    </div>
-                                    <span class="trait"></span>
-                                    <div class="position">
-                                        <div>
-                                            <mat-icon>school</mat-icon>
-                                        </div>
-                                        <div>
-                                            <label>Filière </label><br>
-                                            <p>{{student.filiere}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-card-content>
-                            <mat-card-actions>
-                                <button class="print" mat-raised-button color="primary" printSectionId="print-section"
-                                    style="background-color: #162E58;color: white;" [useExistingCss]="true" ngxPrint>
-                                    <mat-icon>local_printshop</mat-icon>
-                                    Imprimer la carte d'étudiant
-                                </button>
-                            </mat-card-actions>
-                        </mat-card>
-                    </div>
-                </div>
-            </div>
-
+    <div>
+        <button mat-icon-button (click)="onNoClick()">
+            <mat-icon color="warn">close</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="container">
+    <div class="image">
+        <div>
+            <h2 style="color: white;text-align: center;">{{student.nom}} <br> {{student.prenom}}</h2>
         </div>
-    </section>
-</main>
+        <div>
+            <img class="img" [src]="student.image_url || img" alt="photo de profil">
+        </div>
+        <div>
+            <div style="text-align: center;">
+                <p style="color: white;">{{student.niveau}}&nbsp;&nbsp;{{student.option}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="position">
+            <div class="icon">
+                <mat-icon>account_box</mat-icon>
+            </div>
+            <div>
+                <label>Matricule </label><br>
+                <p>{{student.matricule}}</p>
+            </div>
+        </div>
+        <div class="position">
+            <div class="icon">
+                <mat-icon>email</mat-icon>
+            </div>
+            <div>
+                <label>Email </label><br>
+                <p>{{student.email}}</p>
+            </div>
+        </div>
+
+        <div class="position">
+            <div class="icon">
+                <mat-icon>cake</mat-icon>
+            </div>
+            <div>
+                <label>Date de Naissance </label><br>
+                <p>{{ getFormattedDate()}}</p>
+            </div>
+        </div>
+        <div class="position">
+            <div class="icon">
+                <mat-icon>phone</mat-icon>
+
+            </div>
+            <div>
+                <label>Telephone </label><br>
+                <p>{{student.telephone}}</p>
+            </div>
+        </div>
+        <div class="position">
+            <div class="icon">
+                <mat-icon>wc</mat-icon>
+            </div>
+            <div>
+                <label>Genre </label><br>
+                <p>{{student.genre}}</p>
+            </div>
+        </div>
+        <div class="position">
+            <div class="icon">
+                <mat-icon>school</mat-icon>
+            </div>
+            <div>
+                <label>Filière </label><br>
+                <p>{{student.filiere}}</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!---------------------- Le modèle de la carte d'étudiant à Imprimer ------------------------------>
 
@@ -157,7 +128,7 @@
         </div>
         <div class="footer-card">
             <div class="year">
-                <label class="label">Année Académique : <span style="color: black;">2022/2024</span></label>
+                <label class="label">Année Académique : <span style="color: black;">{{student.annee}}</span></label>
 
             </div>
         </div>

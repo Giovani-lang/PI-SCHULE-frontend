@@ -40,10 +40,10 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Telephone</mat-label>
-                <input matInput formControlName="telephone">
+                <input matInput formControlName="telephone" pattern="[0-9]{9}">
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="formulaireModif.controls.telephone.status ==='INVALID'">
-                    Champ requis
+                    Numéro de téléphone incorrect !
                 </mat-error>
             </mat-form-field>
         </div>
@@ -62,9 +62,24 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline">
+                <mat-label>Confirmer votre mot de passe</mat-label>
+                <input matInput [type]="hideConf ? 'password' : 'text'" formControlName="confirmPassword" required>
+                <button mat-icon-button matSuffix (click)="hideConf = !hideConf" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hideConf">
+                    <mat-icon>{{hideConf ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formulaireModif?.errors?.['mismatch'] && formulaireModif?.touched">
+                    Incorrect
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
                 <mat-label>Discipline</mat-label>
-                <input matInput formControlName="discipline">
-                <mat-icon matSuffix>school</mat-icon>
+                <mat-select formControlName="discipline">
+                    <mat-option *ngFor="let matiere of matieres"
+                        [value]="matiere.intitule">{{matiere.intitule}}</mat-option>
+                </mat-select>
                 <mat-error *ngIf="formulaireModif.controls.discipline.status ==='INVALID'">
                     Champ requis
                 </mat-error>

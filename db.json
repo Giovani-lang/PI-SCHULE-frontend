@@ -25,10 +25,14 @@
       "dateNaissance": "2002-04-15T23:00:00.000Z",
       "telephone": "652219189",
       "motDePasse": "toto237",
+      "confirmPassword": "toto237",
       "niveau": "L3",
       "filiere": "Gestion",
+      "role": "ETUDIANT",
       "genre": "M",
       "option": "Economie",
+      "annee": "2023-2024",
+      "inscription": "2023-10-24T23:00:00.000Z",
       "id": 1
     },
     {
@@ -41,9 +45,12 @@
       "motDePasse": "1301",
       "niveau": "M2",
       "filiere": "Technologie",
+      "role": "ETUDIANT",
       "genre": "M",
       "option": "DevOps",
-      "id": 4
+      "id": 4,
+      "inscription": null,
+      "annee": null
     },
     {
       "nom": "Tambat",
@@ -56,9 +63,12 @@
       "motDePasse": "123456",
       "niveau": "M2",
       "filiere": "Ingenierie",
+      "role": "ETUDIANT",
       "genre": "F",
       "option": "Electromecanique",
-      "id": 5
+      "id": 5,
+      "inscription": null,
+      "annee": null
     },
     {
       "nom": "Nzoutani",
@@ -70,9 +80,12 @@
       "motDePasse": "123456",
       "niveau": "L2",
       "filiere": "Technologie",
+      "role": "ETUDIANT",
       "genre": "M",
       "option": "Arbitrage des affaires",
-      "id": 7
+      "id": 7,
+      "inscription": null,
+      "annee": null
     },
     {
       "nom": "Tchissoumbou",
@@ -84,9 +97,12 @@
       "motDePasse": "123456",
       "niveau": "L3",
       "filiere": "Ingenierie",
+      "role": "ETUDIANT",
       "genre": "M",
       "option": "Electromecanique",
-      "id": 13
+      "id": 13,
+      "inscription": null,
+      "annee": null
     },
     {
       "nom": "Kinzondzi",
@@ -98,9 +114,12 @@
       "motDePasse": "123456",
       "niveau": "L3",
       "filiere": "Gestion",
+      "role": "ETUDIANT",
       "genre": "F",
       "option": "Economie",
-      "id": 14
+      "id": 14,
+      "inscription": null,
+      "annee": null
     },
     {
       "nom": "Nzoussi",
@@ -112,9 +131,12 @@
       "motDePasse": "123456",
       "niveau": "M1",
       "filiere": "Gestion",
+      "role": "ETUDIANT",
       "genre": "F",
       "option": "Economie",
-      "id": 15
+      "id": 15,
+      "inscription": null,
+      "annee": null
     },
     {
       "nom": "Tchicaya",
@@ -126,9 +148,12 @@
       "motDePasse": "123456",
       "niveau": "L3",
       "filiere": "Technologie",
+      "role": "ETUDIANT",
       "genre": "M",
       "option": "Electromecanique",
-      "id": 16
+      "id": 16,
+      "inscription": null,
+      "annee": null
     },
     {
       "nom": "Bouzanga",
@@ -140,19 +165,59 @@
       "motDePasse": "123456",
       "niveau": "L3",
       "filiere": "Technologie",
+      "role": "ETUDIANT",
       "genre": "M",
       "option": "Electromecanique",
-      "id": 17
+      "id": 17,
+      "inscription": null,
+      "annee": null
+    },
+    {
+      "nom": "Efayang",
+      "prenom": "Fabrice",
+      "image_url": null,
+      "email": "fabrice.efayang@upowa.org",
+      "dateNaissance": "2023-11-08T23:00:00.000Z",
+      "telephone": "673455505",
+      "motDePasse": "123456",
+      "confirmPassword": "123456",
+      "niveau": "L2",
+      "filiere": "Technologie",
+      "role": "ETUDIANT",
+      "genre": "M",
+      "option": "Electromecanique",
+      "id": 18,
+      "inscription": null,
+      "annee": null
+    },
+    {
+      "nom": "Tchicaya",
+      "prenom": "Yoann",
+      "image_url": null,
+      "email": "yoann.tchicaya@gmail.com",
+      "dateNaissance": "2002-04-15T23:00:00.000Z",
+      "telephone": "652219189",
+      "motDePasse": "1234",
+      "confirmPassword": "1234",
+      "role": "ETUDIANT",
+      "niveau": "L3",
+      "filiere": "Gestion",
+      "genre": "M",
+      "option": "Economie",
+      "annee": "2023-2024",
+      "inscription": "2023-10-01T23:00:00.000Z",
+      "id": 20
     }
   ],
   "admin": [
     {
       "nom": "Ngue",
-      "prenom": "Emmanuel",
+      "prenom": "Emmanuel Benjamin",
       "image_url": "",
       "email": "emmanuel.ngue@gmail.com",
       "telephone": "652109885",
       "password": "123456",
+      "confirmPassword": "123456",
       "genre": "M",
       "id": 1
     },
@@ -164,6 +229,7 @@
       "telephone": "673238642",
       "password": "1234566",
       "genre": "M",
+      "role": "ADMIN",
       "id": 2
     }
   ],
@@ -175,20 +241,35 @@
       "email": "mta@gmail.com",
       "telephone": "673238642",
       "password": "1234566",
+      "confirmPassword": "1234566",
+      "role": "ENSEIGNANT",
       "genre": "M",
       "discipline": "Management des projets",
       "id": 2
     },
     {
       "nom": "Ngue",
-      "prenom": "Emmanuel",
+      "prenom": "Emmanuel Benjamin",
       "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2Fbc291fd3-fec7-47d9-8f45-5e34135ce50f?alt=media&token=f92a42aa-d892-43b8-aaf7-9859512470ab",
       "email": "ngue@gmail.com",
       "telephone": "670104432",
       "password": "123456",
+      "confirmPassword": "123456",
       "genre": "M",
       "discipline": "Algorithmique",
       "id": 3
+    },
+    {
+      "nom": "Njountsop",
+      "prenom": "Rodrigue",
+      "image_url": "https://firebasestorage.googleapis.com/v0/b/pi-schule.appspot.com/o/pi-schule%2Fimages%2F0bd9ca5a-04b9-46f8-91e5-524433705aec?alt=media&token=5907cc6c-16f7-450f-af55-cff176e2215d",
+      "email": "rodrigue@upowa.org",
+      "telephone": "696236215",
+      "role": "ENSEIGNANT",
+      "password": "123456",
+      "genre": "M",
+      "discipline": "Big Data",
+      "id": 4
     }
   ],
   "pension": [
@@ -204,6 +285,242 @@
       "nom": "Tchicaya",
       "matricule": "LOGDIG001",
       "prenom": "Giovani"
+    },
+    {
+      "id": 2,
+      "date": "2023-11-20T15:16:00.000Z",
+      "pensionAnnuelle": 1050000,
+      "montantVerse": 1050000,
+      "montantRestant": 0,
+      "banque": "UBA",
+      "numeroCompte": "12313449913-90",
+      "statut": "Soldée",
+      "nom": "Kinzondzi",
+      "matricule": "LOGDIG002",
+      "prenom": "Angela Theresa"
+    },
+    {
+      "id": 3,
+      "date": "2023-11-20T15:16:00.000Z",
+      "pensionAnnuelle": 1050000,
+      "montantVerse": 1050000,
+      "montantRestant": 0,
+      "banque": "UBA",
+      "numeroCompte": "12313449913-90",
+      "statut": "Soldée",
+      "nom": "Tambat",
+      "matricule": "LOGDIG002",
+      "prenom": "Corine"
+    }
+  ],
+  "historique": [
+    {
+      "id": 1,
+      "date": "2023-11-10T23:00:00.000Z",
+      "pensionAnnuelle": 1050000,
+      "montantVerse": 500000,
+      "montantRestant": 55000,
+      "banque": "UBA",
+      "numeroCompte": "12313449913-90",
+      "statut": "En cours",
+      "nom": "Tchicaya",
+      "matricule": "LOGDIG001",
+      "prenom": "Giovani"
+    },
+    {
+      "id": 2,
+      "date": "2023-11-20T15:16:00.000Z",
+      "pensionAnnuelle": 1050000,
+      "montantVerse": 1050000,
+      "montantRestant": 0,
+      "banque": "UBA",
+      "numeroCompte": "12313449913-90",
+      "statut": "Soldée",
+      "nom": "Kinzondzi",
+      "matricule": "LOGDIG002",
+      "prenom": "Angela Theresa"
+    },
+    {
+      "id": 3,
+      "date": "2023-11-20T15:16:00.000Z",
+      "pensionAnnuelle": 1050000,
+      "montantVerse": 1050000,
+      "montantRestant": 0,
+      "banque": "UBA",
+      "numeroCompte": "12313449913-90",
+      "statut": "Soldée",
+      "nom": "Tambat",
+      "matricule": "LOGDIG002",
+      "prenom": "Corine"
+    }
+  ],
+  "anneeAcademique": [
+    {
+      "anneeAcademique": "2019-2020",
+      "id": 1
+    },
+    {
+      "anneeAcademique": "2020-2021",
+      "id": 2
+    },
+    {
+      "anneeAcademique": "2021-2022",
+      "id": 3
+    },
+    {
+      "anneeAcademique": "2022-2023",
+      "id": 4
+    },
+    {
+      "anneeAcademique": "2023-2024",
+      "id": 5
+    },
+    {
+      "anneeAcademique": "2024-2025",
+      "id": 6
+    },
+    {
+      "anneeAcademique": "2025-2026",
+      "id": 7
+    },
+    {
+      "anneeAcademique": "2026-2027",
+      "id": 8
+    },
+    {
+      "anneeAcademique": "2027-2028",
+      "id": 9
+    },
+    {
+      "anneeAcademique": "2028-2029",
+      "id": 10
+    },
+    {
+      "anneeAcademique": "2029-2030",
+      "id": 11
+    },
+    {
+      "anneeAcademique": "2030-2031",
+      "id": 12
+    },
+    {
+      "anneeAcademique": "2031-2032",
+      "id": 13
+    },
+    {
+      "anneeAcademique": "2032-2033",
+      "id": 14
+    },
+    {
+      "anneeAcademique": "2033-2034",
+      "id": 15
+    }
+  ],
+  "emploiDuTemps": [
+    {
+      "id": 1,
+      "annee": "2023-2024",
+      "semestre": "semestre 1",
+      "classe": "LEG3",
+      "lemploi": [
+        {
+          "enseignant": "Ngue Emmanuel Benjamin",
+          "matiere": "Algorithmique",
+          "nbreHeure": "4h",
+          "jour": "Mercredi"
+        }
+      ]
+    }
+  ],
+  "classe": [
+    {
+      "id": 1,
+      "nom": "LEG3",
+      "filiere": "Gestion",
+      "option": "Economie",
+      "niveau": "L3"
+    },
+    {
+      "nom": "5 ing ",
+      "filiere": "Ingenierie",
+      "option": "DevOps",
+      "id": 3,
+      "niveau": "M2"
+    },
+    {
+      "nom": "4 TEM",
+      "filiere": "Technologie",
+      "option": "Electromecanique",
+      "niveau": "M1",
+      "id": 4
+    }
+  ],
+  "filiere": [
+    {
+      "nom": "Gestion",
+      "id": 1
+    },
+    {
+      "nom": "Technologie",
+      "id": 2
+    },
+    {
+      "nom": "Droit",
+      "id": 3
+    },
+    {
+      "nom": "Ingenierie",
+      "id": 4
+    }
+  ],
+  "matiere": [
+    {
+      "id": 1,
+      "code": "Math",
+      "intitule": "Mathématique",
+      "coefficient": 4
+    },
+    {
+      "intitule": "Angular",
+      "coefficient": 3,
+      "code": "Ang",
+      "id": 2
+    },
+    {
+      "intitule": "Management des projets",
+      "coefficient": 3,
+      "code": "ManPro",
+      "id": 3
+    },
+    {
+      "intitule": "Big Data",
+      "coefficient": 4,
+      "code": "Bd",
+      "id": 4
+    },
+    {
+      "intitule": "Algorithmique",
+      "coefficient": 3,
+      "code": "Alg",
+      "id": 5
+    }
+  ],
+  "option": [
+    {
+      "nom": "Economie",
+      "id": 1
+    },
+    {
+      "nom": "DevOps",
+      "id": 2
+    },
+    {
+      "nom": "Electromécanique",
+      "id": 3
+    },
+    {
+      "nom": "Arbitrage des affaires",
+      "id": 4
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +14,11 @@ import { v4 } from 'uuid';
 import { ListStudentComponent } from '../list-student/list-student.component';
 import { StudentService } from 'src/app/services/student/student.service';
 import { Student } from 'src/app/models/student.model';
+import { CommonModule } from '@angular/common';
+import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
+import { Annee } from 'src/app/models/anneeAcademique.model';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-edit-student',
   templateUrl: './edit-student.component.html',
@@ -31,8 +36,8 @@ import { Student } from 'src/app/models/student.model';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
-
-
+    CommonModule,
+    MatSnackBarModule
   ]
 })
 export class EditStudentComponent implements OnInit {
@@ -41,24 +46,41 @@ export class EditStudentComponent implements OnInit {
     prenom: new FormControl('', [Validators.required, Validators.required]),
     image_url: new FormControl(),
     email: new FormControl('', [Validators.required, Validators.email]),
-    dateNaissance: new FormControl(),
+    dateNaissance: new FormControl('', [Validators.required, Validators.required]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
     motDePasse: new FormControl('', [Validators.required, Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.required]),
     niveau: new FormControl('', [Validators.required, Validators.required]),
     filiere: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
     option: new FormControl('', [Validators.required, Validators.required]),
-  })
-  fileName: any;
+    annee: new FormControl('', [Validators.required, Validators.required]),
+    inscription: new FormControl('', [Validators.required, Validators.required])
+  },
+    { validators: this.confirmPasswordsMatch }
+  )
+
+  annees: Annee[] = [];
+
+
+  confirmPasswordsMatch(control: AbstractControl) {
+    return control.get('motDePasse')?.value === control.get('confirmPassword')?.value
+      ? null
+      : { mismatch: true };
+  }
 
   constructor(
     public dialogRef: MatDialogRef<ListStudentComponent>,
     private service: StudentService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private afs: AngularFireStorage
+    private afs: AngularFireStorage,
+    private anneeSer: AnneeAcademiqueService,
+    private message: MatSnackBar
   ) { }
 
   hide = true;
+  hideConf = true;
+
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -72,13 +94,18 @@ export class EditStudentComponent implements OnInit {
       this.formulaireModif.controls['email'].setValue(this.editData.email)
       this.formulaireModif.controls['telephone'].setValue(this.editData.telephone)
       this.formulaireModif.controls['motDePasse'].setValue(this.editData.motDePasse)
+      this.formulaireModif.controls['confirmPassword'].setValue(this.editData.motDePasse)
       this.formulaireModif.controls['genre'].setValue(this.editData.genre)
       this.formulaireModif.controls['filiere'].setValue(this.editData.filiere)
       this.formulaireModif.controls['option'].setValue(this.editData.option)
       this.formulaireModif.controls['niveau'].setValue(this.editData.niveau)
+      this.formulaireModif.controls['annee'].setValue(this.editData.annee)
+      this.formulaireModif.controls['inscription'].setValue(this.editData.inscription)
     }
+    this.anneeSer.getAllAnnee().subscribe(data => {
+      this.annees = data
+    })
   }
-
 
 
   async edit() {
@@ -87,11 +114,11 @@ export class EditStudentComponent implements OnInit {
       this.service.editStudent(this.editData.id, student).subscribe((student) => {
         this.onSelectField;
         this.dialogRef.close(student);
+        this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });
 
     }
   }
-
 
   // Prévisualisation de l'image et image par defaut
 
@@ -132,5 +159,4 @@ export class EditStudentComponent implements OnInit {
 
     return '';
   };
-
 }

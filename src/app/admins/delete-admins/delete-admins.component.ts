@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatButtonModule } from '@angular/material/button';
 import { ListAdminsComponent } from '../list-admins/list-admins.component';
 import { AdminService } from 'src/app/services/admin/admin.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-delete-admins',
   templateUrl: './delete-admins.component.html',
@@ -11,6 +12,7 @@ import { AdminService } from 'src/app/services/admin/admin.service';
   imports: [
     MatDialogModule,
     MatButtonModule,
+    MatSnackBarModule
   ]
 })
 export class DeleteAdminsComponent implements OnInit {
@@ -18,6 +20,7 @@ export class DeleteAdminsComponent implements OnInit {
     public dialogRef: MatDialogRef<ListAdminsComponent>,
     private service: AdminService,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private message: MatSnackBar
   ) { }
   ngOnInit(): void {
 
@@ -27,6 +30,7 @@ export class DeleteAdminsComponent implements OnInit {
     return this.service.deleteAdmin(this.data.id).subscribe(admin => {
       this.ngOnInit();
       this.dialogRef.close(admin);
+      this.message.open("Supprimé avec succès !!!", "", { duration: 1500 })
     })
   }
 

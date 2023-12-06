@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +15,7 @@ import { v4 } from 'uuid';
 import { ListAdminsComponent } from '../list-admins/list-admins.component';
 import { Admin } from 'src/app/models/admin.model';
 import { AdminService } from 'src/app/services/admin/admin.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -35,7 +36,8 @@ import { AdminService } from 'src/app/services/admin/admin.service';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    CommonModule
+    CommonModule,
+    MatSnackBarModule,
   ]
 })
 export class AddAdminsComponent {
@@ -46,17 +48,27 @@ export class AddAdminsComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
     password: new FormControl('', [Validators.required, Validators.required]),
-    genre: new FormControl('', [Validators.required, Validators.required]),
-  })
-
-  fileName: any;
+    confirmPassword: new FormControl('', [Validators.required, Validators.required]),
+    genre: new FormControl('', [Validators.required, Validators.required])
+  },
+    { validators: this.confirmPasswordsMatch }
+  )
 
   constructor(
     public dialogRef: MatDialogRef<ListAdminsComponent>,
     private service: AdminService,
-    private afs: AngularFireStorage
+    private afs: AngularFireStorage,
+    private message: MatSnackBar
   ) { }
+
+  confirmPasswordsMatch(control: AbstractControl) {
+    return control.get('password')?.value === control.get('confirmPassword')?.value
+      ? null
+      : { mismatch: true };
+  }
   hide = true;
+  hideConf = true;
+
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -66,12 +78,15 @@ export class AddAdminsComponent {
       this.service.addAdmin(admin).subscribe((admin) => {
         this.onSelectField;
         this.dialogRef.close(admin);
+        this.message.open("Enregistré avec succès !!!", "", { duration: 1500 })
       });
     }
   }
 
+  /*******************************************************************
+          #Prévisualisation de l'image et image par defaut
+   *******************************************************************/
 
-  // Prévisualisation de l'image et image par defaut
 
   url = "../assets/img/DefaultImageProfil.png";
   img!: String;
@@ -96,8 +111,9 @@ export class AddAdminsComponent {
     } else if (!e.target.files) { this.url }
   }
 
-
-  // Logique de l'input calendar
+  /***************************************************************
+                    #Logique de l'input calendar
+   ***************************************************************/
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.

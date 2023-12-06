@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,12 +8,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatCalendarCellClassFunction, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { v4 } from 'uuid';
 import { ListTeacherComponent } from '../list-teacher/list-teacher.component';
 import { TeacherService } from 'src/app/services/teacher/teacher.service';
 import { Teacher } from 'src/app/models/teacher.model';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Matiere } from 'src/app/models/matiere.model';
+import { MatiereService } from 'src/app/services/matiere/matiere.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -33,6 +37,8 @@ import { Teacher } from 'src/app/models/teacher.model';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatSnackBarModule,
+    CommonModule
   ]
 })
 export class EditTeacherComponent implements OnInit {
@@ -43,19 +49,31 @@ export class EditTeacherComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
     password: new FormControl('', [Validators.required, Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
     discipline: new FormControl('', [Validators.required, Validators.required]),
-  })
-  fileName: any;
+  },
+    { validators: this.confirmPasswordsMatch }
+  )
 
+  matieres: Matiere[] = [];
+
+  confirmPasswordsMatch(control: AbstractControl) {
+    return control.get('password')?.value === control.get('confirmPassword')?.value
+      ? null
+      : { mismatch: true };
+  }
   constructor(
     public dialogRef: MatDialogRef<ListTeacherComponent>,
     private service: TeacherService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private afs: AngularFireStorage
+    private afs: AngularFireStorage,
+    private message: MatSnackBar,
+    private serviceMat: MatiereService,
   ) { }
 
   hide = true;
+  hideConf = true;
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -69,9 +87,13 @@ export class EditTeacherComponent implements OnInit {
       this.formulaireModif.controls['email'].setValue(this.editData.email)
       this.formulaireModif.controls['telephone'].setValue(this.editData.telephone)
       this.formulaireModif.controls['password'].setValue(this.editData.password)
+      this.formulaireModif.controls['confirmPassword'].setValue(this.editData.password)
       this.formulaireModif.controls['genre'].setValue(this.editData.genre)
       this.formulaireModif.controls['discipline'].setValue(this.editData.discipline)
     }
+
+    this.serviceMat.getAllMatiere().subscribe(matiere => this.matieres = matiere)
+
   }
 
 
@@ -82,6 +104,7 @@ export class EditTeacherComponent implements OnInit {
       this.service.editTeacher(this.editData.id, teacher).subscribe((teacher) => {
         this.onSelectField;
         this.dialogRef.close(teacher);
+        this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });
 
     }

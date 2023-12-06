@@ -9,11 +9,55 @@
    </div>
    <section class="section dashboard">
       <div class="row">
-         <div class="col-lg-8">
+         <div class="col-lg-12">
             <div class="row">
                <div class="col-xxl-4 col-md-6">
                   <div class="card info-card sales-card">
-                     <div class="filter">
+                     <!-- <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                           <li class="dropdown-header text-start">
+                              <h6>Filtrer par genre</h6>
+                           </li>
+                           <li><a class="dropdown-item" href="#">Masculin</a></li>
+                           <li><a class="dropdown-item" href="#">Feminin</a></li>
+                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                     </div> -->
+                     <div class="card-title text-center">Etudiants</div>
+                     <div class="card-body d-flex justify-content-between">
+                        <div>
+                           <h5 class="card-title">Nombre Total </h5>
+                           <div class="d-flex align-items-center">
+                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i
+                                    class="bi bi-people-fill"></i></div>
+                              <div class="ps-3">
+                                 <h6>{{students.length}}</h6>
+                                 <!-- <h6>{{Reg_student.length}}</h6> -->
+                                 <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                 class="text-muted small pt-2 ps-1">increase</span> -->
+                              </div>
+                           </div>
+                        </div>
+                        <div>
+                           <h5 class="card-title">Nombre Inscrit </h5>
+                           <div class="d-flex align-items-center">
+                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i
+                                    class="bi bi-people-fill"></i></div>
+                              <div class="ps-3">
+                                 <!-- <h6>{{students.length}}</h6> -->
+                                 <h6>{{Reg_student.length}}</h6>
+                                 <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                 class="text-muted small pt-2 ps-1">increase</span> -->
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xxl-4 col-md-6">
+                  <div class="card info-card sales-card">
+                     <!-- <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                            <li class="dropdown-header text-start">
@@ -23,16 +67,17 @@
                            <li><a class="dropdown-item" href="#">This Month</a></li>
                            <li><a class="dropdown-item" href="#">This Year</a></li>
                         </ul>
-                     </div>
+                     </div> -->
+                     <div class="card-title text-center">Enseignants</div>
                      <div class="card-body">
-                        <h5 class="card-title">Sales <span>| Today</span></h5>
+                        <h5 class="card-title">Nombre Total <span>| Enseignants</span></h5>
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i
-                                 class="bi bi-cart"></i></div>
+                                 class="bi bi-people-fill"></i></div>
                            <div class="ps-3">
-                              <h6>145</h6>
-                              <span class="text-success small pt-1 fw-bold">12%</span> <span
-                                 class="text-muted small pt-2 ps-1">increase</span>
+                              <h6>{{teachers.length}}</h6>
+                              <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span
+                                 class="text-muted small pt-2 ps-1">increase</span> -->
                            </div>
                         </div>
                      </div>
@@ -40,7 +85,34 @@
                </div>
                <div class="col-xxl-4 col-md-6">
                   <div class="card info-card revenue-card">
-                     <div class="filter">
+                     <!-- <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                           <li class="dropdown-header text-start">
+                              <h6>Filtrer par genre</h6>
+                           </li>
+                           <li><a class="dropdown-item" href="#">Masculin</a></li>
+                           <li><a class="dropdown-item" href="#">Feminin</a></li>
+                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                     </div> -->
+                     <div class="card-body">
+                        <h5 class="card-title">Nombre Total <span>| Pensions soldées</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i
+                                 class="bi bi-arrow-down-up"></i></div>
+                           <div class="ps-3">
+                              <h6>{{pension_ok}}</h6>
+                              <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                 class="text-muted small pt-2 ps-1">increase</span> -->
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xxl-4 col-md-6">
+                  <div class="card info-card customers-card ">
+                     <!-- <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                            <li class="dropdown-header text-start">
@@ -50,22 +122,25 @@
                            <li><a class="dropdown-item" href="#">This Month</a></li>
                            <li><a class="dropdown-item" href="#">This Year</a></li>
                         </ul>
-                     </div>
+                     </div> -->
                      <div class="card-body">
-                        <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                        <h5 class="card-title">Nombre Total <span>| Pensions non-soldées</span></h5>
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i
-                                 class="bi bi-currency-dollar"></i></div>
+                                 class="bi bi-arrow-down-up"></i></div>
                            <div class="ps-3">
-                              <h6>$3,264</h6>
-                              <span class="text-success small pt-1 fw-bold">8%</span> <span
-                                 class="text-muted small pt-2 ps-1">increase</span>
+                              <h6>{{pension_notOk}}</h6>
+                              <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span
+                                 class="text-muted small pt-2 ps-1">increase</span> -->
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
                <div class="col-xxl-4 col-xl-12">
+
+               </div>
+               <!-- <div class="col-xxl-4 col-xl-12">
                   <div class="card info-card customers-card">
                      <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -91,8 +166,8 @@
                         </div>
                      </div>
                   </div>
-               </div>
-               <div class="col-12">
+               </div> -->
+               <!-- <div class="col-12">
                   <div class="card">
                      <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -110,8 +185,8 @@
                         <div id="reportsChart"></div>
                      </div>
                   </div>
-               </div>
-               <div class="col-12">
+               </div> -->
+               <!-- <div class="col-12">
                   <div class="card recent-sales overflow-auto">
                      <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -176,8 +251,8 @@
                         </table>
                      </div>
                   </div>
-               </div>
-               <div class="col-12">
+               </div> -->
+               <!-- <div class="col-12">
                   <div class="card top-selling overflow-auto">
                      <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -244,12 +319,12 @@
                         </table>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
          </div>
          <div class="col-lg-4">
             <div class="card">
-               <div class="filter">
+               <!-- <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                      <li class="dropdown-header text-start">
@@ -259,46 +334,93 @@
                      <li><a class="dropdown-item" href="#">This Month</a></li>
                      <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
-               </div>
-               <div class="card-body">
-                  <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+               </div> -->
+               <!--<div class="card-body">
+                   <h5 class="card-title m-0">Calendrier universitaire <span>| Semestriel</span></h5>
+                  <h5 class="card-title m-0 text-center"><span>Semestre 1</span></h5>
                   <div class="activity">
                      <div class="activity-item d-flex">
-                        <div class="activite-label">32 min</div>
+                        <div class="activite-label">02 Oct.</div>
                         <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                        <div class="activity-content"> Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo
-                              officiis</a> beatae</div>
+                        <div class="activity-content"> Rentrée Universitaire/Début des cours</div>
                      </div>
                      <div class="activity-item d-flex">
-                        <div class="activite-label">56 min</div>
+                        <div class="activite-label">28 Nov.</div>
                         <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                        <div class="activity-content"> Voluptatem blanditiis blanditiis eveniet</div>
+                        <div class="activity-content"> Fin de paiement 1ère tranche</div>
                      </div>
                      <div class="activity-item d-flex">
-                        <div class="activite-label">2 hrs</div>
+                        <div class="activite-label">21 Dec.</div>
                         <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                        <div class="activity-content"> Voluptates corrupti molestias voluptatem</div>
+                        <div class="activity-content"> Début des congés de Noël</div>
                      </div>
                      <div class="activity-item d-flex">
-                        <div class="activite-label">1 day</div>
+                        <div class="activite-label">04 Jan.</div>
                         <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                        <div class="activity-content"> Tempore autem saepe <a href="#"
-                              class="fw-bold text-dark">occaecati voluptatem</a> tempore</div>
+                        <div class="activity-content"> Reprise des cours</div>
                      </div>
                      <div class="activity-item d-flex">
-                        <div class="activite-label">2 days</div>
+                        <div class="activite-label">23 Jan.</div>
                         <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                        <div class="activity-content"> Est sit eum reiciendis exercitationem</div>
+                        <div class="activity-content"> Semaine des révisions</div>
                      </div>
                      <div class="activity-item d-flex">
-                        <div class="activite-label">4 weeks</div>
+                        <div class="activite-label">30 Jan.</div>
                         <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                        <div class="activity-content"> Dicta dolorem harum nulla eius. Ut quidem quidem sit quas</div>
+                        <div class="activity-content"> Examens du 1er semestre</div>
                      </div>
                   </div>
-               </div>
+                  <h5 class="card-title m-0 text-center"><span>Semestre 2</span></h5>
+                  <div class="activity">
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">11 Fev.</div>
+                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                        <div class="activity-content"> Fête de la jeunesse</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">13 Fev.</div>
+                        <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                        <div class="activity-content"> Reprise des cours</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">16 Fev.</div>
+                        <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                        <div class="activity-content"> Fin paiement de la 2e tranche</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">08 Mars</div>
+                        <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                        <div class="activity-content"> Fête internationale de la femme</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">31 Mars</div>
+                        <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                        <div class="activity-content"> Pâques</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">01 Mai</div>
+                        <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                        <div class="activity-content"> Fête du travail</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">20 Mai</div>
+                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                        <div class="activity-content"> Fête Nationale</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">22 Mai</div>
+                        <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                        <div class="activity-content"> Semaine des révisions</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">29 Mai</div>
+                        <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                        <div class="activity-content"> Examens du 2e semestre</div>
+                     </div>
+                  </div>
+               </div>-->
             </div>
-            <div class="card">
+            <!-- <div class="card">
                <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -331,8 +453,8 @@
                   <h5 class="card-title">Website Traffic <span>| Today</span></h5>
                   <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
                </div>
-            </div>
-            <div class="card">
+            </div> -->
+            <!-- <div class="card">
                <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -373,7 +495,10 @@
                         <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
                      </div>
                   </div>
-               </div>
+               </div> 
+            </div>-->
+            <div class="card-body">
+
             </div>
          </div>
       </div>

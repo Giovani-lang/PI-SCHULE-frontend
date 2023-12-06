@@ -1,6 +1,6 @@
 export class Pension {
     id!: number;
-    date!: String;
+    date!: Date;
     pensionAnnuelle!: number;
     montantVerse!: number;
     montantRestant!: number;

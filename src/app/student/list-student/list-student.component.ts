@@ -12,6 +12,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddStudentComponent } from '../add-student/add-student.component';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { DeleteStudentComponent } from '../delete-student/delete-student.component';
+import { StudentDetailComponent } from '../student-detail/student-detail.component';
 
 
 
@@ -64,9 +65,9 @@ export class ListStudentComponent implements OnInit {
   openDialogAdd(): void {
     this.dialog.open(AddStudentComponent, {
       width: '550px',
-    }).afterClosed().subscribe((user) => {
-      if (user) {
-        this.closeDialog(user);
+    }).afterClosed().subscribe((students) => {
+      if (students) {
+        this.closeDialog(students);
       };
     })
   }
@@ -78,13 +79,24 @@ export class ListStudentComponent implements OnInit {
     });
   }
 
+  openDialogDetail(row: any) {
+    this.dialog.open(StudentDetailComponent, {
+      width: '600px',
+      data: row
+    }).afterClosed().subscribe((students) => {
+      if (students) {
+        this.closeDialog(students);
+      };
+    })
+  }
+
   openDialogEdit(row: any) {
     this.dialog.open(EditStudentComponent, {
       width: '550px',
       data: row
-    }).afterClosed().subscribe((user) => {
-      if (user) {
-        this.closeDialog(user);
+    }).afterClosed().subscribe((students) => {
+      if (students) {
+        this.closeDialog(students);
         this.refresh()
       };
     })
@@ -94,9 +106,9 @@ export class ListStudentComponent implements OnInit {
     this.dialog.open(DeleteStudentComponent, {
       width: '350px',
       data: row
-    }).afterClosed().subscribe((user) => {
-      if (user) {
-        this.closeDialog(user);
+    }).afterClosed().subscribe((students) => {
+      if (students) {
+        this.closeDialog(students);
         this.refresh()
       };
     })

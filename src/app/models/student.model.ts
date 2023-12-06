@@ -9,7 +9,10 @@ export class Student {
     telephone!: String;
     motDePasse!: String;
     niveau!: String;
+    role!: String;
     filiere!: String;
     genre!: String;
     option!: String;
+    inscription!: Date;
+    annee!: String;
 }

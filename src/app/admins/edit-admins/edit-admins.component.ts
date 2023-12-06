@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +14,7 @@ import { v4 } from 'uuid';
 import { ListAdminsComponent } from '../list-admins/list-admins.component';
 import { Admin } from 'src/app/models/admin.model';
 import { AdminService } from 'src/app/services/admin/admin.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -33,6 +34,7 @@ import { AdminService } from 'src/app/services/admin/admin.service';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatSnackBarModule
   ]
 })
 export class EditAdminsComponent implements OnInit {
@@ -43,18 +45,28 @@ export class EditAdminsComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
     password: new FormControl('', [Validators.required, Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
-  })
-  fileName: any;
+  },
+    { validators: this.confirmPasswordsMatch }
+  )
+
+  confirmPasswordsMatch(control: AbstractControl) {
+    return control.get('password')?.value === control.get('confirmPassword')?.value
+      ? null
+      : { mismatch: true };
+  }
 
   constructor(
     public dialogRef: MatDialogRef<ListAdminsComponent>,
     private service: AdminService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private afs: AngularFireStorage
+    private afs: AngularFireStorage,
+    private message: MatSnackBar
   ) { }
 
   hide = true;
+  hideConf = true;
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -68,6 +80,7 @@ export class EditAdminsComponent implements OnInit {
       this.formulaireModif.controls['email'].setValue(this.editData.email)
       this.formulaireModif.controls['telephone'].setValue(this.editData.telephone)
       this.formulaireModif.controls['password'].setValue(this.editData.password)
+      this.formulaireModif.controls['confirmPassword'].setValue(this.editData.password)
       this.formulaireModif.controls['genre'].setValue(this.editData.genre)
     }
   }
@@ -80,6 +93,7 @@ export class EditAdminsComponent implements OnInit {
       this.service.editAdmin(this.editData.id, admin).subscribe((admin) => {
         this.onSelectField;
         this.dialogRef.close(admin);
+        this.message.open("Modifiê avec succès !!!", "", { duration: 1500 })
       });
 
     }

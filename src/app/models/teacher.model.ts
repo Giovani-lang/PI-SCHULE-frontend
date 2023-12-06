@@ -6,5 +6,6 @@ export class Teacher {
     password!: String;
     telephone!: String;
     genre!: String;
+    role!: String;
     discipline!: String;
 }

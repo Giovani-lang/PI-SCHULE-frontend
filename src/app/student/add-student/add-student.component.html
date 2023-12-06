@@ -40,10 +40,10 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Telephone</mat-label>
-                <input matInput formControlName="telephone">
+                <input matInput formControlName="telephone" pattern="[0-9]{9}">
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="formulaireAjout.controls.telephone.status ==='INVALID'">
-                    Champ requis
+                    Numéro de téléphone incorrect !
                 </mat-error>
             </mat-form-field>
         </div>
@@ -51,7 +51,7 @@
         <div class="form-fields">
             <mat-form-field appearance="outline">
                 <mat-label>Mot de Passe</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="motDePasse">
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="motDePasse" required>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -61,28 +61,40 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Date de Naissance</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="dateNaissance">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-                <mat-error *ngIf="formulaireAjout.controls.dateNaissance.status ==='INVALID'">
-                    Champ requis
+            <mat-form-field appearance="outline">
+                <mat-label>Confirmer votre mot de passe</mat-label>
+                <input matInput [type]="hideConf ? 'password' : 'text'" formControlName="confirmPassword" required>
+                <button mat-icon-button matSuffix (click)="hideConf = !hideConf" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hideConf">
+                    <mat-icon>{{hideConf ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formulaireAjout?.errors?.['mismatch'] && formulaireAjout?.touched">
+                    Incorrect
                 </mat-error>
             </mat-form-field>
         </div>
-
         <div>
             <label>Genre : </label>&nbsp;
             <mat-radio-group formControlName="genre">
                 <mat-radio-button value="M">Masculin</mat-radio-button>&nbsp;
                 <mat-radio-button value="F">Feminin</mat-radio-button>
             </mat-radio-group>
-
         </div>
+        <br>
         <div class="form-fields">
-            <mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Date de Naissance</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="dateNaissance">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker [dateClass]="dateClass" #picker1></mat-datepicker>
+                <mat-error *ngIf="formulaireAjout.controls.dateNaissance.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Niveau</mat-label>
                 <mat-select formControlName="niveau">
                     <mat-option value="L1">Licence1</mat-option>
@@ -95,9 +107,11 @@
                     Champ requis
                 </mat-error>
             </mat-form-field>
+        </div>
 
+        <div class="form-fields">
 
-            <mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Filiere</mat-label>
                 <mat-select formControlName="filiere">
                     <mat-option value="Technologie">Technologie</mat-option>
@@ -110,16 +124,7 @@
                 </mat-error>
             </mat-form-field>
 
-        </div>
-
-        <div class="form-fields">
-            <div>
-                <img [src]="url" height="200" width="200"><br><br>
-                <mat-label>Image : </mat-label>
-                <input type="file" (change)="onSelectField($event)">
-            </div>
-
-            <mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Option</mat-label>
                 <mat-select formControlName="option">
                     <mat-option value="DevOps">DevOps</mat-option>
@@ -132,7 +137,33 @@
                 </mat-error>
             </mat-form-field>
         </div>
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Date d'inscription</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="inscription">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker [dateClass]="dateClass" #picker2></mat-datepicker>
+                <mat-error *ngIf="formulaireAjout.controls.inscription.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
 
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Année Académique</mat-label>
+                <mat-select formControlName="annee">
+                    <mat-option *ngFor="let annee of annees" [value]="annee">{{annee.anneeAcademique}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireAjout.controls.annee.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <img [src]="url" height="200" width="200"><br><br>
+            <mat-label>Image : </mat-label>
+            <input type="file" (change)="onSelectField($event)">
+        </div>
     </form>
 </div>
 <div mat-dialog-actions class="form-buttons">

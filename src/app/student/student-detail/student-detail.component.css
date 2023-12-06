@@ -1,61 +1,65 @@
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 100vh; */
-    /* background-color: blanchedalmond; */
+.container {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
-.example-card {
-    width: 600px;
-    border-radius: 15px;
-}
-
-.trait {
-    width: 1px;
-    height: 50px;
-    background-color: black;
-}
-
-.example-header-image {
-    background-size: cover;
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
+.img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
+    border: 4px solid #0e1c34;
+    margin-bottom: 10px;
 }
 
-label {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bolder;
-    font-size: 18px;
-}
-
-.card-content {
-    margin: 15px;
-}
-
-.print {
-    width: 100%;
+.image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #162E58;
+    /* border-radius: 15px; */
+    border-radius: 15px 0px 0px 15px;
 }
 
 .position {
     display: grid;
-    grid-template-columns: 10% 90%;
-    grid-gap: 20px;
+    grid-template-columns: 10% 80%;
+    grid-gap: 30px;
     align-items: center;
 }
 
-.disposition {
-    display: grid;
-    grid-template-columns: 50% 2% 50%;
-    justify-content: space-around;
+.icon {
+    background-color: #162E58;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+    border-radius: 50%;
     align-items: center;
 }
 
-.exit {
-    float: right;
+mat-icon {
+    color: white;
+}
+
+label {
+    color: black;
+    font-weight: bolder;
+}
+
+.form-buttons {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.content {
+    border: 2px solid #0e1c34;
+    border-radius: 0px 15px 15px 0px;
+    padding-left: 8px;
 }
 
 /**************************  CSS carte d'étudiant ******************************/

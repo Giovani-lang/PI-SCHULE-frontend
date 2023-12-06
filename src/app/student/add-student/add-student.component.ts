@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +15,9 @@ import { StudentService } from 'src/app/services/student/student.service';
 import { Student } from 'src/app/models/student.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { v4 } from 'uuid';
+import { Annee } from 'src/app/models/anneeAcademique.model';
+import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -34,10 +37,11 @@ import { v4 } from 'uuid';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    CommonModule
+    CommonModule,
+    MatSnackBarModule
   ]
 })
-export class AddStudentComponent {
+export class AddStudentComponent implements OnInit {
   formulaireAjout = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.required]),
     prenom: new FormControl('', [Validators.required, Validators.required]),
@@ -46,20 +50,42 @@ export class AddStudentComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
     motDePasse: new FormControl('', [Validators.required, Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.required]),
     niveau: new FormControl('', [Validators.required, Validators.required]),
     filiere: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
     option: new FormControl('', [Validators.required, Validators.required]),
-  })
+    annee: new FormControl('', [Validators.required, Validators.required]),
+    inscription: new FormControl('', [Validators.required, Validators.required]),
+  },
+    { validators: this.confirmPasswordsMatch }
+  )
 
-  fileName: any;
+  annees: Annee[] = [];
 
+
+  confirmPasswordsMatch(control: AbstractControl) {
+    return control.get('motDePasse')?.value === control.get('confirmPassword')?.value
+      ? null
+      : { mismatch: true };
+  }
   constructor(
     public dialogRef: MatDialogRef<ListStudentComponent>,
     private service: StudentService,
-    private afs: AngularFireStorage
-  ) { }
+    private afs: AngularFireStorage,
+    private anneeSer: AnneeAcademiqueService,
+    private message: MatSnackBar
+  ) {
+
+  }
+
+  ngOnInit(): void {
+    this.anneeSer.getAllAnnee().subscribe(data => this.annees = data)
+  }
+
   hide = true;
+  hideConf = true;
+
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -69,12 +95,15 @@ export class AddStudentComponent {
       this.service.addStudent(student).subscribe((student) => {
         this.onSelectField;
         this.dialogRef.close(student);
+        this.message.open("Enregistré avec succès !!!", "", { duration: 1500 })
       });
     }
   }
 
 
-  // Prévisualisation de l'image et image par defaut
+  /*******************************************************************
+          #Prévisualisation de l'image et image par defaut
+   *******************************************************************/
 
   url = "../assets/img/DefaultImageProfil.png";
   img!: String;
@@ -100,7 +129,9 @@ export class AddStudentComponent {
   }
 
 
-  // Logique de l'input calendar
+  /*********************************************************************
+                      #Logique de l'input calendar
+   *********************************************************************/
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.

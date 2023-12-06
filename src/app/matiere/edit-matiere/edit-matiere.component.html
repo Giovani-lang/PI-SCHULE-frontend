@@ -1,0 +1,41 @@
+<div mat-dialog-title class="title">
+    <h2 style="color: #162E58; font-weight: bolder;">Modifier cette matière</h2>
+</div>
+<hr>
+<div mat-dialog-content class="container">
+    <form [formGroup]="formulaireModif" (ngSubmit)="editMatiere()">
+        <div class="form-fields" style="margin-top: 10px;">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Code</mat-label>
+                <input matInput formControlName="code">
+                <mat-error *ngIf="formulaireModif.controls.code.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Intitulé</mat-label>
+                <input matInput formControlName="intitule">
+                <mat-error *ngIf="formulaireModif.controls.intitule.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Coefficient</mat-label>
+                <input matInput type="number" formControlName="coefficient">
+                <mat-error *ngIf="formulaireModif.controls.coefficient.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="form-buttons">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button style="color: #162E58;" (click)="editMatiere()">
+        <mat-icon>update</mat-icon>
+        MàJ
+    </button>
+</div>

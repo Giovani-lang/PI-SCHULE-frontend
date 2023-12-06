@@ -40,8 +40,6 @@ import { PagesLoginComponent } from './pages/pages-login/pages-login.component';
 import { PagesError404Component } from './pages/pages-error404/pages-error404.component';
 import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ClientModule } from './clients/client.module';
-import { ProduitsModule } from './produits/produits.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentModule } from './student/student.module';
 import { MatInputModule } from '@angular/material/input';
@@ -54,6 +52,12 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { AdminsModule } from './admins/admins.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { PensionModule } from './pension/pension.module';
+import { AnneeAcademiqueModule } from './annee-academique/annee-academique.module';
+import { EmploiDuTempsModule } from './emploi-du-temps/emploi-du-temps.module';
+import { FiliereModule } from './filiere/filiere.module';
+import { MatiereModule } from './matiere/matiere.module';
+import { OptionModule } from './option/option.module';
+import { ClasseModule } from './classe/classe.module';
 
 
 
@@ -92,17 +96,13 @@ import { PensionModule } from './pension/pension.module';
     PagesFaqComponent,
     PagesContactComponent,
     PagesRegisterComponent,
-    PagesLoginComponent,
     PagesError404Component,
     PagesBlankComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ClientModule,
-    ProduitsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatTableModule,
@@ -110,6 +110,13 @@ import { PensionModule } from './pension/pension.module';
     TeacherModule,
     StudentModule,
     AdminsModule,
+    FiliereModule,
+    MatiereModule,
+    OptionModule,
+    ClasseModule,
+    EmploiDuTempsModule,
+    AnneeAcademiqueModule,
+    PagesLoginComponent,
     PensionModule,
     ReactiveFormsModule,
     FormsModule,
@@ -124,6 +131,7 @@ import { PensionModule } from './pension/pension.module';
     })
     ,
     AngularFireStorageModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

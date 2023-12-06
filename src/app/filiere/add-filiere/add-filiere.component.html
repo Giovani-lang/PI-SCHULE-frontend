@@ -1,0 +1,18 @@
+<div mat-dialog-title class="title">
+    <h2 style="color: #162E58; font-weight: bolder; text-align: center;">Ajouter une nouvelle filière</h2>
+</div>
+<hr>
+<div mat-dialog-content class="container">
+    <form class="example-form" [formGroup]="fomulaireAjout">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nom de la filière</mat-label>
+            <span matPrefix> </span>
+            <input type="text" matInput formControlName="nom">
+            <mat-error *ngIf="fomulaireAjout.controls.nom.status ==='INVALID'">
+                Champ requis
+            </mat-error>
+            <button matSuffix mat-mini-fab style="background-color: #162E58;color: white;"
+                (click)="addFiliere()"><mat-icon>add</mat-icon></button>
+        </mat-form-field>
+    </form>
+</div>
