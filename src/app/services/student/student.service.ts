@@ -13,18 +13,18 @@ export class StudentService {
   constructor(private http: HttpClient) { }
 
   public getAllStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(`${this.BASE_URL}`)
+    return this.http.get<Student[]>("http://localhost:8080/api/v1/etudiants/getAll")
   }
-  public getStudent(id: any): Observable<Student> {
-    return this.http.get<Student>(`${this.BASE_URL}/${id}`)
+  public getStudent(matricule: any): Observable<Student> {
+    return this.http.get<Student>(`${"http://localhost:8080/api/v1/etudiants/detail"}/${matricule}`)
   }
-  public deleteStudent(id: any): Observable<Student> {
-    return this.http.delete<Student>(`${this.BASE_URL}/${id}`)
+  public deleteStudent(matricule: any): Observable<Student> {
+    return this.http.delete<Student>(`${"http://localhost:8080/api/v1/etudiants/delete"}/${matricule}`)
   }
   public addStudent(student: Student): Observable<Student> {
-    return this.http.post<Student>(`${this.BASE_URL}`, student)
+    return this.http.post<Student>(`${"http://localhost:8080/api/v1/etudiants/add"}`, student)
   }
-  public editStudent(id: any, student: Student): Observable<Student> {
-    return this.http.put<Student>(`${this.BASE_URL}/${id}`, student)
+  public editStudent(matricule: any, student: Student): Observable<Student> {
+    return this.http.put<Student>(`${"http://localhost:8080/api/v1/etudiants/edit"}/${matricule}`, student)
   }
 }

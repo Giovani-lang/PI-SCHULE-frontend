@@ -1,0 +1,85 @@
+<div mat-dialog-title class="title">
+    <h2 style="color: #162E58; font-weight: bolder;">Ajouter une nouvelle ligne</h2>
+</div>
+<hr>
+<div mat-dialog-content class="container">
+    <form [formGroup]="formulaireAjout" (ngSubmit)="save()">
+        <div class="form-fields" style="margin-top: 10px;">
+            <mat-form-field appearance="outline">
+                <mat-label>Classe</mat-label>
+                <mat-select formControlName="nom_classe">
+                    <mat-option *ngFor="let classe of classes" [value]="classe.nom">{{classe.nom}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireAjout.controls.nom_classe.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Jour</mat-label>
+                <mat-select formControlName="jour">
+                    <mat-option value="Lundi">Lundi</mat-option>
+                    <mat-option value="Mardi">Mardi</mat-option>
+                    <mat-option value="Mercredi">Mercredi</mat-option>
+                    <mat-option value="Jeudi">Jeudi</mat-option>
+                    <mat-option value="Vendredi">Vendredi</mat-option>
+                    <mat-option value="Samedi">Samedi</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireAjout.controls.jour.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-fields">
+            <mat-form-field appearance="outline">
+                <mat-label>Heure de debut</mat-label>
+                <input matInput formControlName="debut" type="time">
+                <mat-error *ngIf="formulaireAjout.controls.debut.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Durée</mat-label>
+                <mat-select formControlName="duree">
+                    <mat-option value="1">1h</mat-option>
+                    <mat-option value="2">2h</mat-option>
+                    <mat-option value="3">3h</mat-option>
+                    <mat-option value="4">4h</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireAjout.controls.duree.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-fields">
+            <mat-form-field appearance="outline">
+                <mat-label>Matière</mat-label>
+                <mat-select formControlName="cours">
+                    <mat-option *ngFor="let matiere of matieres"
+                        [value]="matiere.intitule">{{matiere.intitule}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireAjout.controls.cours.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Enseignant</mat-label>
+                <mat-select formControlName="email_enseignant">
+                    <mat-option *ngFor="let teacher of teachers" [value]="teacher.email">{{teacher.email}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireAjout.controls.email_enseignant.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="form-buttons">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button style="color: #162E58;" (click)="save()">
+        <mat-icon>save</mat-icon>
+        Enregistrer
+    </button>
+</div>

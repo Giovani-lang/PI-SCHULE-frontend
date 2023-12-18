@@ -42,6 +42,7 @@ import { ClasseModule } from './classe/classe.module';
 import { FiliereModule } from './filiere/filiere.module';
 import { OptionModule } from './option/option.module';
 import { MatiereModule } from './matiere/matiere.module';
+import { LemploiModule } from './lemploi/lemploi.module';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -86,8 +87,9 @@ const routes: Routes = [
   { path: 'filiere', loadChildren: () => FiliereModule },
   { path: 'option', loadChildren: () => OptionModule },
   { path: 'matiere', loadChildren: () => MatiereModule },
-  { path: 'pages-error404', component: PagesError404Component },
-  { path: '**', redirectTo: '/pages-error404' },
+  { path: 'lemploi', loadChildren: () => LemploiModule },
+  // { path: 'pages-error404', component: PagesError404Component },
+  // { path: '**', redirectTo: '/pages-error404' },
 ];
 
 @NgModule({

@@ -33,7 +33,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ]
 })
 export class ListPensionComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'matricule', 'nom', 'prenom', 'pensionAnnuelle', 'montantVerse', 'statut', 'actions'];
+  displayedColumns: string[] = ['matricule', 'nom', 'prenom', 'genre', 'classe', 'actions'];
   dataSource: MatTableDataSource<Pension>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

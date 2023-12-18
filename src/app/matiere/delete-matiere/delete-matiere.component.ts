@@ -28,7 +28,7 @@ export class DeleteMatiereComponent implements OnInit {
   }
 
   delete() {
-    return this.service.deleteMatiere(this.data.id).subscribe(matiere => {
+    return this.service.deleteMatiere(this.data.intitule).subscribe(matiere => {
       this.ngOnInit();
       this.dialogRef.close(matiere);
       this.message.open("Supprimé avec succès !!!", "", { duration: 1500 })

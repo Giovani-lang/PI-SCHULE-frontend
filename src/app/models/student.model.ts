@@ -1,3 +1,5 @@
+import { Annee } from "./anneeAcademique.model";
+
 export class Student {
     id!: number;
     matricule!: String;
@@ -7,12 +9,13 @@ export class Student {
     prenom!: String;
     email!: String;
     telephone!: String;
-    motDePasse!: String;
+    password!: String;
+    classe!: String;
     niveau!: String;
     role!: String;
     filiere!: String;
     genre!: String;
     option!: String;
-    inscription!: Date;
-    annee!: String;
+    dateInscription!: Date;
+    anneeAcademique!: Annee;
 }

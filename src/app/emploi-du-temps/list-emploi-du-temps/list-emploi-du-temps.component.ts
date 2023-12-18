@@ -4,12 +4,14 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { Emploi } from 'src/app/models/emploiDuTemps.model';
 import { EmploiDutempsService } from 'src/app/services/emploiDutemps/emploi-dutemps.service';
+import { AddEmploiDuTempsComponent } from '../add-emploi-du-temps/add-emploi-du-temps.component';
+import { EditEmploiDuTempsComponent } from '../edit-emploi-du-temps/edit-emploi-du-temps.component';
+import { DeleteEmploiDuTempsComponent } from '../delete-emploi-du-temps/delete-emploi-du-temps.component';
 
 
 @Component({
@@ -56,6 +58,50 @@ export class ListEmploiDuTempsComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openDialogAdd(): void {
+    this.dialog.open(AddEmploiDuTempsComponent, {
+      width: '380px',
+    }).afterClosed().subscribe((emploi) => {
+      if (emploi) {
+        this.closeDialog(emploi);
+      };
+    })
+  }
+  openDialogEdit(row: any): void {
+    this.dialog.open(EditEmploiDuTempsComponent, {
+      width: '380px',
+      data: row
+    }).afterClosed().subscribe((emploi) => {
+      if (emploi) {
+        this.closeDialog(emploi);
+      };
+    })
+  }
+
+  openDialogDelete(row: any) {
+    this.dialog.open(DeleteEmploiDuTempsComponent, {
+      width: '350px',
+      data: row
+    }).afterClosed().subscribe((emploi) => {
+      if (emploi) {
+        this.closeDialog(emploi);
+        this.refresh()
+      };
+    })
+  }
+
+  refresh() {
+    this.service.getAllEmploi().subscribe(emploi => {
+      this.dataSource = new MatTableDataSource(emploi)
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+
+  closeDialog(emploi: Emploi) {
+    this.dataSource.data.push(emploi);
+    this.dataSource.data = [...this.dataSource.data];
   }
 
 }

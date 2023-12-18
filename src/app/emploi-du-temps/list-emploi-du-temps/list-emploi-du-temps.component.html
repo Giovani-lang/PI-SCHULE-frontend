@@ -19,7 +19,8 @@
                         </mat-form-field>
                     </div>
                     <div class="demo-button-container">
-                        <button mat-fab style="background-color: #162E58;color: white;" class="demo-button">
+                        <button mat-fab style="background-color: #162E58;color: white;" class="demo-button"
+                            (click)="openDialogAdd()">
                             <mat-icon>add</mat-icon>
                         </button>
                     </div>
@@ -34,7 +35,7 @@
 
                         <ng-container matColumnDef="annee">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Années académiques </th>
-                            <td mat-cell *matCellDef="let row"> {{row.annee}} </td>
+                            <td mat-cell *matCellDef="let row"> {{row.annee.annees}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="semestre">
@@ -44,15 +45,15 @@
 
                         <ng-container matColumnDef="classe">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Classes </th>
-                            <td mat-cell *matCellDef="let row"> {{row.classe}} </td>
+                            <td mat-cell *matCellDef="let row"> {{row.classe.nom}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="actions">
                             <th mat-header-cell *matHeaderCellDef aria-label="row actions"> Actions </th>
                             <td mat-cell *matCellDef="let row">
-                                <mat-icon>visibility</mat-icon>&nbsp;&nbsp;
-                                <mat-icon>edit</mat-icon>&nbsp;&nbsp;
-                                <mat-icon color="warn">delete_forever</mat-icon>
+                                <mat-icon routerLink="/lemploi/list/{{row.classe.nom}}">event</mat-icon>&nbsp;&nbsp;
+                                <mat-icon (click)="openDialogEdit(row)">edit</mat-icon>&nbsp;&nbsp;
+                                <mat-icon color="warn" (click)="openDialogDelete(row)">delete_forever</mat-icon>
                             </td>
                         </ng-container>
 

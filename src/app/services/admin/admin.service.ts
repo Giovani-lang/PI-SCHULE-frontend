@@ -11,18 +11,18 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   public getAllAdmins(): Observable<Admin[]> {
-    return this.http.get<Admin[]>(`${this.BASE_URL}`)
+    return this.http.get<Admin[]>(`${"http://localhost:8080/api/v1/administrations/getAll"}`)
   }
-  public getAdmin(id: any): Observable<Admin> {
-    return this.http.get<Admin>(`${this.BASE_URL}/${id}`)
+  public getAdmin(email: any): Observable<Admin> {
+    return this.http.get<Admin>(`${"http://localhost:8080/api/v1/administrations/detail"}/${email}`)
   }
-  public deleteAdmin(id: any): Observable<Admin> {
-    return this.http.delete<Admin>(`${this.BASE_URL}/${id}`)
+  public deleteAdmin(email: any): Observable<Admin> {
+    return this.http.delete<Admin>(`${"http://localhost:8080/api/v1/administrations/delete"}/${email}`)
   }
   public addAdmin(admin: Admin): Observable<Admin> {
-    return this.http.post<Admin>(`${this.BASE_URL}`, admin)
+    return this.http.post<Admin>(`${"http://localhost:8080/api/v1/administrations/add"}`, admin)
   }
-  public editAdmin(id: any, admin: Admin): Observable<Admin> {
-    return this.http.put<Admin>(`${this.BASE_URL}/${id}`, admin)
+  public editAdmin(email: any, admin: Admin): Observable<Admin> {
+    return this.http.put<Admin>(`${"http://localhost:8080/api/v1/administrations/edit"}/${email}`, admin)
   }
 }

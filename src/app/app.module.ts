@@ -58,6 +58,7 @@ import { FiliereModule } from './filiere/filiere.module';
 import { MatiereModule } from './matiere/matiere.module';
 import { OptionModule } from './option/option.module';
 import { ClasseModule } from './classe/classe.module';
+import { LemploiModule } from './lemploi/lemploi.module';
 
 
 
@@ -118,6 +119,7 @@ import { ClasseModule } from './classe/classe.module';
     AnneeAcademiqueModule,
     PagesLoginComponent,
     PensionModule,
+    LemploiModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,

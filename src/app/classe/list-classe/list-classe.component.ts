@@ -31,7 +31,7 @@ import { DeleteClasseComponent } from '../delete-classe/delete-classe.component'
   ]
 })
 export class ListClasseComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nom', 'filiere', 'option', 'niveau', 'actions'];
+  displayedColumns: string[] = ['id', 'nom', 'filiere', 'option', 'actions'];
   dataSource: MatTableDataSource<Classe>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -60,7 +60,7 @@ export class ListClasseComponent implements OnInit {
   }
   openDialogAdd(): void {
     this.dialog.open(AddClasseComponent, {
-      width: '550px',
+      width: '380px',
     }).afterClosed().subscribe((admin) => {
       if (admin) {
         this.closeDialog(admin);
@@ -77,7 +77,7 @@ export class ListClasseComponent implements OnInit {
 
   openDialogEdit(row: any) {
     this.dialog.open(EditClasseComponent, {
-      width: '550px',
+      width: '380px',
       data: row
     }).afterClosed().subscribe((admin) => {
       if (admin) {

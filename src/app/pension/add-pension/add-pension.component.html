@@ -1,0 +1,38 @@
+<div mat-dialog-title class="title">
+    <h2 style="color: #162E58; font-weight: bolder;">Ajouter un nouveau paiement</h2>
+</div>
+<hr>
+<div mat-dialog-content class="container">
+    <form [formGroup]="fomulaireAjout" (ngSubmit)="addPaiement()">
+        <div class="form-fields" style="margin-top: 10px;">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Matricule</mat-label>
+                <input matInput type="text" formControlName="matricule_etd">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Libellé</mat-label>
+                <input matInput formControlName="libelle">
+                <mat-error *ngIf="fomulaireAjout.controls.libelle.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Montant</mat-label>
+                <input type="number" matInput formControlName="montant" class="example-right-align" placeholder="0">
+                <mat-error *ngIf="fomulaireAjout.controls.montant.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="form-buttons">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button style="color: #162E58;" (click)="addPaiement()">
+        <mat-icon>save</mat-icon>
+        Enregistrer
+    </button>
+</div>

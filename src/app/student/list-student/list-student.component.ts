@@ -34,7 +34,7 @@ import { StudentDetailComponent } from '../student-detail/student-detail.compone
   ]
 })
 export class ListStudentComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'matricule', 'nom', 'prenom', 'genre', 'filiere', 'option', 'niveau', 'actions'];
+  displayedColumns: string[] = ['matricule', 'nom', 'prenom', 'genre', 'classe', 'actions'];
   dataSource: MatTableDataSource<Student>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

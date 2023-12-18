@@ -3,40 +3,65 @@
         <nav class="d-flex">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
-                <li class="breadcrumb-item"><a routerLink="/pension/list">Pensions</a></li>
-                <li class="breadcrumb-item">Historiques</li>
+                <li class="breadcrumb-item"><a routerLink="/pension/list">Pensions scolaires</a></li>
+                <li class="breadcrumb-item">Paiements</li>
             </ol>
         </nav>
     </div>
     <section class="section">
         <div class="row d-flex justify-content-center">
-            <mat-card *ngFor="let pension of pensions" class="mb-3">
+            <div class="mb-3" style="display: flex; justify-content: end;align-items: center;">
+                <div class="d-flex align-right">
+                    <button mat-fab style="background-color: #162E58;color: white;" (click)="openDialogAdd()"
+                        class="demo-button">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <mat-card class="mb-3"
+                style="background-image: linear-gradient( to right,#162E58,#9dbef7);filter: brightness(150%);">
                 <mat-card-content>
-                    <div class="grid-container">
+                    <div class="grid-container" style="align-items: center;">
                         <div class="grid-item" style="flex: 1;"><i class="bi bi-cash-stack"
                                 style="font-size: 50px;color: green;"></i></div>
-                        <div class="grid-item" style="flex: 1;">{{pension.prenom}}&nbsp;{{pension.nom}}<br>
-                            <p>L3 Economie</p>
+                        <div class="grid-item" style="flex: 1;">
+                            <h1>{{pension.etudiant.nom}}&nbsp;{{pension.etudiant.prenom}}<br></h1>
+                            <h3 style="color: gray;">{{pension.etudiant.matricule}}</h3>
                         </div>
                         <div class="grid-item" style="flex: 1;">
-                            <label>Montant Payé</label><br>
-                            {{pension.montantVerse |currency:'XAF'}}
+                            <label class="l1">Pension Annuelle</label><br>
+                            <h3>{{pension.pensionAnnuelle |currency:'XAF':'code'}}</h3>
                         </div>
-                        <div class="grid-item" style="flex: 1;"><label>Statut<br>Soldée</label></div>
+                        <div class="grid-item" style="flex: 1;color: green;">
+                            <label class="l1">Montant Payé</label><br>
+                            <h3> + {{pension.totalPaye |currency:'XAF':'code'}}</h3>
+                        </div>
+                        <div class="grid-item" style="flex: 1;"><label class="l1">Statut</label><br>
+                            <h3>{{pension.statut}}</h3>
+                        </div>
                     </div>
                 </mat-card-content>
             </mat-card>
-            <h4>Mes opérations</h4>
+            <div class="median">
+                <span>
+                    <h4>Mes opérations</h4>
+                </span>
+                <!-- <span>
+                    <a>Voir plus</a>
+                </span> -->
+            </div>
             <hr>
-            <mat-card *ngFor="let pension of pensions" class="mb-3">
+            <mat-card *ngFor="let paie of paiement" class="mb-3">
                 <mat-card-content>
-                    <div class="grid-container">
-                        <div class="grid-item" style="flex: 1;color: green;"><mat-icon>trending_up</mat-icon></div>
-                        <div class="grid-item" style="flex: 1;">{{pension.date | date:'mediumDate'}}</div>
-                        <div class="grid-item" style="flex: 1;">{{pension.prenom}}</div>
-                        <div class="grid-item" style="flex: 1;color: green;">{{pension.montantVerse
-                            |currency:'XAF'}}<br><small style="color: black;">EFFECTUÉ</small></div>
-                        <div class="grid-item" style="flex: 1;">
+                    <div class="grid-container" style="align-items: center;">
+                        <div class="grid-item" style="flex: 1;color: green;">
+                            <mat-icon>trending_up</mat-icon>
+                        </div>
+                        <div class="grid-item" style="flex: 1;">{{paie.date}}</div>
+                        <div class="grid-item" style="flex: 1;">{{paie.libelle}}</div>
+                        <div class="grid-item" style="flex: 1;color: green;">{{paie.montant
+                            |currency:'XAF':'code'}}<br><small style="color: black;">EFFECTUÉ</small></div>
+                        <!-- <div class="grid-item" style="flex: 1;">
                             <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
                                 <mat-icon>more_vert</mat-icon>
                             </button>
@@ -47,7 +72,7 @@
                                     <button mat-button color="warn" (click)="delete()">Supprimer</button>
                                 </mat-dialog-actions>
                             </mat-menu>
-                        </div>
+                        </div> -->
                     </div>
                 </mat-card-content>
             </mat-card>
@@ -68,45 +93,34 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <label> Nom & prenom</label>
-                            <p class="text-center">Tchicaya Giovani</p>
+                            <p class="text-center">{{pension.etudiant.nom}}&nbsp;{{pension.etudiant.nom}}</p>
                         </div>
                         <div>
                             <label>Date de tirage</label>
-                            <p class="text-center">Nov 20, 2023</p>
+                            <p class="text-center">{{dateTirage}}</p>
                         </div>
                         <div>
                             <label> Matricule</label>
-                            <p class="text-center">LOGDIG001</p>
+                            <p class="text-center">{{pension.etudiant.matricule}}</p>
                         </div>
                     </div>
                 </th>
             </tr>
             <tr>
                 <th scope="col">Date</th>
-                <th scope="col">Banque</th>
-                <th scope="col">NºCompte</th>
                 <th scope="col">Libellé</th>
                 <th scope="col">Montant</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">Nov 17, 2023</th>
-                <td>UBA</td>
-                <td>112123455-32</td>
-                <td>Droits universitaires</td>
-                <td>50.000 FCFA</td>
+            <tr *ngFor="let paie of paiement">
+                <th scope="row">{{paie.date}}</th>
+                <td>{{paie.libelle}}</td>
+                <td>{{paie.montant}}</td>
             </tr>
-            <tr>
-                <th scope="row">Nov 17, 2023</th>
-                <td>UBA</td>
-                <td>112123455-32</td>
-                <td>1ère tranche pension</td>
-                <td>100.000 FCFA</td>
-            </tr>
-            <tr>
-                <th scope="row" colspan="4">Totaux</th>
-                <td>150.000 FCFA</td>
+            <tr *ngFor="let paie of paiement">
+                <th scope="row" colspan="2">Totaux</th>
+                <td>{{paie.montant}}</td>
             </tr>
         </tbody>
     </table>
@@ -115,7 +129,7 @@
             <small>Signature étudiant(e) :</small>
         </div>
         <div>
-            <small>Nom & Prenom et <br> Signature caissier(e) :</small>
+            <small>Signature caissier(e) :</small>
         </div>
     </div>
 </div>

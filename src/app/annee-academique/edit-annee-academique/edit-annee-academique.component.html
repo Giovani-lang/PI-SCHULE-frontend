@@ -3,12 +3,12 @@
 </div>
 <hr>
 <div mat-dialog-content class="container">
-    <form class="example-form" [formGroup]="annee">
+    <form class="example-form" [formGroup]="anneeAcademique">
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Année académique</mat-label>
             <span matPrefix> </span>
-            <input type="text" matInput placeholder="YYYY-YYYY" formControlName="anneeAcademique">
-            <mat-error *ngIf="annee.controls.anneeAcademique.status ==='INVALID'">
+            <input type="text" matInput placeholder="YYYY-YYYY" formControlName="annees">
+            <mat-error *ngIf="anneeAcademique.controls.annees.status ==='INVALID'">
                 Champ requis
             </mat-error>
             <button matSuffix mat-mini-fab style="background-color: #162E58;color: white;"

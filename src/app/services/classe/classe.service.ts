@@ -12,18 +12,15 @@ export class ClasseService {
   constructor(private http: HttpClient) { }
 
   public getAllClasse(): Observable<Classe[]> {
-    return this.http.get<Classe[]>(this.BASE_URL)
-  }
-  public getClasse(id: any): Observable<Classe> {
-    return this.http.get<Classe>(`${this.BASE_URL}/${id}`)
+    return this.http.get<Classe[]>("http://localhost:8080/api/v1/classes/getAll")
   }
   public addClasse(classe: Classe): Observable<Classe> {
-    return this.http.post<Classe>(this.BASE_URL, classe)
+    return this.http.post<Classe>("http://localhost:8080/api/v1/classes/add", classe)
   }
-  public editClasse(classe: Classe, id: any): Observable<Classe> {
-    return this.http.put<Classe>(`${this.BASE_URL}/${id}`, classe)
+  public editClasse(classe: Classe, nom: any): Observable<Classe> {
+    return this.http.put<Classe>(`${"http://localhost:8080/api/v1/classes/edit"}/${nom}`, classe)
   }
   public deleteClasse(id: any): Observable<Classe> {
-    return this.http.delete<Classe>(`${this.BASE_URL}/${id}`)
+    return this.http.delete<Classe>(`${"http://localhost:8080/api/v1/classes/delete"}/${id}`)
   }
 }

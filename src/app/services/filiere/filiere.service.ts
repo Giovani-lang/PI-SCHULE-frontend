@@ -13,18 +13,15 @@ export class FiliereService {
 
 
   public getAllFiliere(): Observable<Filiere[]> {
-    return this.http.get<Filiere[]>(this.BASE_URL)
-  }
-  public getFiliere(id: any): Observable<Filiere> {
-    return this.http.get<Filiere>(`${this.BASE_URL}/${id}`)
+    return this.http.get<Filiere[]>("http://localhost:8080/api/v1/filieres/getAll")
   }
   public addFiliere(filiere: Filiere): Observable<Filiere> {
-    return this.http.post<Filiere>(this.BASE_URL, filiere)
+    return this.http.post<Filiere>("http://localhost:8080/api/v1/filieres/add", filiere)
   }
-  public editFiliere(filiere: Filiere, id: any): Observable<Filiere> {
-    return this.http.put<Filiere>(`${this.BASE_URL}/${id}`, filiere)
+  public editFiliere(filiere: Filiere, nom: any): Observable<Filiere> {
+    return this.http.put<Filiere>(`${"http://localhost:8080/api/v1/filieres/edit"}/${nom}`, filiere)
   }
-  public deleteFiliere(id: any): Observable<Filiere> {
-    return this.http.delete<Filiere>(`${this.BASE_URL}/${id}`)
+  public deleteFiliere(nom: any): Observable<Filiere> {
+    return this.http.delete<Filiere>(`${"http://localhost:8080/api/v1/filieres/delete"}/${nom}`)
   }
 }

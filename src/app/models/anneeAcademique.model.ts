@@ -1,4 +1,4 @@
 export class Annee {
     id!: number;
-    anneeAcademique!: String;
+    annees!: String;
 }

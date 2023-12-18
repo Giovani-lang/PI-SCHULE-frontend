@@ -1,1 +1,48 @@
-<p>edit-emploi-du-temps works!</p>
+<div mat-dialog-title class="title">
+    <h2 style="color: #162E58; font-weight: bolder;text-align: center;">Modifier cette emploi du temps</h2>
+</div>
+<hr>
+<div mat-dialog-content class="container">
+    <form [formGroup]="formulaireModif" (ngSubmit)="edit()">
+        <div class="form-fields" style="margin-top: 10px;">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Année académique</mat-label>
+                <mat-select formControlName="annee">
+                    <mat-option *ngFor="let annee of annees" [value]="annee.annees">{{annee.annees}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireModif.controls.annee.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Classe</mat-label>
+                <mat-select formControlName="classe">
+                    <mat-option *ngFor="let classe of classes" [value]="classe.nom">{{classe.nom}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireModif.controls.classe.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Semestre</mat-label>
+                <mat-select formControlName="semestre">
+                    <mat-option value="semestre 1">semestre 1</mat-option>
+                    <mat-option value="semestre 2">semestre 2</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireModif.controls.semestre.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="form-buttons">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button style="color: #162E58;" (click)="edit()">
+        <mat-icon>save</mat-icon>
+        Enregistrer
+    </button>
+</div>

@@ -37,7 +37,7 @@ export class AdminsDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.service.getAdmin(this.data.id).subscribe(admin => this.admin = admin)
+    this.service.getAdmin(this.data.email).subscribe(admin => this.admin = admin)
   }
 
 }

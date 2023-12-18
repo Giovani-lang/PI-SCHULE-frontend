@@ -418,18 +418,22 @@
   ],
   "emploiDuTemps": [
     {
-      "id": 1,
       "annee": "2023-2024",
       "semestre": "semestre 1",
-      "classe": "LEG3",
-      "lemploi": [
-        {
-          "enseignant": "Ngue Emmanuel Benjamin",
-          "matiere": "Algorithmique",
-          "nbreHeure": "4h",
-          "jour": "Mercredi"
-        }
-      ]
+      "classe": "Daa",
+      "lemploi": {
+        "enseignant": "Njountsop",
+        "matiere": "Big Data",
+        "nbreHeure": "4",
+        "jour": "Mar."
+      },
+      "id": 1
+    },
+    {
+      "annee": "2023-2024",
+      "semestre": "semestre 1",
+      "classe": "Ing Dev",
+      "id": 2
     }
   ],
   "classe": [
@@ -453,6 +457,20 @@
       "option": "Electromecanique",
       "niveau": "M1",
       "id": 4
+    },
+    {
+      "nom": "2 techno",
+      "filiere": "Technologie",
+      "option": "Electromécanique",
+      "niveau": "L2",
+      "id": 5
+    },
+    {
+      "nom": "Ing Dev",
+      "filiere": "Ingenierie",
+      "option": "DevOps",
+      "niveau": "L3",
+      "id": 6
     }
   ],
   "filiere": [
@@ -521,6 +539,16 @@
     {
       "nom": "Arbitrage des affaires",
       "id": 4
+    }
+  ],
+  "lemploi": [
+    {
+      "id": 1,
+      "classe": "5 ing",
+      "enseignant": "Ngue Emmanuel Benjamin",
+      "matiere": "Algorithmique",
+      "nbreHeure": "4",
+      "jour": "Mer."
     }
   ]
 }

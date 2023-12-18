@@ -7,5 +7,5 @@ export class Teacher {
     telephone!: String;
     genre!: String;
     role!: String;
-    discipline!: String;
+    annee_academique!: String;
 }

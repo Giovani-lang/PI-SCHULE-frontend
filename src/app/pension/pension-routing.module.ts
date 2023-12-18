@@ -5,7 +5,7 @@ import { PensionDetailComponent } from './pension-detail/pension-detail.componen
 
 const routes: Routes = [
   { path: 'list', component: ListPensionComponent },
-  { path: 'pensionDetail/:id', component: PensionDetailComponent }
+  { path: 'pensionDetail/:id', component: PensionDetailComponent },
 ];
 
 @NgModule({

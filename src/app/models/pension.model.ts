@@ -1,13 +1,9 @@
+import { Student } from "./student.model";
+
 export class Pension {
     id!: number;
-    date!: Date;
     pensionAnnuelle!: number;
-    montantVerse!: number;
-    montantRestant!: number;
-    banque!: String;
-    numeroCompte!: String;
+    totalPaye!: number;
     statut!: String;
-    nom!: String;
-    matricule!: String;
-    prenom!: String;
+    etudiant!: Student;
 }

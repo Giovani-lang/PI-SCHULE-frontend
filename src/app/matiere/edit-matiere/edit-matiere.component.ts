@@ -58,7 +58,7 @@ export class EditMatiereComponent implements OnInit {
 
   editMatiere() {
     if (this.formulaireModif.status === 'VALID') {
-      this.service.editMatiere(this.formulaireModif.value as unknown as Matiere, this.editData.id).subscribe((matiere) => {
+      this.service.editMatiere(this.formulaireModif.value as unknown as Matiere, this.editData.intitule).subscribe((matiere) => {
         this.dialogRef.close(matiere);
         this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });

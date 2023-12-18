@@ -27,7 +27,7 @@ export class DeleteTeacherComponent implements OnInit {
   }
 
   delete() {
-    return this.service.deleteTeacher(this.data.id).subscribe(teacher => {
+    return this.service.deleteTeacher(this.data.email).subscribe(teacher => {
       this.ngOnInit();
       this.dialogRef.close(teacher);
       this.message.open("Supprimé avec succès !!!", "", { duration: 1500 })

@@ -12,12 +12,12 @@ export class AnneeAcademiqueService {
   constructor(private http: HttpClient) { }
 
   public addAnnee(annee: Annee): Observable<Annee> {
-    return this.http.post<Annee>(this.BASE_URL, annee)
+    return this.http.post<Annee>("http://localhost:8080/api/v1/anneeAcademique/add", annee)
   }
-  public editAnnee(annee: Annee, id: any): Observable<Annee> {
-    return this.http.put<Annee>(`${this.BASE_URL}/${id}`, annee)
+  public editAnnee(annee: Annee, annees: any): Observable<Annee> {
+    return this.http.put<Annee>(`${"http://localhost:8080/api/v1/anneeAcademique/edit"}/${annees}`, annee)
   }
   public getAllAnnee(): Observable<Annee[]> {
-    return this.http.get<Annee[]>(this.BASE_URL)
+    return this.http.get<Annee[]>("http://localhost:8080/api/v1/anneeAcademique/getAll")
   }
 }

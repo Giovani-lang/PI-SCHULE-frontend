@@ -29,7 +29,7 @@ export class DeleteFiliereComponent implements OnInit {
   }
 
   delete() {
-    return this.service.deleteFiliere(this.data.id).subscribe(filiere => {
+    return this.service.deleteFiliere(this.data.nom).subscribe(filiere => {
       this.ngOnInit();
       this.dialogRef.close(filiere);
       this.message.open("Supprimé avec succès !!!", "", { duration: 1500 })

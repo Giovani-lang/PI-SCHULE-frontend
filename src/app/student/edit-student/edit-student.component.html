@@ -51,21 +51,21 @@
         <div class="form-fields">
             <mat-form-field appearance="outline">
                 <mat-label>Mot de Passe</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="motDePasse">
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
+                    [attr.aria-pressed]="hide" type="button">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-error *ngIf="formulaireModif.controls.motDePasse.status ==='INVALID'">
+                <mat-error *ngIf="formulaireModif.controls.password.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Confirmer votre mot de passe</mat-label>
-                <input matInput [type]="hideConf ? 'password' : 'text'" formControlName="confirmPassword" required>
+                <input matInput [type]="hideConf ? 'password' : 'text'" formControlName="confirmPassword">
                 <button mat-icon-button matSuffix (click)="hideConf = !hideConf" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hideConf">
+                    [attr.aria-pressed]="hideConf" type="button">
                     <mat-icon>{{hideConf ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error
@@ -108,51 +108,24 @@
             </mat-form-field>
         </div>
 
-        <div class="form-fields">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Filiere</mat-label>
-                <mat-select formControlName="filiere">
-                    <mat-option value="Technologie">Technologie</mat-option>
-                    <mat-option value="Gestion">Gestion</mat-option>
-                    <mat-option value="Ingenierie">Ingenierie</mat-option>
-                    <mat-option value="Droit">Droit</mat-option>
-                </mat-select>
-                <mat-error *ngIf="formulaireModif.controls.filiere.status ==='INVALID'">
-                    Champ requis
-                </mat-error>
-            </mat-form-field>
 
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Option</mat-label>
-                <mat-select formControlName="option">
-                    <mat-option value="DevOps">DevOps</mat-option>
-                    <mat-option value="Economie">Economie</mat-option>
-                    <mat-option value="Electromecanique">Electromecanique</mat-option>
-                    <mat-option value="Arbitrage des affaires">Arbitrage des affaires</mat-option>
-                </mat-select>
-                <mat-error *ngIf="formulaireModif.controls.option.status ==='INVALID'">
-                    Champ requis
-                </mat-error>
-            </mat-form-field>
-        </div>
         <div>
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Date d'inscription</mat-label>
-                <input matInput [matDatepicker]="picker2" formControlName="inscription">
+                <input matInput [matDatepicker]="picker2" formControlName="dateInscription">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker [dateClass]="dateClass" #picker2></mat-datepicker>
-                <mat-error *ngIf="formulaireModif.controls.inscription.status ==='INVALID'">
+                <mat-error *ngIf="formulaireModif.controls.dateInscription.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Année Académique</mat-label>
-                <mat-select formControlName="annee">
-                    <mat-option *ngFor="let annee of annees"
-                        [value]="annee.anneeAcademique">{{annee.anneeAcademique}}</mat-option>
+                <mat-select formControlName="annee_academique">
+                    <mat-option *ngFor="let annee of annees" [value]="annee.annees">{{annee.annees}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="formulaireModif.controls.annee.status ==='INVALID'">
+                <mat-error *ngIf="formulaireModif.controls.annee_academique.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>

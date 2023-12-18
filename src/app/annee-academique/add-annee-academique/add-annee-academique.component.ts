@@ -28,8 +28,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 })
 export class AddAnneeAcademiqueComponent implements OnInit {
 
-  annee = new FormGroup({
-    anneeAcademique: new FormControl('', [Validators.required, Validators.required])
+  anneeAcademique = new FormGroup({
+    annees: new FormControl('', [Validators.required, Validators.required])
   })
   constructor(
     public dialogRef: MatDialogRef<ListAnneeAcademiqueComponent>,
@@ -41,8 +41,8 @@ export class AddAnneeAcademiqueComponent implements OnInit {
   }
 
   addAnnee() {
-    if (this.annee.status === 'VALID') {
-      this.service.addAnnee(this.annee.value as unknown as Annee).subscribe((annee) => {
+    if (this.anneeAcademique.status === 'VALID') {
+      this.service.addAnnee(this.anneeAcademique.value as unknown as Annee).subscribe((annee) => {
         this.dialogRef.close(annee);
         this.message.open("Enregistré avec succès !!!", "", { duration: 1500 })
       });

@@ -35,7 +35,7 @@ export class TeacherDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.service.getTeacher(this.data.id).subscribe(teacher => this.teacher = teacher)
+    this.service.getTeacher(this.data.email).subscribe(teacher => this.teacher = teacher)
   }
 
 }

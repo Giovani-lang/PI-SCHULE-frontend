@@ -44,7 +44,7 @@ export class EditFiliereComponent implements OnInit {
 
   editFiliere() {
     if (this.fomulaireModif.status === 'VALID') {
-      this.service.editFiliere(this.fomulaireModif.value as unknown as Filiere, this.editData.id).subscribe((filiere) => {
+      this.service.editFiliere(this.fomulaireModif.value as unknown as Filiere, this.editData.nom).subscribe((filiere) => {
         this.dialogRef.close(filiere);
         this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });

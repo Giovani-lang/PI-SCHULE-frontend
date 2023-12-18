@@ -37,7 +37,7 @@ export class ListFiliereComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  admins: Filiere[] = [];
+  filieres: Filiere[] = [];
 
   constructor(public dialog: MatDialog, public service: FiliereService) {
     this.dataSource = new MatTableDataSource<Filiere>([]);

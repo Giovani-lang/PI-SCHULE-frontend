@@ -45,7 +45,7 @@ export class EditOptionComponent implements OnInit {
 
   editFiliere() {
     if (this.fomulaireModif.status === 'VALID') {
-      this.service.editOption(this.fomulaireModif.value as unknown as Option, this.editData.id).subscribe((option) => {
+      this.service.editOption(this.fomulaireModif.value as unknown as Option, this.editData.nom).subscribe((option) => {
         this.dialogRef.close(option);
         this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });

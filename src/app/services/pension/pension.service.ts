@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Historique } from 'src/app/models/historique.model';
 import { Pension } from 'src/app/models/pension.model';
 
 @Injectable({
@@ -12,10 +13,10 @@ export class PensionService {
   constructor(private http: HttpClient) { }
 
   public getAllPension(): Observable<Pension[]> {
-    return this.http.get<Pension[]>(`${this.BASE_URL}`)
+    return this.http.get<Pension[]>(`${"http://localhost:8080/api/v1/etudiants/getAll"}`)
   }
-  public getPension(id: any): Observable<Pension> {
-    return this.http.get<Pension>(`${this.BASE_URL}/${id}`)
+  public getPension(matricule: any): Observable<Pension> {
+    return this.http.get<Pension>(`${"http://localhost:8080/api/v1/pensionsScolaire/detail"}/${matricule}`)
   }
   public deletePension(id: any): Observable<Pension> {
     return this.http.delete<Pension>(`${this.BASE_URL}/${id}`)

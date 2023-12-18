@@ -1,4 +1,3 @@
-import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,6 +9,7 @@ import { NgxPrintModule } from 'ngx-print';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ListStudentComponent } from '../list-student/list-student.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-student-detail',
@@ -35,10 +35,6 @@ export class StudentDetailComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
-  getFormattedDate(): string {
-    return formatDate(this.student.dateNaissance, 'dd/MM/yyyy', 'en-US');
-  }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -47,6 +43,6 @@ export class StudentDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.service.getStudent(this.data.id).subscribe(student => this.student = student)
+    this.service.getStudent(this.data.matricule).subscribe(student => this.student = student)
   }
 }

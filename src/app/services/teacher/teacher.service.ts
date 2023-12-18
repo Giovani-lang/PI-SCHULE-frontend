@@ -12,18 +12,18 @@ export class TeacherService {
   constructor(private http: HttpClient) { }
 
   public getAllTeachers(): Observable<Teacher[]> {
-    return this.http.get<Teacher[]>(`${this.BASE_URL}`)
+    return this.http.get<Teacher[]>(`${"http://localhost:8080/api/v1/enseignants/getAll"}`)
   }
-  public getTeacher(id: any): Observable<Teacher> {
-    return this.http.get<Teacher>(`${this.BASE_URL}/${id}`)
+  public getTeacher(email: any): Observable<Teacher> {
+    return this.http.get<Teacher>(`${"http://localhost:8080/api/v1/enseignants/detail"}/${email}`)
   }
-  public deleteTeacher(id: any): Observable<Teacher> {
-    return this.http.delete<Teacher>(`${this.BASE_URL}/${id}`)
+  public deleteTeacher(email: any): Observable<Teacher> {
+    return this.http.delete<Teacher>(`${"http://localhost:8080/api/v1/enseignants/delete"}/${email}`)
   }
   public addTeacher(teacher: Teacher): Observable<Teacher> {
-    return this.http.post<Teacher>(`${this.BASE_URL}`, teacher)
+    return this.http.post<Teacher>(`${"http://localhost:8080/api/v1/enseignants/add"}`, teacher)
   }
-  public editTeacher(id: any, teacher: Teacher): Observable<Teacher> {
-    return this.http.put<Teacher>(`${this.BASE_URL}/${id}`, teacher)
+  public editTeacher(email: any, teacher: Teacher): Observable<Teacher> {
+    return this.http.put<Teacher>(`${"http://localhost:8080/api/v1/enseignants/edit"}/${email}`, teacher)
   }
 }

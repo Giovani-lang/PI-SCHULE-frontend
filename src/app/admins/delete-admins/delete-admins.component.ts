@@ -27,7 +27,7 @@ export class DeleteAdminsComponent implements OnInit {
   }
 
   delete() {
-    return this.service.deleteAdmin(this.data.id).subscribe(admin => {
+    return this.service.deleteAdmin(this.data.email).subscribe(admin => {
       this.ngOnInit();
       this.dialogRef.close(admin);
       this.message.open("Supprimé avec succès !!!", "", { duration: 1500 })

@@ -37,18 +37,23 @@
                                     <mat-label>Nom d'utilisateur</mat-label>
                                     <input matInput>
                                     <mat-icon matSuffix>person</mat-icon>
+                                    <mat-error *ngIf="loginForm.controls.username.status ==='INVALID'">
+                                       Champ requis
+                                    </mat-error>
                                  </mat-form-field>
-
                               </div>
 
                               <div class="form-outline mb-4">
                                  <mat-form-field appearance="outline" style="width: 100%;">
                                     <mat-label>Mot de Passe</mat-label>
                                     <input matInput [type]="hide ? 'password' : 'text'">
-                                    <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
+                                    <mat-error *ngIf="loginForm.controls.password.status ==='INVALID'">
+                                       Champ requis
+                                    </mat-error>
                                  </mat-form-field>
                               </div>
 

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Filiere } from 'src/app/models/filiere.model';
 import { Option } from 'src/app/models/option.model';
 
 @Injectable({
@@ -9,22 +8,19 @@ import { Option } from 'src/app/models/option.model';
 })
 export class OptionService {
 
-  BASE_URL = "  http://localhost:3000/option"
+  // BASE_URL = "  http://localhost:3000/option"
   constructor(private http: HttpClient) { }
 
   public getAllOption(): Observable<Option[]> {
-    return this.http.get<Option[]>(this.BASE_URL)
-  }
-  public getOption(id: any): Observable<Option> {
-    return this.http.get<Option>(`${this.BASE_URL}/${id}`)
+    return this.http.get<Option[]>("http://localhost:8080/api/v1/options/getAll")
   }
   public addOption(option: Option): Observable<Option> {
-    return this.http.post<Option>(this.BASE_URL, option)
+    return this.http.post<Option>("http://localhost:8080/api/v1/options/add", option)
   }
-  public editOption(option: Option, id: any): Observable<Option> {
-    return this.http.put<Option>(`${this.BASE_URL}/${id}`, option)
+  public editOption(option: Option, nom: any): Observable<Option> {
+    return this.http.put<Option>(`${"http://localhost:8080/api/v1/options/edit"}/${nom}`, option)
   }
-  public deleteOption(id: any): Observable<Option> {
-    return this.http.delete<Option>(`${this.BASE_URL}/${id}`)
+  public deleteOption(nom: any): Observable<Option> {
+    return this.http.delete<Option>(`${"http://localhost:8080/api/v1/options/delete"}/${nom}`)
   }
 }

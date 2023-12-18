@@ -12,18 +12,15 @@ export class MatiereService {
   constructor(private http: HttpClient) { }
 
   public getAllMatiere(): Observable<Matiere[]> {
-    return this.http.get<Matiere[]>(this.BASE_URL)
-  }
-  public getMatiere(id: any): Observable<Matiere> {
-    return this.http.get<Matiere>(`${this.BASE_URL}/${id}`)
+    return this.http.get<Matiere[]>("http://localhost:8080/api/v1/matieres/getAll")
   }
   public addMatiere(matiere: Matiere): Observable<Matiere> {
-    return this.http.post<Matiere>(this.BASE_URL, matiere)
+    return this.http.post<Matiere>("http://localhost:8080/api/v1/matieres/add", matiere)
   }
-  public editMatiere(matiere: Matiere, id: any): Observable<Matiere> {
-    return this.http.put<Matiere>(`${this.BASE_URL}/${id}`, matiere)
+  public editMatiere(matiere: Matiere, intitule: any): Observable<Matiere> {
+    return this.http.put<Matiere>(`${"http://localhost:8080/api/v1/matieres/edit"}/${intitule}`, matiere)
   }
-  public deleteMatiere(id: any): Observable<Matiere> {
-    return this.http.delete<Matiere>(`${this.BASE_URL}/${id}`)
+  public deleteMatiere(intitule: any): Observable<Matiere> {
+    return this.http.delete<Matiere>(`${"http://localhost:8080/api/v1/matieres/delete"}/${intitule}`)
   }
 }

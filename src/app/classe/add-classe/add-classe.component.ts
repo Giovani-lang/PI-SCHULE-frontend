@@ -38,9 +38,9 @@ import { OptionService } from 'src/app/services/option/option.service';
 export class AddClasseComponent implements OnInit {
   formulaireAjout = new FormGroup({
     nom: new FormControl('', Validators.required),
-    filiere: new FormControl('', Validators.required),
-    option: new FormControl('', Validators.required),
-    niveau: new FormControl('', Validators.required),
+    nom_filiere: new FormControl('', Validators.required),
+    nom_option: new FormControl('', Validators.required),
+    // niveau: new FormControl('', Validators.required),
   })
 
   filieres: Filiere[] = [];

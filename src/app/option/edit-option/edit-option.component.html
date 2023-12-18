@@ -7,7 +7,7 @@
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Nom de l'option</mat-label>
             <span matPrefix> </span>
-            <input type="text" matInput placeholder="YYYY-YYYY" formControlName="nom">
+            <input type="text" matInput formControlName="nom">
             <mat-error *ngIf="fomulaireModif.controls.nom.status ==='INVALID'">
                 Champ requis
             </mat-error>

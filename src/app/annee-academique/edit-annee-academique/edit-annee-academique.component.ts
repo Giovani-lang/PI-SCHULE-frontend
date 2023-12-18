@@ -28,8 +28,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 })
 export class EditAnneeAcademiqueComponent implements OnInit {
 
-  annee = new FormGroup({
-    anneeAcademique: new FormControl('', [Validators.required, Validators.required])
+  anneeAcademique = new FormGroup({
+    annees: new FormControl('', [Validators.required, Validators.required])
   })
   constructor(
     public dialogRef: MatDialogRef<ListAnneeAcademiqueComponent>,
@@ -40,14 +40,13 @@ export class EditAnneeAcademiqueComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.editData) {
-      this.annee.controls['anneeAcademique'].setValue(this.editData.anneeAcademique)
-      console.log(this.editData.id)
+      this.anneeAcademique.controls['annees'].setValue(this.editData.annees)
     }
   }
 
   editAnnee() {
-    if (this.annee.status === 'VALID') {
-      this.service.editAnnee(this.annee.value as unknown as Annee, this.editData.id).subscribe((annee) => {
+    if (this.anneeAcademique.status === 'VALID') {
+      this.service.editAnnee(this.anneeAcademique.value as unknown as Annee, this.editData.annees).subscribe((annee) => {
         this.dialogRef.close(annee);
         this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });

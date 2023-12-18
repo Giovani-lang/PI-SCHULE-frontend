@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
     this.service.getAllStudents().subscribe(students => {
       this.students = students;
       this.Reg_student = students.filter(student => {
-        const date = student.inscription;
+        const date = student.dateInscription;
         const debut = new Date(new Date().getFullYear(), 10, 1)
         const fin = new Date(new Date().getFullYear() + 1, 7, 30)
         return date >= debut && date <= fin

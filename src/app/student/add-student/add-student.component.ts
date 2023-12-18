@@ -18,6 +18,8 @@ import { v4 } from 'uuid';
 import { Annee } from 'src/app/models/anneeAcademique.model';
 import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Classe } from 'src/app/models/classe.model';
+import { ClasseService } from 'src/app/services/classe/classe.service';
 
 
 @Component({
@@ -49,23 +51,23 @@ export class AddStudentComponent implements OnInit {
     dateNaissance: new FormControl('', [Validators.required, Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
-    motDePasse: new FormControl('', [Validators.required, Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.required]),
     confirmPassword: new FormControl('', [Validators.required, Validators.required]),
-    niveau: new FormControl('', [Validators.required, Validators.required]),
-    filiere: new FormControl('', [Validators.required, Validators.required]),
+    nom_classe: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
-    option: new FormControl('', [Validators.required, Validators.required]),
-    annee: new FormControl('', [Validators.required, Validators.required]),
-    inscription: new FormControl('', [Validators.required, Validators.required]),
+    niveau: new FormControl('', [Validators.required, Validators.required]),
+    annee_academique: new FormControl('', [Validators.required, Validators.required]),
+    dateInscription: new FormControl('', [Validators.required, Validators.required]),
   },
     { validators: this.confirmPasswordsMatch }
   )
 
   annees: Annee[] = [];
+  classes: Classe[] = [];
 
 
   confirmPasswordsMatch(control: AbstractControl) {
-    return control.get('motDePasse')?.value === control.get('confirmPassword')?.value
+    return control.get('password')?.value === control.get('confirmPassword')?.value
       ? null
       : { mismatch: true };
   }
@@ -74,13 +76,15 @@ export class AddStudentComponent implements OnInit {
     private service: StudentService,
     private afs: AngularFireStorage,
     private anneeSer: AnneeAcademiqueService,
-    private message: MatSnackBar
+    private message: MatSnackBar,
+    private classeSer: ClasseService
   ) {
 
   }
 
   ngOnInit(): void {
     this.anneeSer.getAllAnnee().subscribe(data => this.annees = data)
+    this.classeSer.getAllClasse().subscribe(classe => this.classes = classe)
   }
 
   hide = true;

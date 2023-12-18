@@ -23,3 +23,19 @@ tr.mat-mdc-footer-row td {
     padding: 10px;
     text-align: center;
 }
+
+.l1 {
+    color: black;
+    font-family: 'Courier New', monospace;
+    font-weight: bolder;
+}
+
+h1 {
+    color: white;
+}
+
+.median {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}

@@ -90,7 +90,7 @@ export class EditAdminsComponent implements OnInit {
   async edit() {
     if (this.formulaireModif.status === 'VALID') {
       const admin = this.formulaireModif.value as unknown as Admin;
-      this.service.editAdmin(this.editData.id, admin).subscribe((admin) => {
+      this.service.editAdmin(this.editData.email, admin).subscribe((admin) => {
         this.onSelectField;
         this.dialogRef.close(admin);
         this.message.open("Modifiê avec succès !!!", "", { duration: 1500 })

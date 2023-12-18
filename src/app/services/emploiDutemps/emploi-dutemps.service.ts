@@ -12,13 +12,13 @@ export class EmploiDutempsService {
   constructor(private http: HttpClient) { }
 
   public addEmploi(emploi: Emploi): Observable<Emploi> {
-    return this.http.post<Emploi>(this.BASE_URL, emploi)
+    return this.http.post<Emploi>("http://localhost:8080/api/v1/emploisDuTemps/add", emploi)
   }
   public editEmploi(emploi: Emploi, id: any): Observable<Emploi> {
     return this.http.put<Emploi>(`${this.BASE_URL}/${id}`, emploi)
   }
   public getAllEmploi(): Observable<Emploi[]> {
-    return this.http.get<Emploi[]>(this.BASE_URL)
+    return this.http.get<Emploi[]>("http://localhost:8080/api/v1/emploisDuTemps/getAll")
   }
   public deleteEmploi(id: any): Observable<Emploi> {
     return this.http.delete<Emploi>(`${this.BASE_URL}/${id}`)

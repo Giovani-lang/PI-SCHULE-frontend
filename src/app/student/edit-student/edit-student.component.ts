@@ -48,14 +48,13 @@ export class EditStudentComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     dateNaissance: new FormControl('', [Validators.required, Validators.required]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
-    motDePasse: new FormControl('', [Validators.required, Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.required]),
     confirmPassword: new FormControl('', [Validators.required, Validators.required]),
     niveau: new FormControl('', [Validators.required, Validators.required]),
-    filiere: new FormControl('', [Validators.required, Validators.required]),
+    nom_classe: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
-    option: new FormControl('', [Validators.required, Validators.required]),
-    annee: new FormControl('', [Validators.required, Validators.required]),
-    inscription: new FormControl('', [Validators.required, Validators.required])
+    annee_academique: new FormControl('', [Validators.required, Validators.required]),
+    dateInscription: new FormControl('', [Validators.required, Validators.required])
   },
     { validators: this.confirmPasswordsMatch }
   )
@@ -93,14 +92,12 @@ export class EditStudentComponent implements OnInit {
       this.formulaireModif.controls['dateNaissance'].setValue(this.editData.dateNaissance)
       this.formulaireModif.controls['email'].setValue(this.editData.email)
       this.formulaireModif.controls['telephone'].setValue(this.editData.telephone)
-      this.formulaireModif.controls['motDePasse'].setValue(this.editData.motDePasse)
-      this.formulaireModif.controls['confirmPassword'].setValue(this.editData.motDePasse)
+      this.formulaireModif.controls['password'].setValue(this.editData.password)
+      this.formulaireModif.controls['confirmPassword'].setValue(this.editData.password)
       this.formulaireModif.controls['genre'].setValue(this.editData.genre)
-      this.formulaireModif.controls['filiere'].setValue(this.editData.filiere)
-      this.formulaireModif.controls['option'].setValue(this.editData.option)
       this.formulaireModif.controls['niveau'].setValue(this.editData.niveau)
-      this.formulaireModif.controls['annee'].setValue(this.editData.annee)
-      this.formulaireModif.controls['inscription'].setValue(this.editData.inscription)
+      this.formulaireModif.controls['annee_academique'].setValue(this.editData.annees)
+      this.formulaireModif.controls['dateInscription'].setValue(this.editData.dateInscription)
     }
     this.anneeSer.getAllAnnee().subscribe(data => {
       this.annees = data
@@ -111,8 +108,9 @@ export class EditStudentComponent implements OnInit {
   async edit() {
     if (this.formulaireModif.status === 'VALID') {
       const student = this.formulaireModif.value as unknown as Student;
-      this.service.editStudent(this.editData.id, student).subscribe((student) => {
+      this.service.editStudent(this.editData.matricule, student).subscribe((student) => {
         this.onSelectField;
+        console.log(this.editData)
         this.dialogRef.close(student);
         this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });

@@ -1,0 +1,15 @@
+.container mat-form-field+mat-form-field {
+    margin-left: 8px;
+}
+
+.form-fields mat-form-field {
+    width: 300px;
+}
+
+.form-buttons {
+    float: right;
+}
+
+.example-right-align {
+    text-align: right;
+}

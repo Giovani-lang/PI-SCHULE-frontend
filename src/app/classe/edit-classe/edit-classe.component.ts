@@ -37,9 +37,9 @@ import { Filiere } from 'src/app/models/filiere.model';
 export class EditClasseComponent implements OnInit {
   formulaireModif = new FormGroup({
     nom: new FormControl('', Validators.required),
-    filiere: new FormControl('', Validators.required),
-    option: new FormControl('', Validators.required),
-    niveau: new FormControl('', Validators.required),
+    nom_filiere: new FormControl('', Validators.required),
+    nom_option: new FormControl('', Validators.required),
+    // niveau: new FormControl('', Validators.required),
   })
   filieres: Filiere[] = [];
   options: Option[] = [];
@@ -63,7 +63,7 @@ export class EditClasseComponent implements OnInit {
   edit(): void {
     if (this.formulaireModif.status === 'VALID') {
       const classe = this.formulaireModif.value as unknown as Classe;
-      this.service.editClasse(classe, this.editData.id).subscribe((classe) => {
+      this.service.editClasse(classe, this.editData.nom).subscribe((classe) => {
         this.dialogRef.close(classe);
         this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });
@@ -73,9 +73,9 @@ export class EditClasseComponent implements OnInit {
   ngOnInit(): void {
     if (this.editData) {
       this.formulaireModif.controls['nom'].setValue(this.editData.nom)
-      this.formulaireModif.controls['filiere'].setValue(this.editData.filiere)
-      this.formulaireModif.controls['option'].setValue(this.editData.option)
-      this.formulaireModif.controls['niveau'].setValue(this.editData.niveau)
+      this.formulaireModif.controls['nom_filiere'].setValue(this.editData.filiere.nom)
+      this.formulaireModif.controls['nom_option'].setValue(this.editData.option.nom)
+      // this.formulaireModif.controls['niveau'].setValue(this.editData.niveau)
     }
     this.serviceFil.getAllFiliere().subscribe(filiere => this.filieres = filiere);
     this.serviceOpt.getAllOption().subscribe(option => this.options = option);

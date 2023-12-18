@@ -33,7 +33,7 @@ import { AdminsDetailComponent } from '../admins-detail/admins-detail.component'
   ]
 })
 export class ListAdminsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nom', 'prenom', 'email', 'genre', 'actions'];
+  displayedColumns: string[] = ['nom', 'prenom', 'email', 'genre', 'actions'];
   dataSource: MatTableDataSource<Admin>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

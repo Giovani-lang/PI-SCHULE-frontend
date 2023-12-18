@@ -28,7 +28,7 @@ export class DeleteOptionComponent implements OnInit {
   }
 
   delete() {
-    return this.service.deleteOption(this.data.id).subscribe(option => {
+    return this.service.deleteOption(this.data.nom).subscribe(option => {
       this.ngOnInit();
       this.dialogRef.close(option);
       this.message.open("Supprimé avec succès !!!", "", { duration: 1500 })

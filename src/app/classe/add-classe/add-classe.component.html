@@ -4,7 +4,7 @@
 <hr>
 <div mat-dialog-content class="container">
     <form [formGroup]="formulaireAjout" (ngSubmit)="save()">
-        <div classe="form-fields" style="margin-top: 10px;">
+        <div class="form-fields" style="margin-top: 10px;">
 
             <mat-form-field appearance="outline">
                 <mat-label>Nom</mat-label>
@@ -14,28 +14,28 @@
                     Champ requis
                 </mat-error>
             </mat-form-field>
-
+            <br>
             <mat-form-field appearance="outline">
                 <mat-label>Filiere</mat-label>
-                <mat-select formControlName="filiere">
+                <mat-select formControlName="nom_filiere">
                     <mat-option *ngFor="let filiere of filieres" [value]="filiere.nom">{{filiere.nom}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="formulaireAjout.controls.filiere.status ==='INVALID'">
+                <mat-error *ngIf="formulaireAjout.controls.nom_filiere.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>
-
+            <br>
             <mat-form-field appearance="outline">
                 <mat-label>Option</mat-label>
-                <mat-select formControlName="option">
+                <mat-select formControlName="nom_option">
                     <mat-option *ngFor="let option of options" [value]="option.nom">{{option.nom}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="formulaireAjout.controls.option.status ==='INVALID'">
+                <mat-error *ngIf="formulaireAjout.controls.nom_option.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>
-
-            <mat-form-field appearance="outline">
+            <br>
+            <!-- <mat-form-field appearance="outline">
                 <mat-label>Niveau</mat-label>
                 <mat-select formControlName="niveau">
                     <mat-option value="L1">Licence1</mat-option>
@@ -47,7 +47,7 @@
                 <mat-error *ngIf="formulaireAjout.controls.niveau.status ==='INVALID'">
                     Champ requis
                 </mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
         </div>
     </form>
 </div>
