@@ -5,16 +5,17 @@
     "tslib": "^2.6.2"
   },
   "dependencies": {
-    "@angular/animations": "^17.0.5",
+    "@angular/animations": "^17.0.7",
     "@angular/cdk": "^17.0.1",
     "@angular/cli": "16",
     "@angular/common": "^17.0.5",
-    "@angular/core": "^17.0.5",
-    "@angular/forms": "^17.0.5",
+    "@angular/core": "^17.0.7",
+    "@angular/forms": "^17.0.7",
     "@angular/material": "^17.0.1",
     "@angular/platform-browser": "^17.0.5",
     "@angular/router": "^17.0.5",
     "@fortawesome/angular-fontawesome": "^0.14.0",
+    "@types/body-parser": "^1.19.5",
     "standalone": "^0.0.1"
   }
 }
