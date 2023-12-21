@@ -42,10 +42,35 @@ import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClientModule } from './clients/client.module';
 import { ProduitsModule } from './produits/produits.module';
+import { NotesModule } from './notes/notes.module';
+import { FichesModule } from './fiches/fiches.module';
 
 
 
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatChipsModule } from '@angular/material/chips';
+
+
+
+
+
 
 
 
@@ -103,7 +128,32 @@ import { ReactiveFormsModule } from '@angular/forms';
     FontAwesomeModule,
     ClientModule,
     ProduitsModule,
+    NotesModule,
+    FichesModule,
     ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    MatChipsModule,
+
+
+   
+   
+  
    
     
   

@@ -1,11 +1,11 @@
 export class Notes{
     id!: number;
-    nomEtudiant!: String;
+    Etudiant!: String;
     niveau!: String;
     matiere!: String;
-    noteCC!: number;
-    noteSN!: number;
-    noteGenerale!:number;
+    notesCC!: number;
+    notesSN!: number;
+    notesCumulees!:number;
     enseignant!: String;
-    appreciation!: String
+    appreciations!: String
 }

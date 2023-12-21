@@ -1,0 +1,57 @@
+<div mat-dialog-title>
+    <h1>Notes</h1>
+</div>
+<form [formGroup]="ajoutModifNotesForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Etudiant/mat-label>
+                <input matInput type="text" placeholder="Ex. Technical" formControlName="etudiant">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Niveau</mat-label>
+                <input matInput placeholder="Ex. Master1" formControlName="niveau">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Matiere</mat-label>
+                <mat-select formControlName="matiere">
+                    <mat-option *ngFor="let val of matiere" [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>NotesCC</mat-label>
+                <input matInput type="number" placeholder="Ex. 10" formControlName="notesCC">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>NotesSN</mat-label>
+                <input matInput type="number" placeholder="Ex. 10" formControlName="notesSN">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>NotesCumulees</mat-label>
+                <input matInput type="number" placeholder="Ex. 10" formControlName="notesCumulees">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Enseignant</mat-label>
+                <input matInput type="text"   placeholder="Ex. John" formControlName="enseignant">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Appreciations</mat-label>
+                <input matInput type="text"   placeholder="Ex. Bien" formControlName="appreciations">
+            </mat-form-field>
+        </div>
+        
+    </div>
+    
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Annuler</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'modifier': 'enregistrer'}}</button>
+    </div>
+</form>
