@@ -20,11 +20,6 @@ import { CoreService } from 'src/app/core.service';
   standalone: true,
 
   imports:[
-    MatTableDataSource,
-    MatSnackBar,
-    MatDialog,
-    MatPaginator,
-    MatSort,
     MatPaginatorModule,
     MatSnackBarModule,
     MatSortModule,

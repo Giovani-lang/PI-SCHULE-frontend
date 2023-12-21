@@ -16,13 +16,10 @@ import { Fiches } from 'src/app/models/fiches';
   standalone: true,
 
   imports:[
-    MatDialogRef,
-    FormBuilder,
-    FormGroup,
+    
     MatFormFieldModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatPaginator
   ]
 })
 export class AjoutModifFichesComponent {

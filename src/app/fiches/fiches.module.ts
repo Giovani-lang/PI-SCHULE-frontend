@@ -7,13 +7,14 @@ import { AjoutModifFichesComponent } from './ajout-modif-fiches/ajout-modif-fich
 
 
 @NgModule({
-  declarations: [
-    ListeFichesComponent,
-  ],
+  declarations: [ ],
+
+
   imports: [
     CommonModule,
     FichesRoutingModule,
-    AjoutModifFichesComponent
+    AjoutModifFichesComponent,
+    ListeFichesComponent,
   ]
 })
 export class FichesModule { }
