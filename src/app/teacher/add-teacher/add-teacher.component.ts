@@ -15,9 +15,7 @@ import { v4 } from 'uuid';
 import { Teacher } from 'src/app/models/teacher.model';
 import { ListTeacherComponent } from '../list-teacher/list-teacher.component';
 import { TeacherService } from 'src/app/services/teacher/teacher.service';
-import { MatSnackBar, MatSnackBarModule, MatSnackBarRef } from '@angular/material/snack-bar';
-import { Matiere } from 'src/app/models/matiere.model';
-import { MatiereService } from 'src/app/services/matiere/matiere.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Annee } from 'src/app/models/anneeAcademique.model';
 import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
 
@@ -53,12 +51,10 @@ export class AddTeacherComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.required]),
     confirmPassword: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
-    annee_academique: new FormControl('', [Validators.required, Validators.required]),
+    grade: new FormControl('', [Validators.required, Validators.required]),
   },
     { validators: this.confirmPasswordsMatch }
   )
-
-  annees: Annee[] = [];
 
   confirmPasswordsMatch(control: AbstractControl) {
     return control.get('password')?.value === control.get('confirmPassword')?.value
@@ -92,7 +88,6 @@ export class AddTeacherComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.serviceAns.getAllAnnee().subscribe(annee => this.annees = annee)
   }
 
   // Prévisualisation de l'image et image par defaut

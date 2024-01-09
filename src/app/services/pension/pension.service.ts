@@ -13,18 +13,18 @@ export class PensionService {
   constructor(private http: HttpClient) { }
 
   public getAllPension(): Observable<Pension[]> {
-    return this.http.get<Pension[]>(`${"http://localhost:8080/api/v1/etudiants/getAll"}`)
+    return this.http.get<Pension[]>(`${"http://localhost:8080/api/v1/pensionsScolaire/getAll"}`)
   }
   public getPension(matricule: any): Observable<Pension> {
     return this.http.get<Pension>(`${"http://localhost:8080/api/v1/pensionsScolaire/detail"}/${matricule}`)
   }
-  public deletePension(id: any): Observable<Pension> {
-    return this.http.delete<Pension>(`${this.BASE_URL}/${id}`)
+  public deletePension(matricule: any): Observable<Pension> {
+    return this.http.delete<Pension>(`${"http://localhost:8080/api/v1/pensionsScolaire/edit"}/${matricule}`)
   }
   public addPension(pension: Pension): Observable<Pension> {
-    return this.http.post<Pension>(`${this.BASE_URL}`, pension)
+    return this.http.post<Pension>(`${"http://localhost:8080/api/v1/pensionsScolaire/add"}`, pension)
   }
-  public editPension(id: any, pension: Pension): Observable<Pension> {
-    return this.http.put<Pension>(`${this.BASE_URL}/${id}`, pension)
+  public editPension(matricule: any, pension: Pension): Observable<Pension> {
+    return this.http.put<Pension>(`${"http://localhost:8080/api/v1/pensionsScolaire/edit"}/${matricule}`, pension)
   }
 }

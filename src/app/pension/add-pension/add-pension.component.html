@@ -1,5 +1,5 @@
 <div mat-dialog-title class="title">
-    <h2 style="color: #162E58; font-weight: bolder;">Ajouter un nouveau paiement</h2>
+    <h2 style="color: #162E58; font-weight: bolder;">Ajouter une pension annuelle</h2>
 </div>
 <hr>
 <div mat-dialog-content class="container">
@@ -12,17 +12,10 @@
             </mat-form-field>
             <br>
             <mat-form-field appearance="outline">
-                <mat-label>Libellé</mat-label>
-                <input matInput formControlName="libelle">
-                <mat-error *ngIf="fomulaireAjout.controls.libelle.status ==='INVALID'">
-                    Champ requis
-                </mat-error>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="outline">
-                <mat-label>Montant</mat-label>
-                <input type="number" matInput formControlName="montant" class="example-right-align" placeholder="0">
-                <mat-error *ngIf="fomulaireAjout.controls.montant.status ==='INVALID'">
+                <mat-label>Pension Annuelle</mat-label>
+                <input type="number" matInput formControlName="pensionAnnuelle" class="example-right-align"
+                    placeholder="0">
+                <mat-error *ngIf="fomulaireAjout.controls.pensionAnnuelle.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>

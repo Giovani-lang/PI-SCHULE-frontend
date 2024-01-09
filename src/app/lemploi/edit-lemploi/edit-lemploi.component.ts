@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
@@ -58,19 +58,17 @@ export class EditLemploiComponent implements OnInit {
     private serviceMat: MatiereService,
     private serviceCla: ClasseService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
-
   ) { }
 
   ngOnInit(): void {
     if (this.editData) {
-      this.formulaireModif.controls['nom_classe'].patchValue(this.editData.classe.nom)
-      this.formulaireModif.controls['jour'].patchValue(this.editData.jour)
-      this.formulaireModif.controls['debut'].patchValue(this.editData.debut)
-      this.formulaireModif.controls['duree'].patchValue(this.editData.duree)
-      this.formulaireModif.controls['cours'].patchValue(this.editData.matiere.intitule)
-      this.formulaireModif.controls['email_enseignant'].patchValue(this.editData.enseignant.email)
+      this.formulaireModif.controls['nom_classe'].setValue(this.editData.classe.nom)
+      this.formulaireModif.controls['jour'].setValue(this.editData.jour)
+      this.formulaireModif.controls['debut'].setValue(this.editData.debut)
+      this.formulaireModif.controls['duree'].setValue(this.editData.duree)
+      this.formulaireModif.controls['cours'].setValue(this.editData.matiere.intitule)
+      this.formulaireModif.controls['email_enseignant'].setValue(this.editData.enseignant.email)
     }
-    console.log(this.editData)
     this.serviceTec.getAllTeachers().subscribe(teacher => this.teachers = teacher);
     this.serviceMat.getAllMatiere().subscribe(matiere => this.matieres = matiere);
     this.serviceCla.getAllClasse().subscribe(classe => this.classes = classe);

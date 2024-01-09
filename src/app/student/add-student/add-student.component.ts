@@ -55,7 +55,6 @@ export class AddStudentComponent implements OnInit {
     confirmPassword: new FormControl('', [Validators.required, Validators.required]),
     nom_classe: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
-    niveau: new FormControl('', [Validators.required, Validators.required]),
     annee_academique: new FormControl('', [Validators.required, Validators.required]),
     dateInscription: new FormControl('', [Validators.required, Validators.required]),
   },

@@ -3,5 +3,5 @@ export class Classe {
     nom!: String;
     nom_filiere!: String;
     nom_option!: String;
-    // niveau!: String;
+    niveau!: String;
 }

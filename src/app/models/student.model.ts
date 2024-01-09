@@ -1,16 +1,17 @@
 import { Annee } from "./anneeAcademique.model";
+import { Classe } from "./classe.model";
 
 export class Student {
     id!: number;
     matricule!: String;
     image_url!: String;
     nom!: String;
-    dateNaissance!: Date;
+    dateNaissance!: string;
     prenom!: String;
     email!: String;
     telephone!: String;
     password!: String;
-    classe!: String;
+    classe!: Classe;
     niveau!: String;
     role!: String;
     filiere!: String;

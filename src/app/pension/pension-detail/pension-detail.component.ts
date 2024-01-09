@@ -12,8 +12,9 @@ import { MatGridListModule, } from '@angular/material/grid-list';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { Historique } from 'src/app/models/historique.model';
-import { AddPensionComponent } from '../add-pension/add-pension.component';
+import { AddPaiementComponent } from '../add-paiement/add-paiement.component';
 import { PaiementService } from 'src/app/services/paiement/paiement.service';
+import { EditPensionComponent } from '../edit-pension/edit-pension.component';
 
 @Component({
   selector: 'app-pension-detail',
@@ -45,7 +46,6 @@ export class PensionDetailComponent implements OnInit {
     private servicePaiement: PaiementService
   ) {
     this.id = this.route.snapshot.paramMap.get('id')
-    console.log(this.id)
   }
 
   dateTirage = new Date().toISOString();
@@ -55,30 +55,26 @@ export class PensionDetailComponent implements OnInit {
     this.servicePaiement.getPaiement(this.id).subscribe(paiement => { this.paiement = paiement })
   }
 
-  dialogOpen = false;
-
-  openDialog() {
-    this.dialogOpen = true;
-  }
-
-  print() {
-    // Logic for printing
-    this.dialogOpen = false;
-  }
-
-  delete() {
-    // Logic for deleting
-    this.dialogOpen = false;
-  }
-
   openDialogAdd(): void {
-    this.dialog.open(AddPensionComponent, {
+    this.dialog.open(AddPaiementComponent, {
       width: '380px',
     }).afterClosed().subscribe((pension) => {
       if (pension) {
         this.closeDialog(pension);
         this.ngOnInit();
       };
+    })
+  }
+
+  openDialogEditPension() {
+    this.dialog.open(EditPensionComponent, {
+      width: '380px',
+      data: this.id
+    }).afterClosed().subscribe((pension) => {
+      if (pension) {
+        this.closeDialog(pension)
+        this.ngOnInit()
+      }
     })
   }
 

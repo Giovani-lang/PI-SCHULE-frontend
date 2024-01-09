@@ -1,0 +1,109 @@
+<main id="main" class="main">
+    <section class="section">
+        <div class="row d-flex justify-content-center">
+            <div class="mb-3" style="display: flex; justify-content: end;align-items: center;">
+                <div class="d-flex align-right">
+                    <button mat-fab style="background-color: #162E58;color: white;" class="demo-button" class="print"
+                        printSectionId="print-section" [useExistingCss]="true" ngxPrint>
+                        <mat-icon>print</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="container" id="print-section">
+                <div class="invoice">
+                    <div class="row">
+                        <div class="col-7">
+                            <img src="../../../assets/img/logo SCHULE.jpeg" class="logo" />
+                        </div>
+                        <div class="col-5">
+                            <p style="text-align: end;"><strong>Année
+                                    académique : </strong>&nbsp;{{paiement.anneeAcademique.annees}}</p>
+                            <h1 class="document-type display-4">Reçu de paiement</h1>
+                            <p class="text-right"><strong th:text="${invoiceReference}">Référence
+                                    facture</strong><br>{{"0000" + paiement.id}}</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-7">
+                            <p class="addressMySam">
+                                <strong>[Adresse ecole]</strong><br />
+                                8 avenue ********<br />
+                                Yaoundé, Cameroun
+                            </p>
+                        </div>
+                        <div class="col-5">
+                            <br /><br /><br />
+                            <p class="addressDriver">
+                                <strong th:text="${driver.getCompanyName()}">[Nom Ecole]</strong><br />
+                                <label>Mat. Etudiant :</label>&nbsp;{{paiement.etudiant.matricule}}<br />
+                                <span th:text="${driver.getFirstName()}"><label>Prénom
+                                        :</label>&nbsp;{{paiement.etudiant.prenom}}</span><br> <span
+                                    th:text="${driver.getLastName()}"><label>Nom
+                                        :</label>&nbsp;{{paiement.etudiant.nom}}</span><br />
+                                <label>Classe :</label>&nbsp;{{paiement.etudiant.classe.nom}}<br />
+                                <label>Date :</label>&nbsp;{{dateTirage | date:'dd/MM/yyyy , hh:mm:ss'}}<br />
+                                <!-- <span th:text="${driver.getAddress()}"><label>adresse :</label></span><br />
+                                <span th:text="${driver.getZipCode()}"><label>code postal :</label></span> <span
+                                    th:text="${driver.getCity()}">VILLE</span> -->
+                            </p>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Libellé</th>
+                                <th class="text-right">Total TTC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{paiement.date}}</td>
+                                <td>{{paiement.libelle}}</td>
+                                <td class="text-right" th:text="${summaryDriverClientsPayment.get('mysamTTC')}">
+                                    {{paiement.montant|currency:'XAF':'code'}}
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-8">
+                        </div>
+                        <div class="col-4">
+                            <table class="table table-sm text-right">
+                                <tr>
+                                    <td><strong>Total TTC</strong></td>
+                                    <td class="text-right" th:text="${totalTTC}">{{paiement.montant|
+                                        currency:'XAF':'code'}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="conditions">Signature étudiant(e) :</p>
+                        </div>
+                        <div>
+                            <p class="conditions">Nom, Prenom et Signature caissier(e) :</p>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <p class="conditions">
+                            En votre aimable règlement
+                            <br />
+                            Et avec nos remerciements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

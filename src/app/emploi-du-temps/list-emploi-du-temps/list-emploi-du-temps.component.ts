@@ -33,7 +33,7 @@ import { DeleteEmploiDuTempsComponent } from '../delete-emploi-du-temps/delete-e
 })
 export class ListEmploiDuTempsComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'annee', 'semestre', 'classe', 'actions'];
+  displayedColumns: string[] = ['annee', 'semestre', 'classe', 'actions'];
   dataSource: MatTableDataSource<Emploi>;
 
   Emplois: Emploi[] = [];
@@ -76,6 +76,7 @@ export class ListEmploiDuTempsComponent implements OnInit {
     }).afterClosed().subscribe((emploi) => {
       if (emploi) {
         this.closeDialog(emploi);
+        this.ngOnInit();
       };
     })
   }
@@ -87,16 +88,9 @@ export class ListEmploiDuTempsComponent implements OnInit {
     }).afterClosed().subscribe((emploi) => {
       if (emploi) {
         this.closeDialog(emploi);
-        this.refresh()
+        this.ngOnInit();
       };
     })
-  }
-
-  refresh() {
-    this.service.getAllEmploi().subscribe(emploi => {
-      this.dataSource = new MatTableDataSource(emploi)
-      this.dataSource.paginator = this.paginator;
-    });
   }
 
   closeDialog(emploi: Emploi) {

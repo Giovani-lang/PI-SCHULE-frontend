@@ -40,7 +40,7 @@ export class AddClasseComponent implements OnInit {
     nom: new FormControl('', Validators.required),
     nom_filiere: new FormControl('', Validators.required),
     nom_option: new FormControl('', Validators.required),
-    // niveau: new FormControl('', Validators.required),
+    niveau: new FormControl('', Validators.required),
   })
 
   filieres: Filiere[] = [];

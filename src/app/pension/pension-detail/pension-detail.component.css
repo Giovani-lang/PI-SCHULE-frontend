@@ -39,3 +39,54 @@ h1 {
     justify-content: space-between;
     align-items: baseline;
 }
+
+/* Le modèle du reçu à Imprimer  */
+
+
+body {
+    background: #ccc;
+    padding: 30px;
+    font-size: 0.6em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+.container {
+    width: 21cm;
+    min-height: 29.7cm;
+}
+
+.invoice {
+    background: #fff;
+    width: 100%;
+    padding: 50px;
+}
+
+.logo {
+    width: 4cm;
+    border-radius: 15px;
+}
+
+.document-type {
+    text-align: right;
+    color: #444;
+}
+
+.conditions {
+    font-size: 0.7em;
+    color: #666;
+}
+
+.bottom-page {
+    font-size: 0.7em;
+}
+
+.btned {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3px;
+    cursor: pointer;
+}

@@ -75,11 +75,14 @@
         </div>
         <div>
             <mat-form-field appearance="outline">
-                <mat-label>Année académique</mat-label>
-                <mat-select formControlName="annee_academique">
-                    <mat-option *ngFor="let annee of annees" [value]="annee.annees">{{annee.annees}}</mat-option>
+                <mat-label>Grade</mat-label>
+                <mat-select formControlName="grade">
+                    <mat-option value="Mr">Mr</mat-option>
+                    <mat-option value="Mme">Mme</mat-option>
+                    <mat-option value="Dr">Dr</mat-option>
+                    <mat-option value="Pr">Pr</mat-option>
                 </mat-select>
-                <mat-error *ngIf="formulaireAjout.controls.annee_academique.status ==='INVALID'">
+                <mat-error *ngIf="formulaireAjout.controls.grade.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>

@@ -37,9 +37,9 @@ import { Emploi } from 'src/app/models/emploiDuTemps.model';
 })
 export class EditEmploiDuTempsComponent implements OnInit {
   formulaireModif = new FormGroup({
-    annee: new FormControl('', Validators.required),
+    annee_academique: new FormControl('', Validators.required),
     semestre: new FormControl('', Validators.required),
-    classe: new FormControl('', Validators.required),
+    nom_classe: new FormControl('', Validators.required),
   })
 
   annees: Annee[] = [];
@@ -72,12 +72,13 @@ export class EditEmploiDuTempsComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.editData) {
-      this.formulaireModif.controls['annee'].setValue(this.editData.annee)
+      this.formulaireModif.controls['annee_academique'].setValue(this.editData.annee.annees)
       this.formulaireModif.controls['semestre'].setValue(this.editData.semestre)
-      this.formulaireModif.controls['classe'].setValue(this.editData.classe)
+      this.formulaireModif.controls['nom_classe'].setValue(this.editData.classe.nom)
     }
     this.serviceAnnee.getAllAnnee().subscribe(annee => this.annees = annee)
     this.serviceClasse.getAllClasse().subscribe(classe => this.classes = classe)
+    console.log(this.editData)
   }
 
   onNoClick(): void {

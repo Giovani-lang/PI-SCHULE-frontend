@@ -6,7 +6,11 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-pages-login',
@@ -22,20 +26,46 @@ import { MatRadioModule } from '@angular/material/radio';
     MatIconModule,
     MatRadioModule,
     ReactiveFormsModule,
+    CommonModule,
+    MatSnackBarModule
   ]
 })
+
 export class PagesLoginComponent implements OnInit {
 
   hide = true;
 
   loginForm = new FormGroup({
-    username: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   })
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private message: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
+    this.authService.admin = false;
+    this.authService.enseignant = false;
+    this.authService.etudiant = false;
   }
 
+  onSubmit() {
+    if (this.loginForm.status === 'VALID') {
+      const logging = this.loginForm.value as unknown as User;
+      this.authService.Login(logging.email, logging.password).subscribe((res) => {
+        if (res) {
+          sessionStorage.setItem("email", res.email.toString())
+          this.authService.isLogin = true
+          this.message.open("Connexion réussie", "", { duration: 1500 })
+          if (res.role === 'ADMIN') {
+            this.authService.admin = true;
+            this.router.navigate(['/dashboard'])
+          }
+        } else this.message.open("Echec de connexion, veuillez réessayer plus tard", "", { duration: 1500 })
+      })
+    }
+  }
 }

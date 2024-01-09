@@ -18,43 +18,40 @@
                             <mat-icon matSuffix>filter_list</mat-icon>
                         </mat-form-field>
                     </div>
-                    <!-- <div class="demo-button-container">
-                        <button mat-fab style="background-color: #162E58;color: white;" class="demo-button">
+                    <div class="demo-button-container">
+                        <button mat-fab style="background-color: #162E58;color: white;" class="demo-button"
+                            (click)="openDialogAddPension()">
                             <mat-icon>add</mat-icon>
                         </button>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="mat-elevation-z8">
                     <table mat-table [dataSource]="dataSource" matSort>
 
                         <ng-container matColumnDef="matricule">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricules </th>
-                            <td mat-cell *matCellDef="let row"> {{row.matricule}} </td>
+                            <td mat-cell *matCellDef="let row"> {{row.etudiant.matricule}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="nom">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Noms </th>
-                            <td mat-cell *matCellDef="let row"> {{row.nom}} </td>
+                            <td mat-cell *matCellDef="let row"> {{row.etudiant.nom}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="prenom">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Prenoms </th>
-                            <td mat-cell *matCellDef="let row"> {{row.prenom}} </td>
+                            <td mat-cell *matCellDef="let row"> {{row.etudiant.prenom}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="genre">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Genres</th>
-                            <td mat-cell *matCellDef="let row"> {{row.genre}} </td>
-                        </ng-container>
                         <ng-container matColumnDef="classe">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Classes </th>
-                            <td mat-cell *matCellDef="let row"> {{row.classe.nom}} </td>
+                            <td mat-cell *matCellDef="let row"> {{row.etudiant.classe.nom}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="actions">
                             <th mat-header-cell *matHeaderCellDef aria-label="row actions"> Action </th>
                             <td mat-cell *matCellDef="let row">
-                                <mat-icon routerLink="/pensionDetail/{{row.matricule}}">history</mat-icon>
+                                <mat-icon routerLink="/pensionDetail/{{row.etudiant.matricule}}">history</mat-icon>
                             </td>
                         </ng-container>
 

@@ -11,6 +11,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Pension } from 'src/app/models/pension.model';
 import { PensionService } from 'src/app/services/pension/pension.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AddPensionComponent } from '../add-pension/add-pension.component';
 
 
 @Component({
@@ -33,7 +34,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ]
 })
 export class ListPensionComponent implements OnInit {
-  displayedColumns: string[] = ['matricule', 'nom', 'prenom', 'genre', 'classe', 'actions'];
+  displayedColumns: string[] = ['matricule', 'nom', 'prenom', 'classe', 'actions'];
   dataSource: MatTableDataSource<Pension>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,6 +50,7 @@ export class ListPensionComponent implements OnInit {
     this.service.getAllPension().subscribe(pensions => {
       this.dataSource = new MatTableDataSource(pensions)
       this.dataSource.paginator = this.paginator;
+      console.log(this.dataSource)
     });
   }
 
@@ -61,5 +63,20 @@ export class ListPensionComponent implements OnInit {
     }
   }
 
+  openDialogAddPension(): void {
+    this.dialog.open(AddPensionComponent, {
+      width: '380px',
+    }).afterClosed().subscribe((pension) => {
+      if (pension) {
+        this.closeDialog(pension);
+        this.ngOnInit();
+      };
+    })
+  }
+
+  closeDialog(pension: Pension) {
+    this.dataSource.data.push(pension);
+    this.dataSource.data = [...this.dataSource.data];
+  }
 
 }

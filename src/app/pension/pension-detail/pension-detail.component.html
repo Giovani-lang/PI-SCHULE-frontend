@@ -12,10 +12,7 @@
         <div class="row d-flex justify-content-center">
             <div class="mb-3" style="display: flex; justify-content: end;align-items: center;">
                 <div class="d-flex align-right">
-                    <button mat-fab style="background-color: #162E58;color: white;" (click)="openDialogAdd()"
-                        class="demo-button">
-                        <mat-icon>add</mat-icon>
-                    </button>
+
                 </div>
             </div>
             <mat-card class="mb-3"
@@ -39,7 +36,14 @@
                         <div class="grid-item" style="flex: 1;"><label class="l1">Statut</label><br>
                             <h3>{{pension.statut}}</h3>
                         </div>
+                        <div class="grid-item" style="flex: 1;">
+                            <button mat-fab style="background-color: #162E58;color: white;" (click)="openDialogAdd()"
+                                class="demo-button">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
                     </div>
+                    <div class="btned"><mat-icon (click)="openDialogEditPension()">edit</mat-icon></div>
                 </mat-card-content>
             </mat-card>
             <div class="median">
@@ -57,79 +61,18 @@
                         <div class="grid-item" style="flex: 1;color: green;">
                             <mat-icon>trending_up</mat-icon>
                         </div>
-                        <div class="grid-item" style="flex: 1;">{{paie.date}}</div>
-                        <div class="grid-item" style="flex: 1;">{{paie.libelle}}</div>
-                        <div class="grid-item" style="flex: 1;color: green;">{{paie.montant
+                        <div class="grid-item" style="flex: 2;">{{paie.date}}</div>
+                        <div class="grid-item" style="flex: 5;">{{paie.libelle}}</div>
+                        <div class="grid-item" style="flex: 2;color: green;">{{paie.montant
                             |currency:'XAF':'code'}}<br><small style="color: black;">EFFECTUÉ</small></div>
-                        <!-- <div class="grid-item" style="flex: 1;">
-                            <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
-                                <mat-icon>more_vert</mat-icon>
+                        <div class="grid-item" style="flex: 1;">
+                            <button mat-icon-button routerLink="/paiementDetail/{{paie.id}}">
+                                <mat-icon>launch</mat-icon>
                             </button>
-                            <mat-menu #menu="matMenu">
-                                <mat-dialog-actions>
-                                    <button mat-button color="success" class="print" printSectionId="print-section"
-                                        [useExistingCss]="true" ngxPrint>Imprimer</button>
-                                    <button mat-button color="warn" (click)="delete()">Supprimer</button>
-                                </mat-dialog-actions>
-                            </mat-menu>
-                        </div> -->
+                        </div>
                     </div>
                 </mat-card-content>
             </mat-card>
         </div>
     </section>
 </main>
-
-
-<!---------------------- Le modèle du reçu à Imprimer ------------------------------>
-
-
-<div id="print-section">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th colspan="5">
-                    <h2 style="text-align: center;">Reçu de paiement</h2>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <label> Nom & prenom</label>
-                            <p class="text-center">{{pension.etudiant.nom}}&nbsp;{{pension.etudiant.nom}}</p>
-                        </div>
-                        <div>
-                            <label>Date de tirage</label>
-                            <p class="text-center">{{dateTirage}}</p>
-                        </div>
-                        <div>
-                            <label> Matricule</label>
-                            <p class="text-center">{{pension.etudiant.matricule}}</p>
-                        </div>
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Libellé</th>
-                <th scope="col">Montant</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let paie of paiement">
-                <th scope="row">{{paie.date}}</th>
-                <td>{{paie.libelle}}</td>
-                <td>{{paie.montant}}</td>
-            </tr>
-            <tr *ngFor="let paie of paiement">
-                <th scope="row" colspan="2">Totaux</th>
-                <td>{{paie.montant}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="d-flex justify-content-between">
-        <div>
-            <small>Signature étudiant(e) :</small>
-        </div>
-        <div>
-            <small>Signature caissier(e) :</small>
-        </div>
-    </div>
-</div>

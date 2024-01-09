@@ -1,6 +1,4 @@
-import { Annee } from "./anneeAcademique.model";
-
-export class Teacher {
+export class User {
     email!: String;
     image_url!: String;
     nom!: String;
@@ -9,5 +7,4 @@ export class Teacher {
     telephone!: String;
     genre!: String;
     role!: String;
-    grade!: String;
 }

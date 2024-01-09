@@ -43,9 +43,12 @@ import { FiliereModule } from './filiere/filiere.module';
 import { OptionModule } from './option/option.module';
 import { MatiereModule } from './matiere/matiere.module';
 import { LemploiModule } from './lemploi/lemploi.module';
+import { GuardService as Guard } from './services/guard/guard.service';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  // {
+  //   path: '', component: PagesLoginComponent, canActivate: [Guard], children: [
+  // { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
   // { path: 'alerts', component: AlertsComponent },
   // { path: 'accordion', component: AccordionComponent },
@@ -74,7 +77,6 @@ const routes: Routes = [
   // { path: 'pages-blank', component: PagesBlankComponent },
   // { path: 'pages-contact', component: PagesContactComponent },
   // { path: 'pages-faq', component: PagesFaqComponent },
-  { path: 'pages-login', component: PagesLoginComponent },
   // { path: 'pages-register', component: PagesRegisterComponent },
   { path: 'user-profile', component: UsersProfileComponent },
   { path: 'student', loadChildren: () => StudentModule },
@@ -90,6 +92,9 @@ const routes: Routes = [
   { path: 'lemploi', loadChildren: () => LemploiModule },
   // { path: 'pages-error404', component: PagesError404Component },
   // { path: '**', redirectTo: '/pages-error404' },
+  //   ]
+  // },
+  { path: 'pages-login', component: PagesLoginComponent },
 ];
 
 @NgModule({

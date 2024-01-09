@@ -11,6 +11,7 @@ import { ListStudentComponent } from '../list-student/list-student.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
+
 @Component({
   selector: 'app-student-detail',
   templateUrl: './student-detail.component.html',
@@ -41,8 +42,19 @@ export class StudentDetailComponent implements OnInit {
 
   img = "../assets/img/DefaultImageProfil.png";
 
+  convertDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
 
   ngOnInit(): void {
-    this.service.getStudent(this.data.matricule).subscribe(student => this.student = student)
+    this.service.getStudent(this.data.matricule).subscribe(student => {
+      this.student = student
+      student.dateNaissance = this.convertDate(student.dateNaissance)
+    })
   }
 }

@@ -15,6 +15,8 @@ import { ListAdminsComponent } from '../list-admins/list-admins.component';
 import { Admin } from 'src/app/models/admin.model';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -34,7 +36,9 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule,
+    CommonModule
   ]
 })
 export class EditAdminsComponent implements OnInit {
@@ -44,17 +48,23 @@ export class EditAdminsComponent implements OnInit {
     image_url: new FormControl(),
     email: new FormControl('', [Validators.required, Validators.email]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.required]),
+    password: new FormControl(),
+    confirmPassword: new FormControl('', [
+      control => control.parent?.get('password')?.value ? Validators.required : null,
+    ]),
     genre: new FormControl('', [Validators.required, Validators.required]),
   },
     { validators: this.confirmPasswordsMatch }
   )
 
   confirmPasswordsMatch(control: AbstractControl) {
-    return control.get('password')?.value === control.get('confirmPassword')?.value
-      ? null
-      : { mismatch: true };
+    if (control.get('password')?.value !== null) {
+      return control.get('password')?.value === control.get('confirmPassword')?.value
+        ? null
+        : { mismatch: true };
+    } else {
+      return null;
+    }
   }
 
   constructor(
@@ -67,11 +77,12 @@ export class EditAdminsComponent implements OnInit {
 
   hide = true;
   hideConf = true;
+  hideInput = false;
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  id: any;
+
   ngOnInit(): void {
     if (this.editData) {
       this.formulaireModif.controls['nom'].setValue(this.editData.nom)
@@ -79,13 +90,9 @@ export class EditAdminsComponent implements OnInit {
       this.formulaireModif.controls['image_url'].setValue(this.editData.image_url)
       this.formulaireModif.controls['email'].setValue(this.editData.email)
       this.formulaireModif.controls['telephone'].setValue(this.editData.telephone)
-      this.formulaireModif.controls['password'].setValue(this.editData.password)
-      this.formulaireModif.controls['confirmPassword'].setValue(this.editData.password)
       this.formulaireModif.controls['genre'].setValue(this.editData.genre)
     }
   }
-
-
 
   async edit() {
     if (this.formulaireModif.status === 'VALID') {

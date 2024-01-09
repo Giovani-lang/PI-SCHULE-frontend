@@ -8,20 +8,20 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Année académique</mat-label>
-                <mat-select formControlName="annee">
+                <mat-select formControlName="annee_academique">
                     <mat-option *ngFor="let annee of annees" [value]="annee.annees">{{annee.annees}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="formulaireModif.controls.annee.status ==='INVALID'">
+                <mat-error *ngIf="formulaireModif.controls.annee_academique.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>Classe</mat-label>
-                <mat-select formControlName="classe">
+                <mat-select formControlName="nom_classe">
                     <mat-option *ngFor="let classe of classes" [value]="classe.nom">{{classe.nom}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="formulaireModif.controls.classe.status ==='INVALID'">
+                <mat-error *ngIf="formulaireModif.controls.nom_classe.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>
@@ -42,7 +42,7 @@
 <div mat-dialog-actions class="form-buttons">
     <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
     <button mat-raised-button style="color: #162E58;" (click)="edit()">
-        <mat-icon>save</mat-icon>
-        Enregistrer
+        <mat-icon>update</mat-icon>
+        MàJ
     </button>
 </div>

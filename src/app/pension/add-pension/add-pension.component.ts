@@ -6,9 +6,9 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { PensionDetailComponent } from '../pension-detail/pension-detail.component';
-import { PaiementService } from 'src/app/services/paiement/paiement.service';
-import { Historique } from 'src/app/models/historique.model';
+import { ListPensionComponent } from '../list-pension/list-pension.component';
+import { PensionService } from 'src/app/services/pension/pension.service';
+import { Pension } from 'src/app/models/pension.model';
 
 @Component({
   selector: 'app-add-pension',
@@ -29,13 +29,12 @@ import { Historique } from 'src/app/models/historique.model';
 export class AddPensionComponent implements OnInit {
   fomulaireAjout = new FormGroup({
     matricule_etd: new FormControl('', Validators.required),
-    libelle: new FormControl('', [Validators.required, Validators.required]),
-    montant: new FormControl('', [Validators.required, Validators.required])
+    pensionAnnuelle: new FormControl('', [Validators.required, Validators.required])
   })
 
   constructor(
-    public dialogRef: MatDialogRef<PensionDetailComponent>,
-    private service: PaiementService,
+    public dialogRef: MatDialogRef<ListPensionComponent>,
+    private service: PensionService,
     private message: MatSnackBar,
 
   ) { }
@@ -49,12 +48,11 @@ export class AddPensionComponent implements OnInit {
 
   addPaiement() {
     if (this.fomulaireAjout.status === 'VALID') {
-      this.service.addPaiement(this.fomulaireAjout.value as unknown as Historique).subscribe((paiement) => {
+      this.service.addPension(this.fomulaireAjout.value as unknown as Pension).subscribe((paiement) => {
         console.log(paiement)
         this.dialogRef.close(paiement);
         this.message.open("Enregistré avec succès !!!", "", { duration: 1500 })
       });
     }
   }
-
 }

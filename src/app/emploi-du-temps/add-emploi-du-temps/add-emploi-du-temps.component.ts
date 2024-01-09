@@ -37,9 +37,9 @@ import { Emploi } from 'src/app/models/emploiDuTemps.model';
 export class AddEmploiDuTempsComponent implements OnInit {
 
   formulaireAjout = new FormGroup({
-    annee: new FormControl('', Validators.required),
+    annee_academique: new FormControl('', Validators.required),
     semestre: new FormControl('', Validators.required),
-    classe: new FormControl('', Validators.required),
+    nom_classe: new FormControl('', Validators.required),
   })
 
   annees: Annee[] = [];

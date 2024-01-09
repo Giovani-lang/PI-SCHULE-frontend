@@ -20,6 +20,7 @@ import { MatiereService } from 'src/app/services/matiere/matiere.service';
 import { CommonModule } from '@angular/common';
 import { Annee } from 'src/app/models/anneeAcademique.model';
 import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @Component({
@@ -40,62 +41,64 @@ import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-a
     MatNativeDateModule,
     MatDatepickerModule,
     MatSnackBarModule,
-    CommonModule
+    CommonModule,
+    MatCheckboxModule
   ]
 })
 export class EditTeacherComponent implements OnInit {
   formulaireModif = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.required]),
     prenom: new FormControl('', [Validators.required, Validators.required]),
-    image_url: new FormControl(),
+    image_url: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.required]),
+    password: new FormControl(),
+    confirmPassword: new FormControl('', [
+      control => control.parent?.get('password')?.value ? Validators.required : null,
+    ]),
     genre: new FormControl('', [Validators.required, Validators.required]),
-    annee_academique: new FormControl('', [Validators.required, Validators.required]),
+    grade: new FormControl('', [Validators.required, Validators.required]),
   },
     { validators: this.confirmPasswordsMatch }
   )
 
-  annees: Annee[] = [];
-
   confirmPasswordsMatch(control: AbstractControl) {
-    return control.get('password')?.value === control.get('confirmPassword')?.value
-      ? null
-      : { mismatch: true };
+    if (control.get('password')?.value !== null) {
+      return control.get('password')?.value === control.get('confirmPassword')?.value
+        ? null
+        : { mismatch: true };
+    } else {
+      return null;
+    }
   }
+
   constructor(
     public dialogRef: MatDialogRef<ListTeacherComponent>,
     private service: TeacherService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private afs: AngularFireStorage,
     private message: MatSnackBar,
-    private serviceAns: AnneeAcademiqueService,
   ) { }
 
   hide = true;
   hideConf = true;
+  hideInput = false;
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  id: any;
+
   ngOnInit(): void {
     if (this.editData) {
       this.formulaireModif.controls['nom'].setValue(this.editData.nom)
       this.formulaireModif.controls['prenom'].setValue(this.editData.prenom)
       this.formulaireModif.controls['image_url'].setValue(this.editData.image_url)
       this.formulaireModif.controls['email'].setValue(this.editData.email)
-      this.formulaireModif.controls['telephone'].setValue(this.editData.telephone)
-      this.formulaireModif.controls['password'].setValue(this.editData.password)
-      this.formulaireModif.controls['confirmPassword'].setValue(this.editData.password)
+      this.formulaireModif.controls['telephone'].patchValue(this.editData.telephone)
       this.formulaireModif.controls['genre'].setValue(this.editData.genre)
-      this.formulaireModif.controls['annee_academique'].setValue(this.editData.annee_academique)
+      this.formulaireModif.controls['grade'].setValue(this.editData.grade)
     }
-
-    this.serviceAns.getAllAnnee().subscribe(annee => this.annees = annee)
-
+    console.log(this.editData)
   }
 
 

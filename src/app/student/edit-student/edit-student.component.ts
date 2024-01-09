@@ -18,6 +18,9 @@ import { CommonModule } from '@angular/common';
 import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
 import { Annee } from 'src/app/models/anneeAcademique.model';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Classe } from 'src/app/models/classe.model';
+import { ClasseService } from 'src/app/services/classe/classe.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-edit-student',
@@ -37,7 +40,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatDatepickerModule,
     CommonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ]
 })
 export class EditStudentComponent implements OnInit {
@@ -48,9 +52,10 @@ export class EditStudentComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     dateNaissance: new FormControl('', [Validators.required, Validators.required]),
     telephone: new FormControl('', [Validators.required, Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.required]),
-    niveau: new FormControl('', [Validators.required, Validators.required]),
+    password: new FormControl(),
+    confirmPassword: new FormControl('', [
+      control => control.parent?.get('password')?.value ? Validators.required : null,
+    ]),
     nom_classe: new FormControl('', [Validators.required, Validators.required]),
     genre: new FormControl('', [Validators.required, Validators.required]),
     annee_academique: new FormControl('', [Validators.required, Validators.required]),
@@ -60,12 +65,17 @@ export class EditStudentComponent implements OnInit {
   )
 
   annees: Annee[] = [];
+  classes: Classe[] = [];
 
 
   confirmPasswordsMatch(control: AbstractControl) {
-    return control.get('motDePasse')?.value === control.get('confirmPassword')?.value
-      ? null
-      : { mismatch: true };
+    if (control.get('password')?.value !== null) {
+      return control.get('password')?.value === control.get('confirmPassword')?.value
+        ? null
+        : { mismatch: true };
+    } else {
+      return null;
+    }
   }
 
   constructor(
@@ -74,16 +84,17 @@ export class EditStudentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private afs: AngularFireStorage,
     private anneeSer: AnneeAcademiqueService,
-    private message: MatSnackBar
+    private message: MatSnackBar,
+    private classeSer: ClasseService,
   ) { }
 
   hide = true;
   hideConf = true;
+  hideInput = false;
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  id: any;
   ngOnInit(): void {
     if (this.editData) {
       this.formulaireModif.controls['nom'].setValue(this.editData.nom)
@@ -92,15 +103,16 @@ export class EditStudentComponent implements OnInit {
       this.formulaireModif.controls['dateNaissance'].setValue(this.editData.dateNaissance)
       this.formulaireModif.controls['email'].setValue(this.editData.email)
       this.formulaireModif.controls['telephone'].setValue(this.editData.telephone)
-      this.formulaireModif.controls['password'].setValue(this.editData.password)
-      this.formulaireModif.controls['confirmPassword'].setValue(this.editData.password)
       this.formulaireModif.controls['genre'].setValue(this.editData.genre)
-      this.formulaireModif.controls['niveau'].setValue(this.editData.niveau)
-      this.formulaireModif.controls['annee_academique'].setValue(this.editData.annees)
+      this.formulaireModif.controls['nom_classe'].setValue(this.editData.classe.nom)
+      this.formulaireModif.controls['annee_academique'].setValue(this.editData.anneeAcademique.annees)
       this.formulaireModif.controls['dateInscription'].setValue(this.editData.dateInscription)
     }
-    this.anneeSer.getAllAnnee().subscribe(data => {
-      this.annees = data
+    this.anneeSer.getAllAnnee().subscribe(annees => {
+      this.annees = annees
+    })
+    this.classeSer.getAllClasse().subscribe(classes => {
+      this.classes = classes
     })
   }
 
@@ -110,7 +122,6 @@ export class EditStudentComponent implements OnInit {
       const student = this.formulaireModif.value as unknown as Student;
       this.service.editStudent(this.editData.matricule, student).subscribe((student) => {
         this.onSelectField;
-        console.log(this.editData)
         this.dialogRef.close(student);
         this.message.open("Modifié avec succès !!!", "", { duration: 1500 })
       });
@@ -118,7 +129,9 @@ export class EditStudentComponent implements OnInit {
     }
   }
 
-  // Prévisualisation de l'image et image par defaut
+  /***********************************************************
+    Prévisualisation de l'image et image par defaut
+   ********************************************************* */
 
   url = this.editData.image_url;
   img!: String;

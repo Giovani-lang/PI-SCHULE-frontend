@@ -42,10 +42,10 @@
             <mat-form-field appearance="outline">
                 <mat-label>Durée</mat-label>
                 <mat-select formControlName="duree">
-                    <mat-option value="1">1h</mat-option>
-                    <mat-option value="2">2h</mat-option>
-                    <mat-option value="3">3h</mat-option>
-                    <mat-option value="4">4h</mat-option>
+                    <mat-option [value]="1">1h</mat-option>
+                    <mat-option [value]="2">2h</mat-option>
+                    <mat-option [value]="3">3h</mat-option>
+                    <mat-option [value]="4">4h</mat-option>
                 </mat-select>
                 <mat-error *ngIf="formulaireModif.controls.duree.status ==='INVALID'">
                     Champ requis

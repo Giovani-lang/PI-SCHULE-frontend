@@ -8,8 +8,6 @@ import { Student } from 'src/app/models/student.model';
 })
 export class StudentService {
 
-  BASE_URL = 'http://localhost:3000/student'
-
   constructor(private http: HttpClient) { }
 
   public getAllStudents(): Observable<Student[]> {

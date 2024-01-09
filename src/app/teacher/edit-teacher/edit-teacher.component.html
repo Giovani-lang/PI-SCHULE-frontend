@@ -48,20 +48,21 @@
             </mat-form-field>
         </div>
 
+        <p>
+            <mat-checkbox (click)="hideInput = !hideInput">Voulez-vous modifier le mot de passe ?</mat-checkbox>
+        </p>
+
         <div class="form-fields">
-            <mat-form-field appearance="outline">
-                <mat-label>Mot de Passe</mat-label>
+            <mat-form-field appearance="outline" *ngIf="hideInput">
+                <mat-label>Nouveau Mot de Passe</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide" type="button">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-error *ngIf="formulaireModif.controls.password.status ==='INVALID'">
-                    Champ requis
-                </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" *ngIf="hideInput">
                 <mat-label>Confirmer votre mot de passe</mat-label>
                 <input matInput [type]="hideConf ? 'password' : 'text'" formControlName="confirmPassword" required>
                 <button mat-icon-button matSuffix (click)="hideConf = !hideConf" [attr.aria-label]="'Hide password'"
@@ -75,11 +76,14 @@
         </div>
         <div>
             <mat-form-field appearance="outline">
-                <mat-label>Année académique</mat-label>
-                <mat-select formControlName="annee_academique">
-                    <mat-option *ngFor="let annee of annees" [value]="annee.annees">{{annee.annees}}</mat-option>
+                <mat-label>Grade</mat-label>
+                <mat-select formControlName="grade">
+                    <mat-option value="Mr">Mr</mat-option>
+                    <mat-option value="Mme">Mme</mat-option>
+                    <mat-option value="Dr">Dr</mat-option>
+                    <mat-option value="Pr">Pr</mat-option>
                 </mat-select>
-                <mat-error *ngIf="formulaireModif.controls.annee_academique.status ==='INVALID'">
+                <mat-error *ngIf="formulaireModif.controls.grade.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>

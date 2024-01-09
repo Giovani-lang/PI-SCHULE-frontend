@@ -1,6 +1,9 @@
+import { Annee } from "./anneeAcademique.model";
+import { Classe } from "./classe.model";
+
 export class Emploi {
     id!: number;
-    annee!: String;
+    annee_academique!: Annee;
     semestre!: String;
-    classe!: String;
+    nom_classe!: Classe;
 }

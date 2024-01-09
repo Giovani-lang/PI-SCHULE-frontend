@@ -1,5 +1,3 @@
-import { Teacher } from "./teacher.model";
-
 export class Lemploi {
     id!: number;
     classe!: String;

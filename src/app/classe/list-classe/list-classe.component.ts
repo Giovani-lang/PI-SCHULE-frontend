@@ -31,7 +31,7 @@ import { DeleteClasseComponent } from '../delete-classe/delete-classe.component'
   ]
 })
 export class ListClasseComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nom', 'filiere', 'option', 'actions'];
+  displayedColumns: string[] = ['nom', 'filiere', 'option', 'niveau', 'actions'];
   dataSource: MatTableDataSource<Classe>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -47,6 +47,7 @@ export class ListClasseComponent implements OnInit {
     this.service.getAllClasse().subscribe(classe => {
       this.dataSource = new MatTableDataSource(classe)
       this.dataSource.paginator = this.paginator;
+      console.log(this.dataSource)
     });
   }
 

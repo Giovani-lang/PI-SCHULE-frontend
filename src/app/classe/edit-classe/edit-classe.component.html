@@ -35,7 +35,7 @@
                 </mat-error>
             </mat-form-field>
             <br>
-            <!-- <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline">
                 <mat-label>Niveau</mat-label>
                 <mat-select formControlName="niveau">
                     <mat-option value="L1">Licence1</mat-option>
@@ -47,14 +47,14 @@
                 <mat-error *ngIf="formulaireModif.controls.niveau.status ==='INVALID'">
                     Champ requis
                 </mat-error>
-            </mat-form-field> -->
+            </mat-form-field>
         </div>
     </form>
 </div>
 <div mat-dialog-actions class="form-buttons">
     <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
     <button mat-raised-button style="color: #162E58;" (click)="edit()">
-        <mat-icon>save</mat-icon>
-        Enregistrer
+        <mat-icon>update</mat-icon>
+        MàJ
     </button>
 </div>

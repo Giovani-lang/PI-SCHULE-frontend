@@ -13,6 +13,7 @@ import { AddStudentComponent } from '../add-student/add-student.component';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { DeleteStudentComponent } from '../delete-student/delete-student.component';
 import { StudentDetailComponent } from '../student-detail/student-detail.component';
+import { EditPensionComponent } from 'src/app/pension/edit-pension/edit-pension.component';
 
 
 
