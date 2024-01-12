@@ -1,7 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { Classe } from 'src/app/models/classe.model';
 import { Pension } from 'src/app/models/pension.model';
 import { Student } from 'src/app/models/student.model';
 import { Teacher } from 'src/app/models/teacher.model';
+import { ClasseService } from 'src/app/services/classe/classe.service';
 import { PensionService } from 'src/app/services/pension/pension.service';
 import { StudentService } from 'src/app/services/student/student.service';
 import { TeacherService } from 'src/app/services/teacher/teacher.service';
@@ -16,12 +18,13 @@ export class DashboardComponent implements OnInit {
   constructor(private elementRef: ElementRef,
     private service: StudentService,
     private teacherSer: TeacherService,
-    private pensionSer: PensionService,
+    private classeSer: ClasseService,
   ) { }
 
   students: Student[] = [];
   teachers: Teacher[] = [];
   pensions: Pension[] = [];
+  classes: Classe[] = [];
 
   pension_ok!: any;
   pension_notOk!: any;
@@ -32,25 +35,45 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     this.service.getAllStudents().subscribe(students => {
+      // Définir deux variables entières qui contiendront chacune une année
+      let annee1: number;
+      let annee2: number;
+
+      // Obtenir la date actuelle
+      let date = new Date();
+
+      // Obtenir l'année et le mois actuels
+      let annee = date.getFullYear();
+      let mois = date.getMonth();
+
+      // Si le mois est inférieur à octobre (indexé à partir de 0), soustraire 1 à l'année pour la première variable
+      if (mois < 9) {
+        annee1 = annee - 1;
+        // Ajouter 1 à l'année pour la deuxième variable
+        annee2 = annee;
+
+      } else {
+        // Sinon, garder l'année actuelle pour la première variable
+        annee1 = annee;
+        // Ajouter 1 à l'année pour la deuxième variable
+        annee2 = annee + 1;
+
+      }
+
       this.students = students;
       this.Reg_student = students.filter(student => {
-        const date = student.dateInscription;
-        const debut = new Date(new Date().getFullYear(), 10, 1)
-        const fin = new Date(new Date().getFullYear() + 1, 7, 30)
-        return date >= debut && date <= fin
-        console.log(debut)
-        console.log(fin)
-        console.log(date)
+        const debut = parseInt(student.anneeAcademique.annees.slice(0, 4), 10)
+        const fin = parseInt(student.anneeAcademique.annees.slice(5, 9), 10)
+        return annee1 >= debut && annee2 <= fin
       })
-      console.log(this.Reg_student)
     })
+
     this.teacherSer.getAllTeachers().subscribe(teachers => {
       this.teachers = teachers
     })
 
-    this.pensionSer.getAllPension().subscribe(pensions => {
-      this.pension_ok = pensions.filter(pension => (pension.statut === "Soldée")).length;
-      this.pension_notOk = pensions.filter(pension => (pension.statut === "En cours")).length;
+    this.classeSer.getAllClasse().subscribe(classe => {
+      this.classes = classe
     })
 
     var s = document.createElement("script");

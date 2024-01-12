@@ -10,6 +10,9 @@
                 <mat-label>Matricule</mat-label>
                 <input matInput type="text" formControlName="matricule_etd">
             </mat-form-field>
+            <mat-error *ngIf="fomulaireAjout.controls.matricule_etd.status ==='INVALID'">
+                Champ requis
+            </mat-error>
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>Libellé</mat-label>
@@ -27,7 +30,7 @@
                 </mat-error>
             </mat-form-field>
             <br>
-            <mat-form-field class="example-full-width" appearance="outline">
+            <mat-form-field appearance="outline">
                 <mat-label>Année Académique</mat-label>
                 <mat-select formControlName="annee_academique">
                     <mat-option *ngFor="let annee of annnes" [value]="annee.annees">{{annee.annees}}</mat-option>

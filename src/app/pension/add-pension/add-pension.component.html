@@ -19,6 +19,16 @@
                     Champ requis
                 </mat-error>
             </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Année Académique</mat-label>
+                <mat-select formControlName="annee_academique">
+                    <mat-option *ngFor="let annee of annees" [value]="annee.id">{{annee.annees}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="fomulaireAjout.controls.annee_academique.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
         </div>
     </form>
 </div>

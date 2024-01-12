@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -34,7 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class AddPaiementComponent implements OnInit {
   fomulaireAjout = new FormGroup({
-    matricule_etd: new FormControl('', Validators.required),
+    matricule_etd: new FormControl('', [Validators.required, Validators.required]),
     libelle: new FormControl('', [Validators.required, Validators.required]),
     montant: new FormControl('', [Validators.required, Validators.required]),
     annee_academique: new FormControl('', [Validators.required, Validators.required]),
@@ -47,9 +47,12 @@ export class AddPaiementComponent implements OnInit {
     private service: PaiementService,
     private message: MatSnackBar,
     private anneeSer: AnneeAcademiqueService,
+    @Inject(MAT_DIALOG_DATA) public editData: any,
   ) { }
 
   ngOnInit(): void {
+    this.fomulaireAjout.controls['matricule_etd'].setValue(this.editData)
+    console.log(this.editData)
     this.anneeSer.getAllAnnee().subscribe(annee => this.annnes = annee)
   }
 

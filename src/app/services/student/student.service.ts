@@ -16,6 +16,9 @@ export class StudentService {
   public getStudent(matricule: any): Observable<Student> {
     return this.http.get<Student>(`${"http://localhost:8080/api/v1/etudiants/detail"}/${matricule}`)
   }
+  public getStudentWithEmail(email: any): Observable<Student> {
+    return this.http.get<Student>(`${"http://localhost:8080/api/v1/etudiants/detailWithEmail"}/${email}`)
+  }
   public deleteStudent(matricule: any): Observable<Student> {
     return this.http.delete<Student>(`${"http://localhost:8080/api/v1/etudiants/delete"}/${matricule}`)
   }

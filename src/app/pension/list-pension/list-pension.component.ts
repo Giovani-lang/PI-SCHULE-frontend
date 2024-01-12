@@ -12,6 +12,10 @@ import { Pension } from 'src/app/models/pension.model';
 import { PensionService } from 'src/app/services/pension/pension.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddPensionComponent } from '../add-pension/add-pension.component';
+import { Annee } from 'src/app/models/anneeAcademique.model';
+import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -30,7 +34,9 @@ import { AddPensionComponent } from '../add-pension/add-pension.component';
     MatButtonModule,
     MatDialogModule,
     RouterModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    FormsModule
   ]
 })
 export class ListPensionComponent implements OnInit {
@@ -40,24 +46,39 @@ export class ListPensionComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   pensions: Pension[] = [];
+  annees: Annee[] = [];
 
-  constructor(public dialog: MatDialog, public service: PensionService) {
+  constructor(public dialog: MatDialog, public service: PensionService, private anneeSer: AnneeAcademiqueService) {
     this.dataSource = new MatTableDataSource<Pension>([]);
+    this.display();
 
   }
 
   ngOnInit(): void {
-    this.service.getAllPension().subscribe(pensions => {
+    this.anneeSer.getAllAnnee().subscribe(annee => this.annees = annee)
+  }
+
+  selectedAnnee!: number;
+
+
+  display() {
+    this.service.getAllPension(this.selectedAnnee).subscribe(pensions => {
       this.dataSource = new MatTableDataSource(pensions)
       this.dataSource.paginator = this.paginator;
-      console.log(this.dataSource)
     });
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filterPredicate = (data, filter) => {
+      const result = data.etudiant.nom.toLowerCase().includes(filter)
+        || data.etudiant.prenom.toLowerCase().includes(filter)
+        || data.etudiant.matricule.toLowerCase().includes(filter)
+        || data.etudiant.classe.nom.toLowerCase().includes(filter)
+      return result
+    }
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

@@ -20,7 +20,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     const email = sessionStorage.getItem("email")
+    const role = sessionStorage.getItem("role")
+    // if (role == "ADMIN") {
     this.userService.getUserByEmail(email).subscribe(user => this.user = user)
+    // }
+
   }
   sidebarToggle() {
     //toggle sidebar function

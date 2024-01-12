@@ -15,4 +15,7 @@ export class UserService {
   public getUserByEmail(email: any): Observable<User> {
     return this.http.get<User>(`${"http://localhost:8080/api/v1/users"}/${email}`)
   }
+  public editUser(email: any, user: User): Observable<User> {
+    return this.http.put<User>(`${"http://localhost:8080/api/v1/users"}/${email}`, user)
+  }
 }

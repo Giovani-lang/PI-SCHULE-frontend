@@ -9,17 +9,12 @@ import { StudentService } from 'src/app/services/student/student.service';
 import { Student } from 'src/app/models/student.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { AddStudentComponent } from '../add-student/add-student.component';
-import { EditStudentComponent } from '../edit-student/edit-student.component';
-import { DeleteStudentComponent } from '../delete-student/delete-student.component';
 import { StudentDetailComponent } from '../student-detail/student-detail.component';
 
-
-
 @Component({
-  selector: 'app-list-student',
-  templateUrl: './list-student.component.html',
-  styleUrls: ['./list-student.component.css'],
+  selector: 'app-list-registered-student',
+  templateUrl: './list-registered-student.component.html',
+  styleUrls: ['./list-registered-student.component.css'],
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -33,7 +28,7 @@ import { StudentDetailComponent } from '../student-detail/student-detail.compone
     RouterModule
   ]
 })
-export class ListStudentComponent implements OnInit {
+export class ListRegisteredStudentComponent implements OnInit {
   displayedColumns: string[] = ['matricule', 'nom', 'prenom', 'genre', 'classe', 'actions'];
   dataSource: MatTableDataSource<Student>;
 
@@ -48,9 +43,29 @@ export class ListStudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getAllStudents().subscribe(students => {
-      this.dataSource = new MatTableDataSource(students)
+      let annee1: number;
+      let annee2: number;
+      let date = new Date();
+      let annee = date.getFullYear();
+      let mois = date.getMonth();
+
+      if (mois < 9) {
+        annee1 = annee - 1;
+        annee2 = annee;
+
+      } else {
+        annee1 = annee;
+        annee2 = annee + 1;
+
+      }
+
+      this.dataSource = new MatTableDataSource(students.filter(student => {
+        const debut = parseInt(student.anneeAcademique.annees.slice(0, 4), 10)
+        const fin = parseInt(student.anneeAcademique.annees.slice(5, 9), 10)
+        return annee1 >= debut && annee2 <= fin
+      }))
       this.dataSource.paginator = this.paginator;
-    });
+    })
   }
 
   applyFilter(event: Event) {
@@ -71,23 +86,6 @@ export class ListStudentComponent implements OnInit {
     }
   }
 
-  openDialogAdd(): void {
-    this.dialog.open(AddStudentComponent, {
-      width: '550px',
-    }).afterClosed().subscribe((students) => {
-      if (students) {
-        this.closeDialog(students);
-      };
-    })
-  }
-
-  refresh() {
-    this.service.getAllStudents().subscribe(student => {
-      this.dataSource = new MatTableDataSource(student)
-      this.dataSource.paginator = this.paginator;
-    });
-  }
-
   openDialogDetail(row: any) {
     this.dialog.open(StudentDetailComponent, {
       width: '600px',
@@ -95,30 +93,6 @@ export class ListStudentComponent implements OnInit {
     }).afterClosed().subscribe((students) => {
       if (students) {
         this.closeDialog(students);
-      };
-    })
-  }
-
-  openDialogEdit(row: any) {
-    this.dialog.open(EditStudentComponent, {
-      width: '550px',
-      data: row
-    }).afterClosed().subscribe((students) => {
-      if (students) {
-        this.closeDialog(students);
-        this.refresh()
-      };
-    })
-  }
-
-  openDialogDelete(row: any) {
-    this.dialog.open(DeleteStudentComponent, {
-      width: '350px',
-      data: row
-    }).afterClosed().subscribe((students) => {
-      if (students) {
-        this.closeDialog(students);
-        this.refresh()
       };
     })
   }

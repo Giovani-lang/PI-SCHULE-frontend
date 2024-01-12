@@ -47,8 +47,8 @@ import { GuardService as Guard } from './services/guard/guard.service';
 
 const routes: Routes = [
   // {
-  //   path: '', component: PagesLoginComponent, canActivate: [Guard], children: [
-  // { path: '', component: DashboardComponent },
+  //   path: 'pages-login', component: PagesLoginComponent, canActivate: [Guard], children: [
+  { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
   // { path: 'alerts', component: AlertsComponent },
   // { path: 'accordion', component: AccordionComponent },

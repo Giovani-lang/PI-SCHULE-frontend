@@ -29,7 +29,6 @@ export class PaiementDetailComponent implements OnInit {
     private servicePaiement: PaiementService
   ) {
     this.id = this.route.snapshot.paramMap.get('id')
-    console.log(this.id)
   }
 
   dateTirage = new Date().toISOString();
@@ -37,7 +36,6 @@ export class PaiementDetailComponent implements OnInit {
   ngOnInit(): void {
     this.servicePaiement.getPaiementById(this.id).subscribe(paiement => {
       this.paiement = paiement
-      console.log(paiement)
     })
   }
 

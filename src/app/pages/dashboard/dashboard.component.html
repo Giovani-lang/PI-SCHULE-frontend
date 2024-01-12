@@ -11,7 +11,7 @@
       <div class="row">
          <div class="col-lg-12">
             <div class="row">
-               <div class="col-xxl-4 col-md-6">
+               <div class="col-xxl-4 col-md-4">
                   <div class="card info-card sales-card">
                      <div class="card-title text-center">Etudiants</div>
                      <div class="card-body d-flex justify-content-between">
@@ -38,7 +38,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-xxl-4 col-md-6">
+               <div class="col-xxl-4 col-md-4">
                   <div class="card info-card sales-card">
                      <div class="card-title text-center">Enseignants</div>
                      <div class="card-body d-flex justify-content-between">
@@ -58,45 +58,32 @@
                               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i
                                     class="bi bi-people-fill"></i></div>
                               <div class="ps-3">
-                                 <h6>{{Reg_student.length}}</h6>
+                                 <h6>0</h6>
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class="col-xxl-4 col-md-6">
+               <div class="col-xxl-4 col-md-4">
                   <div class="card info-card revenue-card">
+                     <div class="card-title text-center">Classes</div>
                      <div class="card-body">
-                        <h5 class="card-title">Nombre Total <span>| Pensions soldées</span></h5>
-                        <div class="d-flex align-items-center">
+                        <h5 class="card-title text-center">Nombre Total</h5>
+                        <div class="d-flex align-items-center justify-content-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i
-                                 class="bi bi-arrow-down-up"></i></div>
+                                 class="bi bi-mortarboard"></i></div>
                            <div class="ps-3">
-                              <h6>{{pension_ok}}</h6>
+                              <h6>{{classes.length}}</h6>
                            </div>
                         </div>
                      </div>
                   </div>
-               </div>
-               <div class="col-xxl-4 col-md-6">
-                  <div class="card info-card customers-card ">
-                     <div class="card-body">
-                        <h5 class="card-title">Nombre Total <span>| Pensions non-soldées</span></h5>
-                        <div class="d-flex align-items-center">
-                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i
-                                 class="bi bi-arrow-down-up"></i></div>
-                           <div class="ps-3">
-                              <h6>{{pension_notOk}}</h6>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-12">
-
                </div>
                <!-- <div class="col-xxl-4 col-xl-12">
+
+               </div>
+               <div class="col-xxl-4 col-xl-12">
                   <div class="card info-card customers-card">
                      <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -123,25 +110,14 @@
                      </div>
                   </div>
                </div> -->
-               <!-- <div class="col-12">
+               <div class="col-12">
                   <div class="card">
-                     <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                           <li class="dropdown-header text-start">
-                              <h6>Filter</h6>
-                           </li>
-                           <li><a class="dropdown-item" href="#">Today</a></li>
-                           <li><a class="dropdown-item" href="#">This Month</a></li>
-                           <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
-                     </div>
                      <div class="card-body">
                         <h5 class="card-title">Reports <span>/Today</span></h5>
                         <div id="reportsChart"></div>
                      </div>
                   </div>
-               </div> -->
+               </div>
                <!-- <div class="col-12">
                   <div class="card recent-sales overflow-auto">
                      <div class="filter">
@@ -207,8 +183,8 @@
                         </table>
                      </div>
                   </div>
-               </div> -->
-               <!-- <div class="col-12">
+               </div>
+               <div class="col-12">
                   <div class="card top-selling overflow-auto">
                      <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -278,9 +254,9 @@
                </div> -->
             </div>
          </div>
-         <div class="col-lg-4">
+         <!-- <div class="col-lg-4">
             <div class="card">
-               <!-- <div class="filter">
+               <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                      <li class="dropdown-header text-start">
@@ -290,9 +266,9 @@
                      <li><a class="dropdown-item" href="#">This Month</a></li>
                      <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
-               </div> -->
-               <!--<div class="card-body">
-                   <h5 class="card-title m-0">Calendrier universitaire <span>| Semestriel</span></h5>
+               </div>
+               <div class="card-body">
+                  <h5 class="card-title m-0">Calendrier universitaire <span>| Semestriel</span></h5>
                   <h5 class="card-title m-0 text-center"><span>Semestre 1</span></h5>
                   <div class="activity">
                      <div class="activity-item d-flex">
@@ -374,9 +350,9 @@
                         <div class="activity-content"> Examens du 2e semestre</div>
                      </div>
                   </div>
-               </div>-->
-            </div>
-            <!-- <div class="card">
+               </div>
+            </div> -->
+         <!-- <div class="card">
                <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -409,8 +385,8 @@
                   <h5 class="card-title">Website Traffic <span>| Today</span></h5>
                   <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
                </div>
-            </div> -->
-            <!-- <div class="card">
+            </div>
+            <div class="card">
                <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -451,12 +427,12 @@
                         <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
                      </div>
                   </div>
-               </div> 
-            </div>-->
-            <div class="card-body">
+               </div>
+            </div> -->
+         <!-- <div class="card-body"> -->
 
-            </div>
-         </div>
+         <!-- </div> -->
+         <!-- </div> -->
       </div>
    </section>
 </main>

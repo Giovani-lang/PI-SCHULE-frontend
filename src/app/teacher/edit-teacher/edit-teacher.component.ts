@@ -15,11 +15,8 @@ import { ListTeacherComponent } from '../list-teacher/list-teacher.component';
 import { TeacherService } from 'src/app/services/teacher/teacher.service';
 import { Teacher } from 'src/app/models/teacher.model';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Matiere } from 'src/app/models/matiere.model';
-import { MatiereService } from 'src/app/services/matiere/matiere.service';
 import { CommonModule } from '@angular/common';
-import { Annee } from 'src/app/models/anneeAcademique.model';
-import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
@@ -42,7 +39,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatDatepickerModule,
     MatSnackBarModule,
     CommonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSlideToggleModule
   ]
 })
 export class EditTeacherComponent implements OnInit {

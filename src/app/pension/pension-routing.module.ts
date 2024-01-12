@@ -6,7 +6,7 @@ import { PaiementDetailComponent } from './paiement-detail/paiement-detail.compo
 
 const routes: Routes = [
   { path: 'list', component: ListPensionComponent },
-  { path: 'pensionDetail/:id', component: PensionDetailComponent },
+  { path: 'pensionDetail/:id/:annee', component: PensionDetailComponent },
   { path: 'paiementDetail/:id', component: PaiementDetailComponent },
 ];
 

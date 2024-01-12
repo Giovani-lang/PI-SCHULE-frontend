@@ -10,8 +10,8 @@ export class PaiementService {
 
   constructor(private http: HttpClient) { }
 
-  public getPaiement(matricule: any): Observable<Historique[]> {
-    return this.http.get<Historique[]>(`${"http://localhost:8080/api/v1/paiements/detail"}/${matricule}`)
+  public getPaiement(matricule: any, annee: any): Observable<Historique[]> {
+    return this.http.get<Historique[]>(`${"http://localhost:8080/api/v1/paiements/detail"}/${matricule}/${annee}`)
   }
   public getPaiementById(id: any): Observable<Historique> {
     return this.http.get<Historique>(`${"http://localhost:8080/api/v1/paiements/getById"}/${id}`)

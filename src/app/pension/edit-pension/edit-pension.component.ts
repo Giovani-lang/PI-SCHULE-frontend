@@ -11,6 +11,9 @@ import { PaiementDetailComponent } from '../paiement-detail/paiement-detail.comp
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute } from '@angular/router';
+import { Annee } from 'src/app/models/anneeAcademique.model';
+import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-edit-pension',
@@ -25,6 +28,7 @@ import { ActivatedRoute } from '@angular/router';
     ReactiveFormsModule,
     MatInputModule,
     MatSnackBarModule,
+    MatSelectModule,
 
   ],
   templateUrl: './edit-pension.component.html',
@@ -33,21 +37,25 @@ import { ActivatedRoute } from '@angular/router';
 export class EditPensionComponent implements OnInit {
   fomulaireModif = new FormGroup({
     matricule_etd: new FormControl({ value: '', disabled: true }),
-    pensionAnnuelle: new FormControl('', [Validators.required, Validators.required])
+    pensionAnnuelle: new FormControl('', [Validators.required, Validators.required]),
+    annee_academique: new FormControl('', [Validators.required, Validators.required])
   })
+
+  annees: Annee[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<PaiementDetailComponent>,
     private service: PensionService,
     private message: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public editData: any,
+    private anneeSer: AnneeAcademiqueService
   ) { }
 
   ngOnInit(): void {
-    const data = this.service.getPension(this.editData).subscribe((pension) => {
-      this.fomulaireModif.controls['matricule_etd'].patchValue(pension.etudiant.matricule.toString())
-      this.fomulaireModif.controls['pensionAnnuelle'].setValue(pension.pensionAnnuelle.toString())
-    })
+    this.fomulaireModif.controls['matricule_etd'].patchValue(this.editData.etudiant.matricule);
+    this.fomulaireModif.controls['pensionAnnuelle'].setValue(this.editData.pensionAnnuelle);
+    this.fomulaireModif.controls['annee_academique'].setValue(this.editData.anneeAcademique.id);
+    this.anneeSer.getAllAnnee().subscribe(annee => this.annees = annee);
   }
 
   onNoClick(): void {
@@ -56,8 +64,7 @@ export class EditPensionComponent implements OnInit {
 
   editPaiement() {
     if (this.fomulaireModif.status === 'VALID') {
-      this.service.editPension(this.editData, this.fomulaireModif.value as unknown as Pension).subscribe((paiement) => {
-        console.log(paiement)
+      this.service.editPension(this.editData.etudiant.matricule, this.editData.anneeAcademique.id, this.fomulaireModif.value as unknown as Pension).subscribe((paiement) => {
         this.dialogRef.close(paiement);
         this.message.open("Modification effectuée avec succès !!!", "", { duration: 1500 })
       });

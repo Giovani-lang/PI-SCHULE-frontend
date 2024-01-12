@@ -6,16 +6,10 @@
 <div class="container">
     <div class="image">
         <div>
-            <h2 style="color: white;">{{teacher.nom}} &nbsp; {{teacher.prenom}}</h2>
+            <h2 style="color: white;">{{teacher.grade}}&nbsp;{{teacher.nom}}&nbsp;{{teacher.prenom}}</h2>
         </div>
         <div>
             <img [src]="teacher.image_url || img" alt="photo de profil">
-        </div>
-        <div>
-            <!-- <div style="text-align: center;">
-                <label style="color: white">Discipline : </label><br>
-                <p style="color: white;">{{teacher.discipline}}</p>
-            </div> -->
         </div>
     </div>
     <br>

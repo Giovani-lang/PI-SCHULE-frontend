@@ -35,7 +35,10 @@ import { EditPensionComponent } from '../edit-pension/edit-pension.component';
   ]
 })
 export class PensionDetailComponent implements OnInit {
+
   id: string | null;
+  annee: string | null;
+
   pension!: Pension
   paiement: Historique[] = [];
 
@@ -46,18 +49,20 @@ export class PensionDetailComponent implements OnInit {
     private servicePaiement: PaiementService
   ) {
     this.id = this.route.snapshot.paramMap.get('id')
+    this.annee = this.route.snapshot.paramMap.get('annee')
   }
 
   dateTirage = new Date().toISOString();
 
   ngOnInit(): void {
-    this.service.getPension(this.id).subscribe(pension1 => { this.pension = pension1 })
-    this.servicePaiement.getPaiement(this.id).subscribe(paiement => { this.paiement = paiement })
+    this.service.getPension(this.id, this.annee).subscribe(pension1 => { this.pension = pension1 })
+    this.servicePaiement.getPaiement(this.id, this.annee).subscribe(paiement => { this.paiement = paiement })
   }
 
   openDialogAdd(): void {
     this.dialog.open(AddPaiementComponent, {
       width: '380px',
+      data: this.id
     }).afterClosed().subscribe((pension) => {
       if (pension) {
         this.closeDialog(pension);
@@ -69,7 +74,7 @@ export class PensionDetailComponent implements OnInit {
   openDialogEditPension() {
     this.dialog.open(EditPensionComponent, {
       width: '380px',
-      data: this.id
+      data: this.pension
     }).afterClosed().subscribe((pension) => {
       if (pension) {
         this.closeDialog(pension)

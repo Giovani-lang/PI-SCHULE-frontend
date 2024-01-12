@@ -1,3 +1,4 @@
+import { Annee } from "./anneeAcademique.model";
 import { Student } from "./student.model";
 
 export class Pension {
@@ -6,4 +7,5 @@ export class Pension {
     totalPaye!: number;
     statut!: String;
     etudiant!: Student;
+    annee_academique!: Annee;
 }

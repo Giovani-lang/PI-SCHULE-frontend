@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user.model';
+import { StudentService } from 'src/app/services/student/student.service';
 
 @Component({
   selector: 'app-pages-login',
@@ -43,7 +44,8 @@ export class PagesLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private message: MatSnackBar
+    private message: MatSnackBar,
+    private studentService: StudentService,
   ) { }
 
   ngOnInit(): void {
@@ -58,11 +60,17 @@ export class PagesLoginComponent implements OnInit {
       this.authService.Login(logging.email, logging.password).subscribe((res) => {
         if (res) {
           sessionStorage.setItem("email", res.email.toString())
+          sessionStorage.setItem("role", res.role.toString())
           this.authService.isLogin = true
           this.message.open("Connexion réussie", "", { duration: 1500 })
           if (res.role === 'ADMIN') {
             this.authService.admin = true;
             this.router.navigate(['/dashboard'])
+          } if (res.role === 'ETUDIANT') {
+            this.authService.etudiant = true;
+            this.studentService.getStudentWithEmail(res.email).subscribe((student) => {
+              this.router.navigate([`/lemploi/list/${student.classe.nom}`])
+            })
           }
         } else this.message.open("Echec de connexion, veuillez réessayer plus tard", "", { duration: 1500 })
       })
