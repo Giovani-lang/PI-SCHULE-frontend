@@ -15,6 +15,11 @@ import { Historique } from 'src/app/models/historique.model';
 import { AddPaiementComponent } from '../add-paiement/add-paiement.component';
 import { PaiementService } from 'src/app/services/paiement/paiement.service';
 import { EditPensionComponent } from '../edit-pension/edit-pension.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
+import { Annee } from 'src/app/models/anneeAcademique.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pension-detail',
@@ -31,7 +36,10 @@ import { EditPensionComponent } from '../edit-pension/edit-pension.component';
     MatButtonModule,
     MatGridListModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule
   ]
 })
 export class PensionDetailComponent implements OnInit {
@@ -41,12 +49,14 @@ export class PensionDetailComponent implements OnInit {
 
   pension!: Pension
   paiement: Historique[] = [];
+  annees: Annee[] = [];
 
   constructor(
     private service: PensionService,
     public dialog: MatDialog,
     private route: ActivatedRoute,
-    private servicePaiement: PaiementService
+    private servicePaiement: PaiementService,
+    private anneeSer: AnneeAcademiqueService,
   ) {
     this.id = this.route.snapshot.paramMap.get('id')
     this.annee = this.route.snapshot.paramMap.get('annee')
@@ -56,7 +66,22 @@ export class PensionDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getPension(this.id, this.annee).subscribe(pension1 => { this.pension = pension1 })
-    this.servicePaiement.getPaiement(this.id, this.annee).subscribe(paiement => { this.paiement = paiement })
+    this.servicePaiement.getPaiement(this.id, this.annee).subscribe(paiement => { this.paiement = paiement });
+    this.anneeSer.getAllAnnee().subscribe(annee => this.annees = annee)
+  }
+
+  /********************************************************************************
+   * la fonction display est exécutée uniquement si l'utilisateur est un ETUDIANT
+   *********************************************************************************/
+
+  role = sessionStorage.getItem('role');
+
+  selectedAnnee!: number;
+
+  display() {
+    this.service.getPension(this.id, this.selectedAnnee).subscribe(pension1 => { this.pension = pension1 })
+    this.servicePaiement.getPaiement(this.id, this.selectedAnnee).subscribe(paiement => { this.paiement = paiement });
+    this.anneeSer.getAllAnnee().subscribe(annee => this.annees = annee)
   }
 
   openDialogAdd(): void {

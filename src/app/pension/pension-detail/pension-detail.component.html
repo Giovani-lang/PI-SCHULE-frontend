@@ -1,5 +1,5 @@
 <main id="main" class="main">
-    <div class="pagetitle">
+    <div class="pagetitle" *ngIf="role == 'ADMIN'">
         <nav class="d-flex">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
@@ -7,6 +7,16 @@
                 <li class="breadcrumb-item">Paiements</li>
             </ol>
         </nav>
+    </div>
+    <div>
+        <mat-form-field appearance="outline" *ngIf="role == 'ETUDIANT'">
+            <mat-label>Filtrer par année</mat-label>
+            <mat-select [(ngModel)]="selectedAnnee" (selectionChange)="display()">
+                <mat-option *ngFor="let annee of annees" [value]="annee.id">
+                    {{ annee.annees }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
     <section class="section">
         <div class="row d-flex justify-content-center">
@@ -36,14 +46,15 @@
                         <div class="grid-item" style="flex: 1;"><label class="l1">Statut</label><br>
                             <h3>{{pension.statut}}</h3>
                         </div>
-                        <div class="grid-item" style="flex: 1;">
+                        <div class="grid-item" style="flex: 1;" *ngIf="role == 'ADMIN'">
                             <button mat-fab style="background-color: #162E58;color: white;" (click)="openDialogAdd()"
                                 class="demo-button">
                                 <mat-icon>add</mat-icon>
                             </button>
                         </div>
                     </div>
-                    <div class="btned"><mat-icon (click)="openDialogEditPension()">edit</mat-icon></div>
+                    <div class="btned" *ngIf="role == 'ADMIN'"><mat-icon
+                            (click)="openDialogEditPension()">edit</mat-icon></div>
                 </mat-card-content>
             </mat-card>
             <div class="median">
@@ -65,7 +76,7 @@
                         <div class="grid-item" style="flex: 5;">{{paie.libelle}}</div>
                         <div class="grid-item" style="flex: 2;color: green;">{{paie.montant
                             |currency:'XAF':'code'}}<br><small style="color: black;">EFFECTUÉ</small></div>
-                        <div class="grid-item" style="flex: 1;">
+                        <div class="grid-item" style="flex: 1;" *ngIf="role == 'ADMIN'">
                             <button mat-icon-button routerLink="/paiementDetail/{{paie.id}}">
                                 <mat-icon>launch</mat-icon>
                             </button>

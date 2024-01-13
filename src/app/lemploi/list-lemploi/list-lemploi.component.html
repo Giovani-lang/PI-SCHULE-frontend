@@ -1,6 +1,6 @@
 <p>list-lemploi works!</p>
 <main id="main" class="main">
-    <div class="pagetitle">
+    <div class="pagetitle" *ngIf="role =='ADMIN'">
         <nav class="d-flex">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
@@ -20,7 +20,7 @@
                             <mat-icon matSuffix>filter_list</mat-icon>
                         </mat-form-field>
                     </div>
-                    <div class="demo-button-container">
+                    <div class="demo-button-container" *ngIf="role =='ADMIN'">
                         <button mat-fab style="background-color: #162E58;color: white;" class="demo-button"
                             (click)="openDialogAdd()">
                             <mat-icon>add</mat-icon>
@@ -49,12 +49,10 @@
                             </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="actions">
+                        <ng-container *ngIf="role =='ADMIN'" matColumnDef="actions">
                             <th mat-header-cell *matHeaderCellDef aria-label="row actions"> Actions </th>
                             <td mat-cell *matCellDef="let row">
-                                <!-- <mat-icon (click)="openDialogDetail(row.id)">visibility</mat-icon>&nbsp;&nbsp; -->
                                 <mat-icon (click)="openDialogEdit(row)">edit</mat-icon>&nbsp;&nbsp;
-                                <!-- <mat-icon color="warn" (click)="openDialogDelete(row)">delete_forever</mat-icon> -->
                             </td>
                         </ng-container>
 

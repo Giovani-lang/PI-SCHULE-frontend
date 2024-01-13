@@ -33,12 +33,14 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class ListLemploiComponent implements OnInit {
-  displayedColumns: string[] = ['jour', 'horaires', 'matiere', 'enseignant', 'actions'];
+  displayedColumns: string[] = ['jour', 'horaires', 'matiere', 'enseignant'];
   dataSource: MatTableDataSource<Lemploi>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   classe: string | null;
   lemploi: Lemploi[] = [];
+
+  role = sessionStorage.getItem('role');
 
   constructor(
     public dialog: MatDialog,
@@ -47,6 +49,13 @@ export class ListLemploiComponent implements OnInit {
   ) {
     this.dataSource = new MatTableDataSource<Lemploi>([]);
     this.classe = this.route.snapshot.paramMap.get('classe')
+    /********************************************************
+     * Colonne des actions réserves uniquement à l'ADMIN 
+     ****************************************************** */
+    if (this.role == 'ADMIN') {
+      this.displayedColumns.push('actions');
+    }
+
   }
 
   ngOnInit(): void {
