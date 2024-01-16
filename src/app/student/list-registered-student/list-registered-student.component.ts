@@ -10,6 +10,7 @@ import { Student } from 'src/app/models/student.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { StudentDetailComponent } from '../student-detail/student-detail.component';
+import { EditStudentComponent } from '../edit-student/edit-student.component';
 
 @Component({
   selector: 'app-list-registered-student',
@@ -93,6 +94,18 @@ export class ListRegisteredStudentComponent implements OnInit {
     }).afterClosed().subscribe((students) => {
       if (students) {
         this.closeDialog(students);
+      };
+    })
+  }
+
+  openDialogEdit(row: any) {
+    this.dialog.open(EditStudentComponent, {
+      width: '550px',
+      data: row
+    }).afterClosed().subscribe((students) => {
+      if (students) {
+        this.closeDialog(students);
+        this.ngOnInit()
       };
     })
   }

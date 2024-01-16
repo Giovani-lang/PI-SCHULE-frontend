@@ -1,29 +1,85 @@
 table {
     width: 100%;
+    background-color: white;
 }
 
-.mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
+
+td {
+    border: 1px solid #ddd;
+    padding: 5px;
 }
 
-demo-button+.demo-button {
-    margin-left: 8px;
+th {
+    background-color: #162E58;
+    color: white;
+    text-align: center;
+    height: 55px;
+    font-size: 12px;
+    font-weight: 500;
 }
 
-.demo-button-container {
-    padding-bottom: 16px;
+td {
+    text-align: center;
+
+}
+
+tr:nth-child(even) {
+    background-color: white;
 }
 
 mat-icon {
     cursor: pointer;
 }
 
-th {
-    background-color: #162E58;
-    color: white;
+.title {
+    text-align: center;
 }
 
-ng-container {
-    width: 25%;
+/*--------------------------------------------------------------
+  # Emploi du temps côté étudiant 
+  --------------------------------------------------------------*/
+.emploi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px auto;
+    justify-content: space-evenly;
+}
+
+.day {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex: 1;
+    width: 200px;
+}
+
+.day-header {
+    background-color: #162E58;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.activity {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.activity:last-child {
+    border-bottom: none;
+}
+
+.activity-time {
+    font-size: 14px;
+    color: #555;
+}
+
+.activity-teacher {
+    font-weight: bold;
+    color: #333;
 }

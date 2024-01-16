@@ -93,7 +93,6 @@ import { LemploiModule } from './lemploi/lemploi.module';
     IconsBootstrapComponent,
     IconsRemixComponent,
     IconsBoxiconsComponent,
-    UsersProfileComponent,
     PagesFaqComponent,
     PagesContactComponent,
     PagesRegisterComponent,
@@ -133,7 +132,7 @@ import { LemploiModule } from './lemploi/lemploi.module';
     })
     ,
     AngularFireStorageModule,
-
+    UsersProfileComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

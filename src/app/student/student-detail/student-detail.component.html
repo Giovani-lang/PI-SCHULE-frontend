@@ -51,7 +51,7 @@
             </div>
             <div>
                 <label>Date de Naissance </label><br>
-                <p>{{student.dateNaissance}}</p>
+                <p>{{student.dateNaissance|date:"dd/MM/yyyy"}}</p>
             </div>
         </div>
         <div class="position">
@@ -119,7 +119,7 @@
                 <label class="label">Nom : </label>
                 <p class="infos">{{student.nom}}&nbsp;{{student.prenom}}</p>
                 <label class="label">Née le : </label>
-                <p class="infos">{{ student.dateNaissance}}</p>
+                <p class="infos">{{ student.dateNaissance|date:"dd/MM/yyyy"}}</p>
                 <label class="label">Sexe : </label>
                 <p class="infos">{{student.genre}}</p>
                 <label class="label">Option : </label>

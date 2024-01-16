@@ -4,7 +4,6 @@ import { Pension } from 'src/app/models/pension.model';
 import { Student } from 'src/app/models/student.model';
 import { Teacher } from 'src/app/models/teacher.model';
 import { ClasseService } from 'src/app/services/classe/classe.service';
-import { PensionService } from 'src/app/services/pension/pension.service';
 import { StudentService } from 'src/app/services/student/student.service';
 import { TeacherService } from 'src/app/services/teacher/teacher.service';
 
@@ -35,14 +34,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     this.service.getAllStudents().subscribe(students => {
-      // Définir deux variables entières qui contiendront chacune une année
       let annee1: number;
       let annee2: number;
-
-      // Obtenir la date actuelle
       let date = new Date();
-
-      // Obtenir l'année et le mois actuels
       let annee = date.getFullYear();
       let mois = date.getMonth();
 

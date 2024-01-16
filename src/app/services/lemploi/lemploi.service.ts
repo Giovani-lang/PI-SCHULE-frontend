@@ -8,8 +8,6 @@ import { Lemploi } from 'src/app/models/lemploi.model';
 })
 export class LemploiService {
 
-  BASE_URL = 'http://localhost:3000/lemploi'
-
   constructor(private http: HttpClient) { }
 
   public getAllByClasse(classe: any): Observable<Lemploi[]> {
@@ -22,6 +20,6 @@ export class LemploiService {
     return this.http.put<Lemploi>(`${"http://localhost:8080/api/v1/lemploi/edit"}/${id}`, lemploi)
   }
   public deleteL(id: any): Observable<Lemploi> {
-    return this.http.delete<Lemploi>(`${this.BASE_URL}/${id}`)
+    return this.http.delete<Lemploi>(`${"http://localhost:8080/api/v1/lemploi/delete"}/${id}`)
   }
 }

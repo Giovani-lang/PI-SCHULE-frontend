@@ -10,14 +10,14 @@ import { DeleteLemploiComponent } from './delete-lemploi/delete-lemploi.componen
 
 @NgModule({
   declarations: [
-    DeleteLemploiComponent
   ],
   imports: [
     EditLemploiComponent,
     AddLemploiComponent,
     ListLemploiComponent,
     CommonModule,
-    LemploiRoutingModule
+    LemploiRoutingModule,
+    DeleteLemploiComponent,
   ]
 })
 export class LemploiModule { }

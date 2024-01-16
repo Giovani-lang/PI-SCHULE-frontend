@@ -1,1 +1,8 @@
-<p>delete-lemploi works!</p>
+<h1 mat-dialog-title>Suppression en cours ...</h1>
+<div mat-dialog-content>
+    <small>Êtes-vous sûr de vouloir supprimer cette ligne?</small>
+</div>
+<div mat-dialog-actions style="float: right;">
+    <button mat-raised-button color="warn" mat-dialog-close>Non</button>
+    <button mat-button (click)="delete()" cdkFocusInitial>Oui</button>
+</div>

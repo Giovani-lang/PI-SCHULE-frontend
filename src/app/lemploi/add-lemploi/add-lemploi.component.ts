@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogRef, MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -52,6 +52,7 @@ export class AddLemploiComponent implements OnInit {
 
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public getData: any,
     public dialogRef: MatDialogRef<ListLemploiComponent>,
     private service: LemploiService,
     private message: MatSnackBar,
@@ -61,6 +62,7 @@ export class AddLemploiComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.formulaireAjout.controls['nom_classe'].setValue(this.getData)
     this.serviceTec.getAllTeachers().subscribe(teacher => this.teachers = teacher);
     this.serviceMat.getAllMatiere().subscribe(matiere => this.matieres = matiere);
     this.serviceCla.getAllClasse().subscribe(classe => this.classes = classe);

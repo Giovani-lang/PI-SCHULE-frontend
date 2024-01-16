@@ -47,12 +47,11 @@ export class AddPaiementComponent implements OnInit {
     private service: PaiementService,
     private message: MatSnackBar,
     private anneeSer: AnneeAcademiqueService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
+    @Inject(MAT_DIALOG_DATA) public getData: any,
   ) { }
 
   ngOnInit(): void {
-    this.fomulaireAjout.controls['matricule_etd'].setValue(this.editData)
-    console.log(this.editData)
+    this.fomulaireAjout.controls['matricule_etd'].setValue(this.getData)
     this.anneeSer.getAllAnnee().subscribe(annee => this.annnes = annee)
   }
 
