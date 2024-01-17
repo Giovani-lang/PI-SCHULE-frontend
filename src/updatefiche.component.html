@@ -1,0 +1,93 @@
+<div mat-dialog-title class="title">
+    <h2 style="color: #162E58; font-weight: bolder;">Modifier/MàJ fiche de présence</h2>
+</div>
+<hr>
+<div mat-dialog-content class="container">
+    <form [formGroup]="formulaireModifFiche" (ngSubmit)="updatefiche()">
+        <div class="form-fields" style="margin-top: 10px;">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Niveau</mat-label>
+                <mat-select formControlName="niveau">
+                    <mat-option value="L1">Licence1</mat-option>
+                    <mat-option value="L2">Licence2</mat-option>
+                    <mat-option value="L3">Licence3</mat-option>
+                    <mat-option value="M1">Master1</mat-option>
+                    <mat-option value="M2">Master2</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireModifFiche.controls.niveau.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Enseignant</mat-label>
+                <input matInput formControlName="enseignant">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error *ngIf="formulaireModifFiche.controls.enseignant.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+            
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Matiere</mat-label>
+                <mat-select formControlName="matiere[]">
+                    <mat-option value="Matiere 1">Mat 1</mat-option>
+                    <mat-option value="Matiere 2">Mat 2</mat-option>
+                    <mat-option value="Matiere 3">Mat 3</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireModifFiche.controls.matiere.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+            
+       
+
+        <!--div>
+            horaire
+        </div-->
+
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Session</mat-label>
+                <mat-select formControlName="session">
+                    <mat-option value="Tenue">Tenue</mat-option>
+                    <mat-option value="Non-tenue">Non-tenue</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireModifFiche.controls.session.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Etudiant</mat-label>
+                <input matInput formControlName="etudiant">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error *ngIf="formulaireModifFiche.controls.etudiant.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field> 
+        </div>
+
+        <div>
+            <label>Presence: </label>&nbsp;
+            <mat-radio-group formControlName="Presence">
+                <mat-radio-button value="A">Absent</mat-radio-button>&nbsp;
+                <mat-radio-button value="P">Present</mat-radio-button>
+            </mat-radio-group>
+        </div>
+       
+</div>
+<div mat-dialog-actions class="form-buttons">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button style="color: #162E58;" (click)="updatefiche()">
+        <mat-icon>update</mat-icon>
+        Modifier
+    </button>
+</div>`
+

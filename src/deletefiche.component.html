@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Suppression en cours ...</h1>
+<div mat-dialog-content>
+    <small>Confirmez-vous la suppression de cette fiche de présence ?</small>
+</div>
+<div mat-dialog-actions style="float: right;">
+    <button mat-raised-button color="warn" mat-dialog-close>Non</button>
+    <button mat-button (click)="deletefiche()" cdkFocusInitial>Oui</button>
+</div>
+
+
