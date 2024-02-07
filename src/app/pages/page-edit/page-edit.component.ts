@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -97,13 +97,19 @@ export class PageEditComponent implements OnInit {
         this.dialogRef.afterClosed().subscribe(() => {
           sessionStorage.setItem("role", user.role.toString())
           if (user.role === 'ADMIN') {
+            this.message.open("Connexion réussie", "", { duration: 1500 })
             this.router.navigate(['/dashboard'])
           } else if (user.role === 'ETUDIANT') {
+            this.message.open("Connexion réussie", "", { duration: 1500 })
             this.router.navigate([`/lemploi/list/${this.student.classe.nom}`])
           }
         })
       })
     }
+  }
+
+  onClose() {
+    this.dialogRef.close();
   }
 
 }

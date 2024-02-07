@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { User } from 'src/app/models/user.model';
 import { StudentService } from 'src/app/services/student/student.service';
@@ -25,6 +26,7 @@ import { UserService } from 'src/app/services/user/user.service';
     FormsModule,
     CommonModule,
     MatSnackBarModule,
+    RouterModule
   ]
 })
 export class UsersProfileComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Classe } from 'src/app/models/classe.model';
 import { Pension } from 'src/app/models/pension.model';
 import { Student } from 'src/app/models/student.model';
@@ -14,7 +14,7 @@ import { TeacherService } from 'src/app/services/teacher/teacher.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private elementRef: ElementRef,
+  constructor(
     private service: StudentService,
     private teacherSer: TeacherService,
     private classeSer: ClasseService,
@@ -71,10 +71,7 @@ export class DashboardComponent implements OnInit {
       this.classes = classe
     })
 
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "../assets/js/main.js";
-    this.elementRef.nativeElement.appendChild(s);
   }
+
 }
 

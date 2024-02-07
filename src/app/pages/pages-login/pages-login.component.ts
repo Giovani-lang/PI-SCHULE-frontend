@@ -70,7 +70,6 @@ export class PagesLoginComponent implements OnInit {
       ).subscribe((res) => {
         if (res) {
           sessionStorage.setItem("email", res.email.toString())
-          this.message.open("Connexion réussie", "", { duration: 1500 })
           if (this.dialog.openDialogs.length == 0) {
             if (res.firstLogin === true) {
               this.dialog.open(PageEditComponent)
@@ -78,9 +77,11 @@ export class PagesLoginComponent implements OnInit {
               sessionStorage.setItem("role", res.role.toString())
               if (res.role === 'ADMIN') {
                 this.authService.admin = true;
+                this.message.open("Connexion réussie", "", { duration: 1500 })
                 this.router.navigate(['/dashboard'])
               } if (res.role === 'ETUDIANT') {
                 this.authService.etudiant = true;
+                this.message.open("Connexion réussie", "", { duration: 1500 })
                 this.studentService.getStudentWithEmail(res.email).subscribe((student) => {
                   this.router.navigate([`/lemploi/list/${student.classe.nom}`])
                 })
