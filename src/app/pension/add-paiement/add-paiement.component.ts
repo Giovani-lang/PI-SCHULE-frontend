@@ -34,7 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class AddPaiementComponent implements OnInit {
   fomulaireAjout = new FormGroup({
-    matricule_etd: new FormControl('', [Validators.required, Validators.required]),
+    matricule_etd: new FormControl(),
     libelle: new FormControl('', [Validators.required, Validators.required]),
     montant: new FormControl('', [Validators.required, Validators.required]),
     annee_academique: new FormControl('', [Validators.required, Validators.required]),
@@ -51,8 +51,8 @@ export class AddPaiementComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.fomulaireAjout.controls['matricule_etd'].setValue(this.getData)
-    this.anneeSer.getAllAnnee().subscribe(annee => this.annnes = annee)
+    this.fomulaireAjout.controls['matricule_etd'].setValue(this.getData);
+    this.anneeSer.getAllAnnee().subscribe(annee => this.annnes = annee);
   }
 
   onNoClick(): void {
@@ -62,7 +62,6 @@ export class AddPaiementComponent implements OnInit {
   addPaiement() {
     if (this.fomulaireAjout.status === 'VALID') {
       this.service.addPaiement(this.fomulaireAjout.value as unknown as Historique).subscribe((paiement) => {
-        console.log(paiement)
         this.dialogRef.close(paiement);
         this.message.open("Enregistré avec succès !!!", "", { duration: 1500 })
       });

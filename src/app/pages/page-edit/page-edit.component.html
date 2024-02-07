@@ -1,0 +1,46 @@
+<div mat-dialog-title class="title">
+    <h2 style="color: #162E58; font-weight: bolder;text-align: center;">
+        Bienvenue sur notre service!
+    </h2>
+    <small style="color: #162E58; font-size: 10px;text-align: center;">
+        Pour votre sécurité, nous vous invitons à modifier votre mot de passe temporaire par
+        un mot de passe de votre choix.
+    </small>
+</div>
+<hr>
+<div mat-dialog-content>
+    <form [formGroup]="formulaireModif" (submit)="edit()">
+
+        <div class="form-outline mb-4">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Mot de Passe</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide" type="button">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formulaireModif.controls.password.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-outline mb-4"><mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Confirmer votre mot de passe</mat-label>
+                <input matInput [type]="hideConf ? 'password' : 'text'" formControlName="confirmPassword" required>
+                <button mat-icon-button matSuffix (click)="hideConf = !hideConf" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hideConf" type="button">
+                    <mat-icon>{{hideConf ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formulaireModif?.errors?.['mismatch'] && formulaireModif?.touched">
+                    Incorrect
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+<div class="form-buttons">
+    <button mat-raised-button style="background-color: #162E58;color: white;float: right;" (click)="edit()">
+        Modifier
+    </button>
+</div>

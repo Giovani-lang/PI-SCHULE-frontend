@@ -24,11 +24,8 @@ export class DashboardComponent implements OnInit {
   teachers: Teacher[] = [];
   pensions: Pension[] = [];
   classes: Classe[] = [];
-
-  pension_ok!: any;
-  pension_notOk!: any;
-
   Reg_student!: any;
+  ActifTeachers!: any;
 
 
   ngOnInit(): void {
@@ -63,7 +60,11 @@ export class DashboardComponent implements OnInit {
     })
 
     this.teacherSer.getAllTeachers().subscribe(teachers => {
-      this.teachers = teachers
+      this.teachers = teachers;
+      this.ActifTeachers = teachers.filter(
+        teacher => teacher.status === 'Actif'
+      )
+      console.log(this.ActifTeachers)
     })
 
     this.classeSer.getAllClasse().subscribe(classe => {

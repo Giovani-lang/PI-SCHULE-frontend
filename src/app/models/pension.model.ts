@@ -5,6 +5,7 @@ export class Pension {
     id!: number;
     pensionAnnuelle!: number;
     totalPaye!: number;
+    restePaye!: number;
     statut!: String;
     etudiant!: Student;
     annee_academique!: Annee;

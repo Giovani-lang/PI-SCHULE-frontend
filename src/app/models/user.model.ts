@@ -7,4 +7,5 @@ export class User {
     telephone!: String;
     genre!: String;
     role!: String;
+    firstLogin!: boolean;
 }

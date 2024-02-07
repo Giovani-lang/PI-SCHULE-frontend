@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListLemploiComponent } from './list-lemploi/list-lemploi.component';
 
 const routes: Routes = [
-  { path: 'list/:classe', component: ListLemploiComponent }
+  { path: 'list/:classe', component: ListLemploiComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class LemploiRoutingModule { }

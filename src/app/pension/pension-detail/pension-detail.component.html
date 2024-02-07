@@ -43,14 +43,12 @@
                             <label class="l1">Montant Payé</label><br>
                             <h3> + {{pension.totalPaye |currency:'XAF':'code'}}</h3>
                         </div>
+                        <div class="grid-item" style="flex: 1;color: red;">
+                            <label class="l1">Reste à Payé</label><br>
+                            <h3>{{pension.restePaye|currency:'XAF':'code'}}</h3>
+                        </div>
                         <div class="grid-item" style="flex: 1;"><label class="l1">Statut</label><br>
                             <h3>{{pension.statut}}</h3>
-                        </div>
-                        <div class="grid-item" style="flex: 1;" *ngIf="role == 'ADMIN'">
-                            <button mat-fab style="background-color: #162E58;color: white;" (click)="openDialogAdd()"
-                                class="demo-button">
-                                <mat-icon>add</mat-icon>
-                            </button>
                         </div>
                     </div>
                     <div class="btned" *ngIf="role == 'ADMIN'"><mat-icon
@@ -61,9 +59,10 @@
                 <span>
                     <h4>Mes opérations</h4>
                 </span>
-                <!-- <span>
-                    <a>Voir plus</a>
-                </span> -->
+                <button mat-icon-button style="background-color: #162E58;color: white;" (click)="openDialogAdd()"
+                    class="demo-button" *ngIf="role == 'ADMIN'">
+                    <mat-icon>add</mat-icon>
+                </button>
             </div>
             <hr>
             <mat-card *ngFor="let paie of paiement" class="mb-3">
@@ -77,7 +76,7 @@
                         <div class="grid-item" style="flex: 2;color: green;">{{paie.montant
                             |currency:'XAF':'code'}}<br><small style="color: black;">EFFECTUÉ</small></div>
                         <div class="grid-item" style="flex: 1;" *ngIf="role == 'ADMIN'">
-                            <button mat-icon-button routerLink="/paiementDetail/{{paie.id}}">
+                            <button mat-icon-button routerLink="/pension/paiement/detail/{{paie.id}}">
                                 <mat-icon>launch</mat-icon>
                             </button>
                         </div>

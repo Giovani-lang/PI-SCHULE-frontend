@@ -16,10 +16,7 @@
                         <span class="text-primary">pour la gestion scolaire</span>
                      </h1>
                      <p style="color: hsl(217, 10%, 50.8%)">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-                        quibusdam tempora at cupiditate quis eum maiores libero
-                        veritatis? Dicta facilis sint aliquid ipsum atque?
+                        Entrez vos identifiants afin de profiter des fonctionnalités de notre application
                      </p>
                   </div>
 
@@ -28,13 +25,13 @@
                         <div class="card-body py-5 px-md-5">
                            <div class="pt-4 pb-2">
                               <h5 class="card-title text-center pb-0 fs-4">Connectez-vous à votre compte</h5>
-                              <p class="text-center small">Veuillez entrer votre nom d'utilisateur et mot de passe</p>
+                              <p class="text-center small">Veuillez entrer votre email et mot de passe</p>
                            </div>
                            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                               <div class="form-outline mb-4">
                                  <mat-form-field appearance="outline" style="width: 100%;">
-                                    <mat-label>Nom d'utilisateur</mat-label>
+                                    <mat-label>Email</mat-label>
                                     <input matInput formControlName="email">
                                     <mat-icon matSuffix>person</mat-icon>
                                     <mat-error *ngIf="loginForm.controls.email.status ==='INVALID'">
@@ -57,7 +54,7 @@
                                  </mat-form-field>
                               </div>
 
-                              <button mat-raised-button style="background-color: #162E58;color: white;"
+                              <button mat-raised-button style="background-color: #162E58;color: white;float: right;"
                                  (click)="onSubmit()">
                                  Se connecter
                               </button>
@@ -71,8 +68,6 @@
                   sont réservés</div>
             </div>
          </div>
-         <!-- Jumbotron -->
       </section>
-      <!-- Section: Design Block -->
    </div>
 </main>

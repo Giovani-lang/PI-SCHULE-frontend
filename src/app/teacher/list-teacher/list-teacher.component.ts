@@ -35,7 +35,7 @@ import { DeleteTeacherComponent } from '../delete-teacher/delete-teacher.compone
   ]
 })
 export class ListTeacherComponent implements OnInit {
-  displayedColumns: string[] = ['grade', 'nom', 'prenom', 'email', 'genre', 'actions'];
+  displayedColumns: string[] = ['grade', 'nom', 'prenom', 'email', 'genre', 'status', 'actions'];
   dataSource: MatTableDataSource<Teacher>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -87,6 +87,17 @@
                     Champ requis
                 </mat-error>
             </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Statut</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option value="Actif">Actif</mat-option>
+                    <mat-option value="Inactif">Inactif</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulaireModif.controls.status.status ==='INVALID'">
+                    Champ requis
+                </mat-error>
+            </mat-form-field>
         </div>
         <div>
             <label>Genre : </label>&nbsp;

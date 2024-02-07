@@ -6,8 +6,8 @@ import { PaiementDetailComponent } from './paiement-detail/paiement-detail.compo
 
 const routes: Routes = [
   { path: 'list', component: ListPensionComponent },
-  { path: 'pensionDetail/:id/:annee', component: PensionDetailComponent },
-  { path: 'paiementDetail/:id', component: PaiementDetailComponent },
+  { path: 'detail/:matricule/:idAnnee', component: PensionDetailComponent },
+  { path: 'paiement/detail/:id', component: PaiementDetailComponent },
 ];
 
 @NgModule({

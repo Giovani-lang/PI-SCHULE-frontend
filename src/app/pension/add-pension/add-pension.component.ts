@@ -13,6 +13,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { Annee } from 'src/app/models/anneeAcademique.model';
 import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
 import { CommonModule } from '@angular/common';
+import { Student } from 'src/app/models/student.model';
+import { StudentService } from 'src/app/services/student/student.service';
 
 @Component({
   selector: 'app-add-pension',
@@ -35,21 +37,23 @@ import { CommonModule } from '@angular/common';
 export class AddPensionComponent implements OnInit {
   fomulaireAjout = new FormGroup({
     matricule_etd: new FormControl('', Validators.required),
-    pensionAnnuelle: new FormControl('', [Validators.required, Validators.required]),
     annee_academique: new FormControl('', [Validators.required, Validators.required])
   })
 
   annees: Annee[] = [];
+  students: Student[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<ListPensionComponent>,
     private service: PensionService,
     private message: MatSnackBar,
-    private anneeSer: AnneeAcademiqueService
+    private anneeSer: AnneeAcademiqueService,
+    private studentSer: StudentService
   ) { }
 
   ngOnInit(): void {
     this.anneeSer.getAllAnnee().subscribe(annee => this.annees = annee)
+    this.studentSer.getAllStudents().subscribe(student => this.students = student)
   }
 
   onNoClick(): void {

@@ -19,7 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { AnneeAcademiqueService } from 'src/app/services/anneeAcademique/annee-academique.service';
 import { Annee } from 'src/app/models/anneeAcademique.model';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pension-detail',
@@ -39,13 +39,14 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatFormFieldModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PensionDetailComponent implements OnInit {
 
-  id: string | null;
-  annee: string | null;
+  matricule: string | null;
+  idAnnee: string | null;
 
   pension!: Pension
   paiement: Historique[] = [];
@@ -58,15 +59,15 @@ export class PensionDetailComponent implements OnInit {
     private servicePaiement: PaiementService,
     private anneeSer: AnneeAcademiqueService,
   ) {
-    this.id = this.route.snapshot.paramMap.get('id')
-    this.annee = this.route.snapshot.paramMap.get('annee')
+    this.matricule = this.route.snapshot.paramMap.get('matricule')
+    this.idAnnee = this.route.snapshot.paramMap.get('idAnnee')
   }
 
   dateTirage = new Date().toISOString();
 
   ngOnInit(): void {
-    this.service.getPension(this.id, this.annee).subscribe(pension1 => { this.pension = pension1 })
-    this.servicePaiement.getPaiement(this.id, this.annee).subscribe(paiement => { this.paiement = paiement });
+    this.service.getPension(this.matricule, this.idAnnee).subscribe(pension1 => { this.pension = pension1 })
+    this.servicePaiement.getPaiement(this.matricule, this.idAnnee).subscribe(paiement => { this.paiement = paiement });
     this.anneeSer.getAllAnnee().subscribe(annee => this.annees = annee)
   }
 
@@ -79,15 +80,15 @@ export class PensionDetailComponent implements OnInit {
   selectedAnnee!: number;
 
   display() {
-    this.service.getPension(this.id, this.selectedAnnee).subscribe(pension1 => { this.pension = pension1 })
-    this.servicePaiement.getPaiement(this.id, this.selectedAnnee).subscribe(paiement => { this.paiement = paiement });
+    this.service.getPension(this.matricule, this.selectedAnnee).subscribe(pension1 => { this.pension = pension1 })
+    this.servicePaiement.getPaiement(this.matricule, this.selectedAnnee).subscribe(paiement => { this.paiement = paiement });
     this.anneeSer.getAllAnnee().subscribe(annee => this.annees = annee)
   }
 
   openDialogAdd(): void {
     this.dialog.open(AddPaiementComponent, {
       width: '380px',
-      data: this.id
+      data: this.matricule
     }).afterClosed().subscribe((pension) => {
       if (pension) {
         this.closeDialog(pension);

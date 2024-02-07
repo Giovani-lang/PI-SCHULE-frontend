@@ -13,8 +13,11 @@ export class StudentService {
   public getAllStudents(): Observable<Student[]> {
     return this.http.get<Student[]>("http://localhost:8080/api/v1/etudiants/getAll")
   }
+  public getAllStudentsByClasse(classe: any): Observable<Student[]> {
+    return this.http.get<Student[]>(`${"http://localhost:8080/api/v1/etudiants/getAllByClasse"}/${classe}`)
+  }
   public getStudent(matricule: any): Observable<Student> {
-    return this.http.get<Student>(`${"http://localhost:8080/api/v1/etudiants/detail"}/${matricule}`)
+    return this.http.get<Student>(`${"http://localhost:8080/api/v1/etudiants/detailWithMatricule"}/${matricule}`)
   }
   public getStudentWithEmail(email: any): Observable<Student> {
     return this.http.get<Student>(`${"http://localhost:8080/api/v1/etudiants/detailWithEmail"}/${email}`)

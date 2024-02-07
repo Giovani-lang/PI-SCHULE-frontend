@@ -13,6 +13,7 @@ import { AddOptionComponent } from '../add-option/add-option.component';
 import { DeleteOptionComponent } from '../delete-option/delete-option.component';
 import { OptionDetailComponent } from '../option-detail/option-detail.component';
 import { EditOptionComponent } from '../edit-option/edit-option.component';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -29,7 +30,8 @@ import { EditOptionComponent } from '../edit-option/edit-option.component';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
+    CommonModule
   ]
 
 })
@@ -39,7 +41,7 @@ export class ListOptionComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  admins: Option[] = [];
+  options: Option[] = [];
 
   constructor(public dialog: MatDialog, public service: OptionService) {
     this.dataSource = new MatTableDataSource<Option>([]);

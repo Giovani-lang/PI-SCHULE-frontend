@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListAdminsComponent } from './list-admins/list-admins.component';
+import { ListTarifComponent } from './list-tarif/list-tarif.component';
 
 const routes: Routes = [
-  { path: 'list', component: ListAdminsComponent },
+  { path: "list", component: ListTarifComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminsRoutingModule { }
+export class TarifRoutingModule { }

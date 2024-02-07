@@ -21,6 +21,6 @@ import { AddPensionComponent } from './add-pension/add-pension.component';
     ListPensionComponent,
     EditPensionComponent,
     PensionDetailComponent,
-  ]
+  ],
 })
 export class PensionModule { }

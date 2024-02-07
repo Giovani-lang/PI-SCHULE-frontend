@@ -8,12 +8,11 @@ import { EditClasseComponent } from './edit-classe/edit-classe.component';
 import { DeleteClasseComponent } from './delete-classe/delete-classe.component';
 import { ClasseDetailComponent } from './classe-detail/classe-detail.component';
 
-
 @NgModule({
   declarations: [
-    ClasseDetailComponent
   ],
   imports: [
+    ClasseDetailComponent,
     EditClasseComponent,
     DeleteClasseComponent,
     AddClasseComponent,

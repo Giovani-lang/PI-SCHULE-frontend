@@ -56,6 +56,7 @@ export class EditTeacherComponent implements OnInit {
     ]),
     genre: new FormControl('', [Validators.required, Validators.required]),
     grade: new FormControl('', [Validators.required, Validators.required]),
+    status: new FormControl('', [Validators.required, Validators.required]),
   },
     { validators: this.confirmPasswordsMatch }
   )
@@ -95,6 +96,7 @@ export class EditTeacherComponent implements OnInit {
       this.formulaireModif.controls['telephone'].patchValue(this.editData.telephone)
       this.formulaireModif.controls['genre'].setValue(this.editData.genre)
       this.formulaireModif.controls['grade'].setValue(this.editData.grade)
+      this.formulaireModif.controls['status'].setValue(this.editData.status)
     }
     console.log(this.editData)
   }

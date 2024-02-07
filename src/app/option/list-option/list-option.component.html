@@ -27,7 +27,6 @@
                 </div>
                 <div class="mat-elevation-z8">
                     <table mat-table [dataSource]="dataSource" matSort>
-
                         <ng-container matColumnDef="id">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº </th>
                             <td mat-cell *matCellDef="let row"> {{row.id}} </td>
@@ -36,13 +35,10 @@
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Noms </th>
                             <td mat-cell *matCellDef="let row"> {{row.nom}} </td>
                         </ng-container>
-
                         <ng-container matColumnDef="actions">
                             <th mat-header-cell *matHeaderCellDef aria-label="row actions"> Actions </th>
                             <td mat-cell *matCellDef="let row">
-                                <!-- <mat-icon (click)="openDialogDetail(row.id)">visibility</mat-icon>&nbsp;&nbsp; -->
                                 <mat-icon (click)="openDialogEdit(row)">edit</mat-icon>&nbsp;&nbsp;
-                                <!-- <mat-icon color="warn" (click)="openDialogDelete(row)">delete_forever</mat-icon> -->
                             </td>
                         </ng-container>
 

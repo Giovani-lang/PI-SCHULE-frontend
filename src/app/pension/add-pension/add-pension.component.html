@@ -5,17 +5,13 @@
 <div mat-dialog-content class="container">
     <form [formGroup]="fomulaireAjout" (ngSubmit)="addPaiement()">
         <div class="form-fields" style="margin-top: 10px;">
-
             <mat-form-field appearance="outline">
-                <mat-label>Matricule</mat-label>
-                <input matInput type="text" formControlName="matricule_etd">
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="outline">
-                <mat-label>Pension Annuelle</mat-label>
-                <input type="number" matInput formControlName="pensionAnnuelle" class="example-right-align"
-                    placeholder="0">
-                <mat-error *ngIf="fomulaireAjout.controls.pensionAnnuelle.status ==='INVALID'">
+                <mat-label>Etudiant</mat-label>
+                <mat-select formControlName="matricule_etd">
+                    <mat-option *ngFor="let student of students"
+                        [value]="student.matricule">{{student.nom}}&nbsp;{{student.prenom}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="fomulaireAjout.controls.matricule_etd.status ==='INVALID'">
                     Champ requis
                 </mat-error>
             </mat-form-field>

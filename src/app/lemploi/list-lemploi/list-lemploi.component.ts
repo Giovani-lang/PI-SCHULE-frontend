@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -61,7 +60,7 @@ export class ListLemploiComponent implements OnInit {
       const groupedObjects = lemploi.reduce((acc, obj) => {
         const group = acc.get(obj.jour);
         if (!group) {
-          // Si le groupe n'existe pas encore, créez-le et associez-le à l'âge
+          // Si le groupe n'existe pas encore, créez-le et associez-le au jour
           acc.set(obj.jour, [obj]);
         }
         else {
@@ -74,10 +73,8 @@ export class ListLemploiComponent implements OnInit {
         }
         return acc;
       }, new Map());
-      console.log(JSON.stringify(groupedObjects))
       this.groupedArry = groupedObjects;
       // Convertir la Map en un tableau plat
-      console.log(groupedObjects)
       const flattenedArray = Array.from(groupedObjects.values()).flat();
       this.dataSource = new MatTableDataSource(flattenedArray);
     });
@@ -124,7 +121,7 @@ export class ListLemploiComponent implements OnInit {
     }).afterClosed().subscribe((lemploi) => {
       if (lemploi) {
         this.closeDialog(lemploi);
-        this.ngOnInit()
+
       };
     })
   }

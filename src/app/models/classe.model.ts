@@ -7,4 +7,5 @@ export class Classe {
     nom_filiere!: Filiere;
     nom_option!: Option;
     niveau!: String;
+    tarif!: number;
 }

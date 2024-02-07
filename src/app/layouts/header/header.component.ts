@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common'
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -16,15 +17,12 @@ export class HeaderComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private userService: UserService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     const email = sessionStorage.getItem("email")
-    const role = sessionStorage.getItem("role")
-    // if (role == "ADMIN") {
     this.userService.getUserByEmail(email).subscribe(user => this.user = user)
-    // }
-
   }
   sidebarToggle() {
     //toggle sidebar function
@@ -32,6 +30,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    localStorage.removeItem("email");
+    this.authService.isLogin = false;
+    sessionStorage.clear()
   }
 }

@@ -11,8 +11,8 @@ export class GuardService {
     private authService: AuthService
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authService.isLogin) {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.authService.isLogin || sessionStorage.key(1)) {
       return true;
     } else {
       this.router.navigate(['pages-login']);

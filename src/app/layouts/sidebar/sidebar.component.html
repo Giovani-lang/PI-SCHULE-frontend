@@ -24,15 +24,12 @@
                               class="bi bi-credit-card-fill"></i>
                         <span>Scolarité</span> </a></li>
 
-
-            <!--Bouton permettant la pension et les paiements uniquement d'un étudiant -->
+            <!--Bouton permettant l'emploi du temps uniquement d'un étudiant -->
             <!--Start-->
             <li *ngIf="role == 'ETUDIANT'" class="nav-item"> <a class="nav-link "
-                        routerLink="/pensionDetail/{{student.matricule}}/{{student.anneeAcademique.id}}"> <i
-                              class="bi bi-credit-card-fill"></i>
-                        <span>Scolarité</span> </a></li>
+                        routerLink="/lemploi/list/{{student.classe.nom}}"> <i class="bi bi-clock-fill"></i>
+                        <span>Emplois Du Temps</span> </a></li>
             <!--End-->
-
 
             <li *ngIf="role == 'ADMIN'" class="nav-item"> <a class="nav-link " routerLink="/anneeAcademique/list"> <i
                               class="bi bi-calendar-week-fill"></i>
@@ -41,14 +38,13 @@
                               class="bi bi-clock-fill"></i>
                         <span>Emplois Du Temps</span> </a></li>
 
-
-            <!--Bouton permettant l'emploi du temps uniquement d'un étudiant -->
+            <!--Bouton permettant la pension et les paiements uniquement d'un étudiant -->
             <!--Start-->
             <li *ngIf="role == 'ETUDIANT'" class="nav-item"> <a class="nav-link "
-                        routerLink="/lemploi/list/{{student.classe.nom}}"> <i class="bi bi-clock-fill"></i>
-                        <span>Emplois Du Temps</span> </a></li>
+                        routerLink="/pension/detail/{{student.matricule}}/{{student.anneeAcademique.id}}"> <i
+                              class="bi bi-credit-card-fill"></i>
+                        <span>Scolarité</span> </a></li>
             <!--End-->
-
 
             <li *ngIf="role == 'ADMIN'" class="nav-item"> <a class="nav-link " routerLink="/classe/list"> <i
                               class="bi bi-person-workspace"></i>
@@ -62,5 +58,8 @@
             <li *ngIf="role == 'ADMIN'" class="nav-item"> <a class="nav-link " routerLink="/matiere/list"> <i
                               class="bi bi-book-fill"></i>
                         <span>Matières</span> </a></li>
+            <li *ngIf="role == 'ADMIN'" class="nav-item"> <a class="nav-link " routerLink="/tarif/list"> <i
+                              class="bi bi-grid-3x3-gap-fill"></i>
+                        <span>Grille tarifaire</span> </a></li>
       </ul>
 </aside>
